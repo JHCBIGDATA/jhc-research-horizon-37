@@ -1,0 +1,24 @@
+
+Contact: jhc.research@jaihindcollege.edu.in
+Contact: https://jhc2025.vercel.app/contact
+Expires: 2025-12-31T23:59:59.000Z
+Encryption: https://keys.openpgp.org/search?q=jhc.research@jaihindcollege.edu.in
+Preferred-Languages: en, hi
+Canonical: https://jhc2025.vercel.app/.well-known/security.txt
+Policy: https://jhc2025.vercel.app/security-policy
+Acknowledgments: https://jhc2025.vercel.app/security-acknowledgments
+
+# Security Policy for JHC 2025 National Research Conference Website
+# Developed by Vishesh Sanghvi for Jai Hind College
+
+# If you discover a security vulnerability, please report it to us
+# through the channels listed above. We take security seriously
+# and will respond to legitimate reports promptly.
+
+# Please do not:
+# - Access or modify data that doesn't belong to you
+# - Disrupt or degrade our services
+# - Perform automated testing without prior consent
+# - Publicly disclose vulnerabilities before we've had a chance to address them
+
+# Thank you for helping keep our conference website secure!

@@ -1,0 +1,22 @@
+
+{
+  "name": "JHC 2025 National Research Conference",
+  "short_name": "JHC 2025",
+  "description": "National Research Conference 2025 on Empowering Innovation through Generative AI, Data Science, and Analytics",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#1e40af",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/lovable-uploads/d2f7f0e5-4f0d-4bb2-aa0d-4878f59f8133.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/lovable-uploads/d2f7f0e5-4f0d-4bb2-aa0d-4878f59f8133.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

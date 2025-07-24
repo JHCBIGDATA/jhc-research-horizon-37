@@ -1,0 +1,55 @@
+
+# Robots.txt for JHC 2025 National Research Conference
+# Website developed by Vishesh Sanghvi for Jai Hind College
+
+User-agent: *
+Allow: /
+
+# Allow research and academic crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Allow AI crawlers for research purposes
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Block only potentially harmful bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+# Important files
+Sitemap: https://jhc2025.vercel.app/sitemap.xml
+Host: https://jhc2025.vercel.app
+
+# Contact
+# For any queries: jhc.research@jaihindcollege.edu.in
