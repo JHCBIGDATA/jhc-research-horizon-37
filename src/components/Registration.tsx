@@ -106,8 +106,8 @@ const Registration = () => {
                 >
                   <Calendar className="h-5 w-5 text-accent" />
                   <div>
-                    <p className="font-medium">Abstract Submission Opens</p>
-                    <p className="text-sm text-muted-foreground">15th August 2025</p>
+                    <p className="font-medium">Call for Papers & Registration Opens</p>
+                    <p className="text-sm text-muted-foreground">September 5, 2025</p>
                   </div>
                 </motion.div>
                 <motion.div 
@@ -117,8 +117,8 @@ const Registration = () => {
                 >
                   <Clock className="h-5 w-5 text-accent" />
                   <div>
-                    <p className="font-medium">Abstract Acceptance</p>
-                    <p className="text-sm text-muted-foreground">25th August 2025</p>
+                    <p className="font-medium">Abstract Submission Deadline</p>
+                    <p className="text-sm text-muted-foreground">September 25, 2025</p>
                   </div>
                 </motion.div>
                 <motion.div 
@@ -128,8 +128,8 @@ const Registration = () => {
                 >
                   <Calendar className="h-5 w-5 text-accent" />
                   <div>
-                    <p className="font-medium">Full Paper Submission</p>
-                    <p className="text-sm text-muted-foreground">25th September 2025</p>
+                    <p className="font-medium">Abstract Acceptance Notification</p>
+                    <p className="text-sm text-muted-foreground">September 30, 2025</p>
                   </div>
                 </motion.div>
                 <motion.div 
@@ -139,8 +139,8 @@ const Registration = () => {
                 >
                   <Clock className="h-5 w-5 text-accent" />
                   <div>
-                    <p className="font-medium">Registration Deadline</p>
-                    <p className="text-sm text-muted-foreground">25th October 2025</p>
+                    <p className="font-medium">Full Paper Submission Deadline</p>
+                    <p className="text-sm text-muted-foreground">October 15, 2025</p>
                   </div>
                 </motion.div>
                 <motion.div 
@@ -151,7 +151,7 @@ const Registration = () => {
                   <Calendar className="h-5 w-5 text-accent" />
                   <div>
                     <p className="font-medium">Conference Dates</p>
-                    <p className="text-sm text-muted-foreground">21st-22nd November 2025</p>
+                    <p className="text-sm text-muted-foreground">December 1–2, 2025</p>
                   </div>
                 </motion.div>
               </div>

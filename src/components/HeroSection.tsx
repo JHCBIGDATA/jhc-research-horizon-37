@@ -178,7 +178,7 @@ const HeroSection = () => {
                     </motion.div>
                     <div>
                       <p className="font-bold text-lg">Conference Dates</p>
-                      <p className="text-sm text-white/90 font-medium">21st-22nd November 2025</p>
+                      <p className="text-sm text-white/90 font-medium">01st-02nd December 2025</p>
                     </div>
                   </CardContent>
                 </Card>

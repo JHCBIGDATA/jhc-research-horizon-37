@@ -226,7 +226,7 @@ const InteractiveSchedule = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Day {day} - {day === 1 ? '21st November' : '22nd November'}
+                  Day {day} - {day === 1 ? '01st December' : '02nd December'}
                 </motion.button>
               ))}
             </div>

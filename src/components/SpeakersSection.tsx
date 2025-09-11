@@ -87,8 +87,9 @@ const SpeakersSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
               viewport={{ once: true }}
+              className="h-full"
             >
-              <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-white">
+              <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-white h-full flex flex-col">
                 <CardHeader className="text-center">
                   <motion.img 
                     src={speaker.image} 
@@ -103,7 +104,7 @@ const SpeakersSection = () => {
                   <p className="text-accent font-medium">{speaker.title}</p>
                   <p className="text-sm text-muted-foreground">{speaker.company}</p>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 flex flex-col grow">
                   <div className="flex flex-wrap gap-2 justify-center">
                     {speaker.expertise.map((skill, skillIndex) => (
                       <Badge key={skillIndex} variant="secondary" className="text-xs">
@@ -118,61 +119,13 @@ const SpeakersSection = () => {
                     </h4>
                     <p className="text-sm text-muted-foreground">{speaker.session}</p>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{speaker.bio}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">{speaker.bio}</p>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
         </div>
 
-        {/* Industry Panel */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <div className="text-center mb-12">
-            <h3 className="text-2xl font-bold text-primary mb-4">Industry Expert Panel</h3>
-            <p className="text-muted-foreground">
-              Join our panel discussion with industry leaders sharing real-world insights and trends
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {industryExperts.map((expert, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card className="hover:shadow-lg transition-all duration-300 bg-white">
-                  <CardContent className="p-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
-                        <Users className="h-6 w-6 text-accent" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-primary">{expert.name}</h4>
-                        <p className="text-sm text-accent font-medium">{expert.title}</p>
-                        <p className="text-sm text-muted-foreground mb-3">{expert.company}</p>
-                        <div className="flex flex-wrap gap-1">
-                          {expert.expertise.map((skill, skillIndex) => (
-                            <Badge key={skillIndex} variant="outline" className="text-xs">
-                              {skill}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
 
         {/* Call to Action */}
         <motion.div 

@@ -69,7 +69,7 @@ const Schedule = () => {
 
         <div className="grid lg:grid-cols-2 gap-8">
           <div>
-            <h3 className="text-2xl font-bold text-primary mb-8 text-center">Day 1 - 21st November 2025</h3>
+            <h3 className="text-2xl font-bold text-primary mb-8 text-center">Day 1 - 01st December 2025</h3>
             <div className="space-y-4">
               {day1Schedule.map((item, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
@@ -93,7 +93,7 @@ const Schedule = () => {
           </div>
 
           <div>
-            <h3 className="text-2xl font-bold text-primary mb-8 text-center">Day 2 - 22nd November 2025</h3>
+            <h3 className="text-2xl font-bold text-primary mb-8 text-center">Day 2 - 02nd December 2025</h3>
             <div className="space-y-4">
               {day2Schedule.map((item, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow duration-300">

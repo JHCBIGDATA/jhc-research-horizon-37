@@ -19,71 +19,47 @@ const EnhancedRegistration = () => {
   const registrationSteps = [
     {
       step: 1,
-      title: "Submit Abstract",
-      description: "Upload your research abstract by August 25th",
+
+      title: "Call for Papers & Registration",
+      description: "Opens on September 5, 2025",
       icon: Send,
       status: "current"
     },
     {
       step: 2,
-      title: "Review Process",
-      description: "Expert panel reviews your submission",
+      title: "Abstract Submission",
+      description: "Max 300 words. Deadline: September 25, 2025",
       icon: CheckCircle,
       status: "upcoming"
     },
     {
       step: 3,
-      title: "Full Paper",
-      description: "Submit complete paper by September 25th",
+      title: "Abstract Acceptance",
+      description: "Notification by September 30, 2025",
       icon: Calendar,
       status: "upcoming"
     },
     {
       step: 4,
-      title: "Final Registration",
-      description: "Complete registration by October 25th",
+      title: "Full Paper Submission",
+      description: "6–8 pages. Deadline: October 15, 2025",
       icon: UserPlus,
       status: "upcoming"
     }
   ];
 
   const importantDates = [
-    {
-      date: "15th August 2025",
-      event: "Abstract Submission Opens",
-      icon: Calendar,
-      urgent: false
-    },
-    {
-      date: "25th August 2025",
-      event: "Abstract Acceptance",
-      icon: CheckCircle,
-      urgent: true
-    },
-    {
-      date: "25th September 2025",
-      event: "Full Paper Submission",
-      icon: UserPlus,
-      urgent: false
-    },
-    {
-      date: "12th October 2025",
-      event: "Acceptance & Feedback",
-      icon: Clock,
-      urgent: false
-    },
-    {
-      date: "25th October 2025",
-      event: "Registration Deadline",
-      icon: Calendar,
-      urgent: false
-    },
-    {
-      date: "21st-22nd November 2025",
-      event: "Conference Dates",
-      icon: Calendar,
-      urgent: false
-    }
+    { date: "September 5, 2025", event: "Call for Papers & Registration Opens", icon: Calendar, urgent: false },
+    { date: "September 25, 2025", event: "Abstract Submission Deadline", icon: Calendar, urgent: true },
+    { date: "September 30, 2025", event: "Abstract Acceptance Notification", icon: CheckCircle, urgent: false },
+    { date: "October 15, 2025", event: "Full Paper Submission Deadline", icon: Calendar, urgent: false },
+    { date: "October 16 – October 28, 2025", event: "Review Process", icon: Clock, urgent: false },
+    { date: "October 30, 2025", event: "Acceptance & Reviewer Feedback", icon: CheckCircle, urgent: false },
+    { date: "November 5, 2025", event: "Revised Paper (Camera-ready) Deadline", icon: Calendar, urgent: false },
+    { date: "November 10, 2025", event: "Author Registration Deadline (Last Date)", icon: Calendar, urgent: true },
+    { date: "November 15, 2025", event: "Presentation Schedule & Guidelines to Authors", icon: Calendar, urgent: false },
+    { date: "November 22, 2025", event: "Final PPT Submission Deadline", icon: Calendar, urgent: false },
+    { date: "December 1–2, 2025", event: "Conference Dates", icon: Calendar, urgent: false }
   ];
 
   const benefits = [
@@ -278,50 +254,11 @@ const EnhancedRegistration = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-white shadow-lg">
-              <CardHeader>
-                <CardTitle className="text-xl text-primary">What You Get</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {benefits.map((benefit, index) => (
-                    <motion.li 
-                      key={index}
-                      className="flex items-start space-x-3"
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground">{benefit}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+            {/* Removed What You Get section as requested */}
           </div>
         </motion.div>
 
-        <motion.div 
-          className="text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-2xl font-bold text-primary mb-8">Conference Experience</h3>
-          <motion.img 
-            src="/lovable-uploads/138790b0-7483-4f48-ae16-2db2f83b5253.png" 
-            alt="Conference Experience" 
-            className="rounded-lg shadow-xl mx-auto max-w-4xl w-full"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
-          />
-          <p className="mt-4 text-sm text-muted-foreground">
-            Join researchers and professionals from around the world in sharing knowledge and innovation
-          </p>
-        </motion.div>
+        {/* Removed Conference Experience block as requested */}
       </div>
     </section>
   );

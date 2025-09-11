@@ -20,20 +20,20 @@ const FAQSection = () => {
       category: "Registration & Submission",
       questions: [
         {
-          question: "What is the registration fee for the conference?",
-          answer: "Registration fees are: Students - ₹2,500, Academics - ₹4,000, Industry - ₹6,000. Early bird discounts of 20% are available until 15th October 2025."
+          question: "What are the participation/registration fees?",
+          answer: "Students: Rs. 300/-. Faculty/Industry: Rs. 500/-. Paper Presentation (Student): Rs. 600/-. Paper Presentation (Faculty): Rs. 800/-. Paper Presentation (Industry): Rs. 2000/-."
         },
         {
           question: "Can I attend without presenting a paper?",
           answer: "Yes! You can register as an attendee to participate in all sessions, workshops, and networking events without presenting a paper."
         },
         {
-          question: "What format should I use for paper submission?",
-          answer: "All papers must follow IEEE format. Templates are available for download on our website. Papers should be submitted in PDF format only."
+          question: "How do I pay the fees?",
+          answer: "Bank transfer to: Beneficiary: Sind Educationists Association. Bank: Union Bank of India. Bank Address: Union Bank of India, V.N Road, Mumbai - 400020. Account No: 319501010029167. Branch: Veer Nariman Road, Mumbai. IFSC: UBIN0531952. MICR: 400026021. PAN: AAATS1063P. Use reference: JHC2025-YourName. Upload proof in the registration form or email it to the conference team."
         },
         {
-          question: "Is there a limit on the number of papers I can submit?",
-          answer: "You can submit multiple papers, but each submission will require separate registration fees if accepted."
+          question: "What format should I use for paper submission?",
+          answer: "All papers must follow the conference template (IEEE-like). Submit in PDF. Plagiarism should be ≤ 15%."
         }
       ]
     },
@@ -42,19 +42,19 @@ const FAQSection = () => {
       questions: [
         {
           question: "Will the conference be hybrid (online + offline)?",
-          answer: "The conference will be primarily in-person at Jai Hind College, Mumbai. Selected sessions may be live-streamed for virtual participants."
+          answer: "The conference is in-person at Jai Hind College, Mumbai. Select sessions may be recorded for internal archiving only and will not be publicly shared."
         },
         {
           question: "What networking opportunities are available?",
           answer: "We offer welcome reception, coffee breaks, lunch networking, industry panel discussions, and a dedicated networking session on Day 2."
         },
         {
-          question: "Are workshop materials provided?",
-          answer: "Yes, all workshop participants receive materials including datasets, code samples, and reference guides. Digital copies will be shared via email."
+          question: "Are workshop/presentation resources provided?",
+          answer: "Presenters will have access to required resources and AV support. Attendees may receive select materials at the organizers' discretion."
         },
         {
           question: "Will session recordings be available?",
-          answer: "Keynote sessions and selected presentations will be recorded and shared with registered participants within a week after the conference."
+          answer: "Recordings might be taken for internal use and archival. They will not be distributed."
         }
       ]
     },
@@ -62,16 +62,12 @@ const FAQSection = () => {
       category: "Publication & Awards",
       questions: [
         {
-          question: "How are papers selected for journal publication?",
-          answer: "The top 15-20% of accepted papers will be recommended for fast-track review in partner UGC CARE listed and international journals."
+          question: "How are papers selected?",
+          answer: "Papers are evaluated by multiple judges on technical quality, novelty, clarity, and impact. Judges discuss collectively to decide the overall result."
         },
         {
-          question: "What are the criteria for awards?",
-          answer: "Awards are based on technical quality, novelty, presentation quality, and potential impact. All submitted papers are automatically considered for relevant awards."
-        },
-        {
-          question: "When will award winners be announced?",
-          answer: "Awards will be announced and presented during the closing ceremony on 22nd November 2025."
+          question: "When are awards announced?",
+          answer: "Awards and recognitions are announced on Day 2 during the closing ceremony."
         },
         {
           question: "Do I need to be present to win an award?",
@@ -84,19 +80,19 @@ const FAQSection = () => {
       questions: [
         {
           question: "Is accommodation provided for outstation participants?",
-          answer: "We provide a list of recommended hotels near the venue with special conference rates. Participants need to make their own bookings."
+          answer: "We provide a list of recommended hotels near the venue. Participants make their own bookings."
         },
         {
           question: "How do I reach Jai Hind College from Mumbai Airport?",
-          answer: "The college is 45-60 minutes from the airport. You can take a taxi, Uber/Ola, or local train (Churchgate station is the nearest)."
+          answer: "The college is ~45–60 minutes from the airport. Options: taxi, Uber/Ola, or local train (Churchgate station is the nearest)."
         },
         {
-          question: "Are meals included in the registration fee?",
-          answer: "Yes, registration includes welcome breakfast, lunch on both days, tea/coffee breaks, and closing reception."
+          question: "Will food be provided?",
+          answer: "Food is generally provided during the conference (tea/coffee breaks and meals). Final details will be shared with registered participants."
         },
         {
           question: "Is parking available at the venue?",
-          answer: "Limited parking is available on campus. We recommend using public transport or ride-sharing services for convenient access."
+          answer: "No official parking will be available on campus. Please use public transport or ride-sharing services."
         }
       ]
     },
@@ -109,7 +105,7 @@ const FAQSection = () => {
         },
         {
           question: "Is WiFi available throughout the venue?",
-          answer: "Yes, high-speed WiFi is available throughout the campus. Login credentials will be provided during registration."
+          answer: "General WiFi will not be provided. Presenters will have required connectivity for their sessions."
         },
         {
           question: "Who can I contact for technical support during the event?",
@@ -117,7 +113,7 @@ const FAQSection = () => {
         },
         {
           question: "Can I make changes to my submitted paper after the deadline?",
-          answer: "Minor revisions may be allowed until the camera-ready deadline (1st November 2025). Major changes require committee approval."
+          answer: "Minor revisions may be allowed until the camera-ready deadline (November 5, 2025). Major changes require committee approval."
         }
       ]
     }
