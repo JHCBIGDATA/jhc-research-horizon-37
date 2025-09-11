@@ -19,7 +19,6 @@ const Header = () => {
   const mainMenuItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
   ];
 
   const sponsorDropdownItems = [
@@ -55,8 +54,7 @@ const Header = () => {
   };
 
   const handleRegisterClick = () => {
-    scrollToTopInstant();
-    navigate('/register');
+    window.open('https://tinyurl.com/3p4s4zhj', '_blank', 'noopener,noreferrer');
     setIsMenuOpen(false);
   };
 
@@ -117,6 +115,13 @@ const Header = () => {
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
+
+            <button
+              onClick={() => handleNavigation('/contact')}
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200"
+            >
+              Contact
+            </button>
 
             <Button
               onClick={handleRegisterClick}

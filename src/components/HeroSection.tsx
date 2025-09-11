@@ -276,7 +276,7 @@ const HeroSection = () => {
                 <Button 
                   size="lg" 
                   className="bg-accent text-black hover:bg-accent/90 text-lg px-10 py-4 shadow-2xl hover:shadow-accent/25 transition-all duration-300 font-semibold relative overflow-hidden group"
-                  onClick={scrollToRegistration}
+                  onClick={() => window.open('https://tinyurl.com/3p4s4zhj', '_blank', 'noopener,noreferrer')}
                 >
                   <span className="relative z-10">Register Now</span>
                   <motion.div 
@@ -295,7 +295,7 @@ const HeroSection = () => {
                   size="lg" 
                   variant="outline" 
                   className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-primary text-lg px-10 py-4 backdrop-blur-sm font-semibold transition-all duration-300 relative overflow-hidden group"
-                  onClick={scrollToRegistration}
+                  onClick={() => window.open('https://tinyurl.com/3p4s4zhj', '_blank', 'noopener,noreferrer')}
                 >
                   <span className="relative z-10">Submit Abstract</span>
                   <motion.div 

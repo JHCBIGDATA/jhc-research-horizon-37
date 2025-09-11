@@ -96,7 +96,7 @@ const EnhancedNavbar = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Button
-                onClick={() => handleNavigation('/register')}
+                onClick={() => window.open('https://tinyurl.com/3p4s4zhj', '_blank', 'noopener,noreferrer')}
                 className="bg-accent hover:bg-accent/90 text-black relative overflow-hidden group"
               >
                 <span className="relative z-10">Register Now</span>
@@ -145,7 +145,7 @@ const EnhancedNavbar = () => {
               </motion.button>
             ))}
             <motion.button
-              onClick={() => handleNavigation('/register')}
+              onClick={() => window.open('https://tinyurl.com/3p4s4zhj', '_blank', 'noopener,noreferrer')}
               className="block w-full text-left px-4 py-3 mt-4 text-base font-medium bg-accent text-black hover:bg-accent/90 rounded-md transition-colors duration-200"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -20 }}

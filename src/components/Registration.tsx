@@ -56,7 +56,7 @@ const Registration = () => {
                   <Button 
                     size="lg" 
                     className="w-full bg-primary hover:bg-primary/90"
-                    onClick={handleRegisterClick}
+                    onClick={() => window.open('https://tinyurl.com/3p4s4zhj', '_blank', 'noopener,noreferrer')}
                   >
                     Submit Abstract
                   </Button>
@@ -80,7 +80,7 @@ const Registration = () => {
                     size="lg" 
                     variant="outline" 
                     className="w-full border-accent text-accent hover:bg-accent hover:text-white"
-                    onClick={handleRegisterClick}
+                    onClick={() => window.open('https://tinyurl.com/3p4s4zhj', '_blank', 'noopener,noreferrer')}
                   >
                     Register for Conference
                   </Button>
