@@ -1,5 +1,5 @@
 
-import { Mail, MapPin, Calendar } from 'lucide-react';
+import { Mail, MapPin, Calendar, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -24,6 +24,14 @@ const Footer = () => {
             <p className="text-white/80 text-sm leading-relaxed">
               Empowering Innovation through Generative AI, Data Science, and Analytics
             </p>
+            <div className="flex items-center gap-3 mt-4">
+              <a href="https://www.instagram.com/jhc.research.bda/" target="_blank" rel="noreferrer" aria-label="Instagram" className="inline-flex items-center justify-center h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+                <Instagram className="h-4 w-4 text-white" />
+              </a>
+              <a href="https://www.linkedin.com/in/department-of-msc-big-data-analytics-bsc-information-technology-bvoc-software-development-4058152b8/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="inline-flex items-center justify-center h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+                <Linkedin className="h-4 w-4 text-white" />
+              </a>
+            </div>
           </div>
 
           <div>
