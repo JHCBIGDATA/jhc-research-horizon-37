@@ -1,6 +1,6 @@
 
 import { motion } from 'framer-motion';
-import { Clock, Users, Award, Presentation, MapPin, Calendar } from 'lucide-react';
+import { Clock, Users, Award, Presentation, MapPin } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useState } from 'react';
@@ -182,11 +182,39 @@ const InteractiveSchedule = () => {
     }
   };
 
+  const getEventBg = (type: string) => {
+    switch (type) {
+      case 'Keynote': return 'from-purple-50 to-purple-100';
+      case 'Technical': return 'from-blue-50 to-blue-100';
+      case 'Workshop': return 'from-green-50 to-green-100';
+      case 'Panel': return 'from-orange-50 to-orange-100';
+      case 'Research': return 'from-red-50 to-red-100';
+      case 'Poster': return 'from-yellow-50 to-yellow-100';
+      case 'Opening': return 'from-indigo-50 to-indigo-100';
+      case 'Closing': return 'from-pink-50 to-pink-100';
+      default: return 'from-gray-50 to-gray-100';
+    }
+  };
+
+  const getEventIconColor = (type: string) => {
+    switch (type) {
+      case 'Keynote': return 'from-purple-500 to-purple-600';
+      case 'Technical': return 'from-blue-500 to-blue-600';
+      case 'Workshop': return 'from-green-500 to-green-600';
+      case 'Panel': return 'from-orange-500 to-orange-600';
+      case 'Research': return 'from-red-500 to-red-600';
+      case 'Poster': return 'from-yellow-500 to-yellow-600';
+      case 'Opening': return 'from-indigo-500 to-indigo-600';
+      case 'Closing': return 'from-pink-500 to-pink-600';
+      default: return 'from-gray-500 to-gray-600';
+    }
+  };
+
   return (
     <section id="schedule" className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
       <div className="container mx-auto px-4">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -198,42 +226,53 @@ const InteractiveSchedule = () => {
           >
             📅 Conference Schedule
           </motion.div>
-          <h2 className="text-4xl font-bold text-primary mb-4">Interactive Schedule</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">Interactive Schedule</h2>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             Two days of intensive learning, networking, and knowledge sharing with industry experts
           </p>
         </motion.div>
 
-        {/* Day Selector */}
+        {/* Enhanced Day Selector */}
         <motion.div 
-          className="flex justify-center mb-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          className="flex justify-center mb-8 sm:mb-12 px-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <div className="bg-white rounded-full p-2 shadow-lg">
-            <div className="flex space-x-2">
+          <div className="bg-gradient-to-r from-white via-primary/5 to-white rounded-full p-1 sm:p-2 shadow-xl backdrop-blur-sm border border-primary/10 w-full max-w-2xl">
+            <div className="flex space-x-1 sm:space-x-2">
               {[1, 2].map((day) => (
                 <motion.button
                   key={day}
                   onClick={() => setSelectedDay(day as 1 | 2)}
-                  className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                  className={`flex-1 px-3 sm:px-6 md:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base transition-all duration-500 relative overflow-hidden ${
                     selectedDay === day
-                      ? 'bg-primary text-white shadow-lg'
-                      : 'text-primary hover:bg-primary/10'
+                      ? 'bg-gradient-to-r from-primary via-accent to-primary text-white shadow-2xl'
+                      : 'text-primary hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10 hover:text-primary/80'
                   }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.02, y: -1 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  Day {day} - {day === 1 ? '01st December' : '02nd December'}
+                  {selectedDay === day && (
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"
+                      initial={{ x: '-100%' }}
+                      animate={{ x: '100%' }}
+                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                  )}
+                  <span className="relative z-10 whitespace-nowrap">
+                    <span className="hidden sm:inline">Day {day} - {day === 1 ? '01st December' : '02nd December'}</span>
+                    <span className="sm:hidden">Day {day}</span>
+                  </span>
                 </motion.button>
               ))}
             </div>
           </div>
         </motion.div>
 
-        {/* Schedule Timeline */}
+        {/* Enhanced Schedule Timeline */}
         <motion.div 
           className="relative"
           initial={{ opacity: 0 }}
@@ -241,58 +280,103 @@ const InteractiveSchedule = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary/20"></div>
-          <div className="space-y-6">
+          {/* Gradient timeline */}
+          <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-accent to-primary/20 rounded-full shadow-sm"></div>
+          
+          <div className="space-y-6 sm:space-y-8">
             {schedule[selectedDay].map((item, index) => (
               <motion.div
-                key={index}
+                key={`${selectedDay}-${index}`}
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.1, type: "spring", stiffness: 100 }}
                 viewport={{ once: true }}
-                className="relative"
+                className="relative group"
               >
-                <div className="absolute left-6 w-4 h-4 bg-primary rounded-full border-4 border-white shadow-lg"></div>
-                <div className="ml-16">
-                  <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                    <CardHeader className="pb-4">
-                      <div className="flex items-start justify-between">
-                        <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                            <item.icon className="h-5 w-5 text-primary" />
+                {/* Enhanced timeline dot */}
+                <motion.div 
+                  className={`absolute left-4 sm:left-6 w-5 h-5 sm:w-6 sm:h-6 rounded-full border-3 sm:border-4 border-white shadow-xl flex items-center justify-center z-10 bg-gradient-to-r ${getEventIconColor(item.type)}`}
+                  whileHover={{ scale: 1.2 }}
+                  animate={{ 
+                    boxShadow: ["0 0 0 0 rgba(59, 130, 246, 0.4)", "0 0 0 10px rgba(59, 130, 246, 0)", "0 0 0 0 rgba(59, 130, 246, 0)"]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full"></div>
+                </motion.div>
+
+                <div className="ml-12 sm:ml-16 md:ml-20">
+                  <motion.div
+                    whileHover={{ scale: 1.02, y: -5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <Card className={`group hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br ${getEventBg(item.type)} backdrop-blur-sm relative overflow-hidden`}>
+                        {/* Gradient overlay on hover */}
+                      <div className={`absolute inset-0 bg-gradient-to-r ${getEventIconColor(item.type)} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>                      <CardHeader className="pb-4 relative z-10 p-4 sm:p-6">
+                        <div className="flex items-start justify-between flex-col sm:flex-row gap-3 sm:gap-0">
+                          <div className="flex items-center space-x-3 sm:space-x-4">
+                            <motion.div 
+                              className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-r ${getEventIconColor(item.type)} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow`}
+                              whileHover={{ rotate: 360 }}
+                              transition={{ duration: 0.6 }}
+                            >
+                              <item.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                            </motion.div>
+                            <div>
+                              <CardTitle className={`text-lg sm:text-xl font-bold text-gray-800 group-hover:scale-105 transition-transform`}>
+                                {item.event}
+                              </CardTitle>
+                              <p className="text-sm font-medium flex items-center gap-2">
+                                <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-accent" />
+                                <span className="text-accent text-xs sm:text-sm">{item.time}</span>
+                              </p>
+                            </div>
                           </div>
-                          <div>
-                            <CardTitle className="text-lg group-hover:text-primary transition-colors">
-                              {item.event}
-                            </CardTitle>
-                            <p className="text-sm text-accent font-medium">{item.time}</p>
-                          </div>
+                          <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="self-start"
+                          >
+                            <Badge className={`${getEventColor(item.type)} border-0 px-2 sm:px-3 py-1 text-xs font-semibold shadow-lg`}>
+                              {item.type}
+                            </Badge>
+                          </motion.div>
                         </div>
-                        <Badge className={`${getEventColor(item.type)} border`}>
-                          {item.type}
-                        </Badge>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {item.description}
-                      </p>
-                      <div className="grid sm:grid-cols-2 gap-4">
-                        <div className="flex items-center space-x-2">
-                          <MapPin className="h-4 w-4 text-muted-foreground" />
-                          <span className="text-sm text-muted-foreground">{item.venue}</span>
+                      </CardHeader>
+                      
+                      <CardContent className="space-y-4 sm:space-y-6 relative z-10 p-4 sm:p-6 pt-0">
+                        <p className="text-sm text-muted-foreground leading-relaxed font-medium">
+                          {item.description}
+                        </p>
+                        
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                          <motion.div 
+                            className="flex items-center space-x-3 p-3 rounded-lg bg-white/50 backdrop-blur-sm border border-blue-200"
+                            whileHover={{ scale: 1.02 }}
+                          >
+                            <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center">
+                              <MapPin className="h-4 w-4 text-white" />
+                            </div>
+                            <span className="text-sm font-medium text-gray-700">{item.venue}</span>
+                          </motion.div>
+                          
+                          {item.speakers.length > 0 && (
+                            <motion.div 
+                              className="flex items-center space-x-3 p-3 rounded-lg bg-white/50 backdrop-blur-sm border border-purple-200"
+                              whileHover={{ scale: 1.02 }}
+                            >
+                              <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center">
+                                <Users className="h-4 w-4 text-white" />
+                              </div>
+                              <span className="text-sm font-medium text-gray-700 truncate">
+                                {item.speakers.join(', ')}
+                              </span>
+                            </motion.div>
+                          )}
                         </div>
-                        {item.speakers.length > 0 && (
-                          <div className="flex items-center space-x-2">
-                            <Users className="h-4 w-4 text-muted-foreground" />
-                            <span className="text-sm text-muted-foreground">
-                              {item.speakers.join(', ')}
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                    </CardContent>
-                  </Card>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
                 </div>
               </motion.div>
             ))}

@@ -3,10 +3,26 @@ import { motion } from 'framer-motion';
 import { FileText, Award, CheckCircle, Download } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { useState } from 'react';
 
 const CallForPapers = () => {
+  const [hoveredTrack, setHoveredTrack] = useState<number | null>(null);
+  const [openTrack, setOpenTrack] = useState<string | null>(null);
+
+  // Auto-open/close functionality
+  const handleTrackHover = (index: number) => {
+    setHoveredTrack(index);
+    setOpenTrack(`track-${index}`);
+  };
+
+  const handleTrackLeave = () => {
+    setHoveredTrack(null);
+    // Fast close with slight delay to prevent flickering
+    setTimeout(() => {
+      setOpenTrack(null);
+    }, 150);
+  };
   const researchTracks = [
     {
       title: "Artificial Intelligence & Machine Learning",
@@ -210,41 +226,215 @@ const CallForPapers = () => {
 
         {/* Research Tracks as Enhanced Cards */}
         <div className="mb-12">
-          <h3 className="text-xl sm:text-2xl font-bold text-primary text-center mb-2">Research Tracks</h3>
-          <p className="text-center text-xs sm:text-sm text-muted-foreground mb-8 sm:mb-10 px-4">Next-Gen Intelligence: AI, Analytics and Data Science Across Global Domains</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          <motion.div
+            className="text-center mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <motion.div
+              className="inline-flex items-center bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 px-4 py-2 rounded-full mb-4"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <span className="text-primary text-sm font-medium">🔬 Research Areas</span>
+            </motion.div>
+            <h3 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
+              Research Tracks
+            </h3>
+            <p className="text-center text-sm sm:text-base text-muted-foreground max-w-3xl mx-auto px-4">
+              Next-Gen Intelligence: AI, Analytics and Data Science Across Global Domains
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {researchTracks.map((track, index) => (
               <motion.div
                 key={track.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
                 viewport={{ once: true }}
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="group"
+                onMouseEnter={() => handleTrackHover(index)}
+                onMouseLeave={handleTrackLeave}
               >
-                <Card className="hover:shadow-lg transition-all duration-300">
-                  <CardContent className="p-0">
-                    <Accordion type="single" collapsible>
-                      <AccordionItem value={`track-${index}`}>
-                        <AccordionTrigger className="px-3 sm:px-4 py-3 sm:py-4 hover:no-underline">
-                          <div className="flex items-center gap-2 sm:gap-3 text-left">
-                            <span className="text-xl sm:text-2xl">{track.icon}</span>
-                            <span className="text-sm sm:text-base font-semibold leading-tight">{track.title}</span>
+                <Card className="relative overflow-hidden bg-gradient-to-br from-white via-gray-50/50 to-primary/5 border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:shadow-primary/10">
+                  {/* Gradient overlay */}
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: hoveredTrack === index ? 1 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  
+                  {/* Decorative corner elements */}
+                  <motion.div 
+                    className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-accent/10 to-transparent rounded-full"
+                    initial={{ x: 10, y: -10, scale: 1 }}
+                    animate={{ 
+                      x: hoveredTrack === index ? 10 : 10,
+                      y: hoveredTrack === index ? -10 : -10,
+                      scale: hoveredTrack === index ? 1.5 : 1 
+                    }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                  />
+                  <motion.div 
+                    className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-primary/10 to-transparent rounded-full"
+                    initial={{ x: -8, y: 8, scale: 1 }}
+                    animate={{ 
+                      x: hoveredTrack === index ? -8 : -8,
+                      y: hoveredTrack === index ? 8 : 8,
+                      scale: hoveredTrack === index ? 1.25 : 1 
+                    }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                  />
+                  
+                  <CardContent className="p-0 relative z-10">
+                    <Accordion 
+                      type="single" 
+                      collapsible 
+                      value={openTrack || undefined}
+                      onValueChange={() => {}} // Disable manual control
+                    >
+                      <AccordionItem value={`track-${index}`} className="border-0">
+                        <AccordionTrigger 
+                          className="px-4 sm:px-6 py-4 sm:py-5 hover:no-underline transition-all duration-300 rounded-t-lg pointer-events-none"
+                          style={{
+                            backgroundColor: hoveredTrack === index ? 'rgba(255,255,255,0.3)' : 'transparent'
+                          }}
+                        >
+                          <div className="flex items-center gap-3 sm:gap-4 text-left">
+                            <motion.div
+                              className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-primary/10 to-accent/10 rounded-full flex items-center justify-center border border-primary/20 transition-all duration-300"
+                              animate={{ 
+                                borderColor: hoveredTrack === index ? 'rgba(59, 130, 246, 0.4)' : 'rgba(59, 130, 246, 0.2)',
+                                rotate: hoveredTrack === index ? 360 : 0
+                              }}
+                              transition={{ duration: 0.6 }}
+                            >
+                              <motion.span 
+                                className="text-xl sm:text-2xl"
+                                animate={{ 
+                                  scale: hoveredTrack === index ? 1.1 : 1 
+                                }}
+                                transition={{ duration: 0.3 }}
+                              >
+                                {track.icon}
+                              </motion.span>
+                            </motion.div>
+                            <div className="flex-1">
+                              <motion.span 
+                                className="text-sm sm:text-base lg:text-lg font-bold text-gray-800 transition-colors duration-300 leading-tight block"
+                                animate={{ 
+                                  color: hoveredTrack === index ? '#3b82f6' : '#1f2937' 
+                                }}
+                                transition={{ duration: 0.3 }}
+                              >
+                                {track.title}
+                              </motion.span>
+                              <motion.span 
+                                className="text-xs text-muted-foreground block mt-1"
+                                animate={{ 
+                                  opacity: hoveredTrack === index ? 1 : 0.7 
+                                }}
+                                transition={{ duration: 0.3 }}
+                              >
+                                {track.topics.length} research areas
+                              </motion.span>
+                            </div>
                           </div>
                         </AccordionTrigger>
                         <AccordionContent>
-                          <div className="px-3 sm:px-4 pb-3 sm:pb-4">
-                            <ul className="space-y-1.5 sm:space-y-2">
-                              {track.topics.map((topic) => (
-                                <li key={topic} className="flex items-start space-x-2">
-                                  <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-accent mt-0.5 flex-shrink-0" />
-                                  <span className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{topic}</span>
-                                </li>
+                          <motion.div 
+                            className="px-4 sm:px-6 pb-4 sm:pb-6 bg-gradient-to-br from-white/80 to-gray-50/50"
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ 
+                              opacity: openTrack === `track-${index}` ? 1 : 0,
+                              height: openTrack === `track-${index}` ? 'auto' : 0
+                            }}
+                            transition={{ 
+                              duration: 0.4, 
+                              ease: "easeInOut",
+                              opacity: { duration: 0.2 }
+                            }}
+                          >
+                            {/* Topics grid */}
+                            <div className="grid gap-2 sm:gap-3 mb-4">
+                              {track.topics.map((topic, topicIndex) => (
+                                <motion.div
+                                  key={topic}
+                                  initial={{ opacity: 0, x: -20 }}
+                                  animate={{ 
+                                    opacity: openTrack === `track-${index}` ? 1 : 0,
+                                    x: openTrack === `track-${index}` ? 0 : -20
+                                  }}
+                                  transition={{ 
+                                    delay: openTrack === `track-${index}` ? topicIndex * 0.03 : 0, 
+                                    duration: 0.3 
+                                  }}
+                                  className="group/topic"
+                                >
+                                  <div className="flex items-start space-x-3 p-2 sm:p-3 rounded-lg hover:bg-gradient-to-r hover:from-primary/5 hover:to-accent/5 transition-all duration-300 border border-transparent hover:border-primary/10">
+                                    <motion.div
+                                      whileHover={{ scale: 1.2, rotate: 360 }}
+                                      transition={{ duration: 0.3 }}
+                                    >
+                                      <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-accent mt-0.5 flex-shrink-0" />
+                                    </motion.div>
+                                    <span className="text-xs sm:text-sm text-gray-700 leading-relaxed font-medium group-hover/topic:text-primary transition-colors duration-300">
+                                      {topic}
+                                    </span>
+                                  </div>
+                                </motion.div>
                               ))}
-                            </ul>
-                            <div className="mt-3 sm:mt-4">
-                              <Button size="sm" variant="outline" className="text-xs sm:text-sm">Submit to this track</Button>
                             </div>
-                          </div>
+                            
+                            {/* Enhanced track info with better styling */}
+                            <motion.div 
+                              className="relative overflow-hidden rounded-xl bg-gradient-to-r from-primary/10 via-accent/5 to-primary/10 border border-primary/20 backdrop-blur-sm"
+                              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                              animate={{ 
+                                opacity: openTrack === `track-${index}` ? 1 : 0,
+                                y: openTrack === `track-${index}` ? 0 : 20,
+                                scale: openTrack === `track-${index}` ? 1 : 0.95
+                              }}
+                              transition={{ delay: 0.2, duration: 0.4 }}
+                              whileHover={{ scale: 1.02 }}
+                            >
+                              {/* Animated background elements */}
+                              <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent"></div>
+                              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-accent/20 to-transparent rounded-full transform translate-x-8 -translate-y-8"></div>
+                              
+                              <div className="relative p-4 sm:p-5">
+                                <div className="flex items-center gap-3">
+                                  <motion.div
+                                    animate={{ 
+                                      scale: [1, 1.1, 1],
+                                      rotate: [0, 10, -10, 0]
+                                    }}
+                                    transition={{ 
+                                      duration: 2,
+                                      repeat: Infinity,
+                                      ease: "easeInOut"
+                                    }}
+                                    className="flex-shrink-0"
+                                  >
+                                    <span className="text-lg">✨</span>
+                                  </motion.div>
+                                  <div>
+                                    <p className="text-sm sm:text-base text-primary font-bold mb-1">
+                                      Ready to contribute?
+                                    </p>
+                                    <p className="text-xs sm:text-sm text-primary/80 leading-relaxed">
+                                      Submit your groundbreaking research in this track via our comprehensive registration portal
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </motion.div>
+                          </motion.div>
                         </AccordionContent>
                       </AccordionItem>
                     </Accordion>

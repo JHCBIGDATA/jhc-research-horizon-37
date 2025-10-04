@@ -1,4 +1,4 @@
-import { Calendar, MapPin, ChevronDown, Zap } from 'lucide-react';
+import { Calendar, MapPin, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
@@ -24,13 +24,6 @@ const HeroSection = () => {
     }, 100);
     return () => clearTimeout(timer);
   }, [typedText, fullText]);
-
-  const scrollToNext = () => {
-    const element = document.querySelector('#about-conference');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section id="home" className="hero-gradient min-h-screen flex items-center justify-center text-white relative overflow-hidden">
@@ -78,18 +71,18 @@ const HeroSection = () => {
         />
 
         {/* Dynamic Floating Particles */}
-        {Array.from({ length: 20 }, (_, i) => (
+        {Array.from({ length: window.innerWidth > 768 ? 20 : 10 }, (_, i) => (
           <motion.div
             key={`particle-${i}`}
             className="absolute pointer-events-none"
             initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              x: Math.random() * (window.innerWidth || 400),
+              y: Math.random() * (window.innerHeight || 600),
               opacity: 0
             }}
             animate={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              x: Math.random() * (window.innerWidth || 400),
+              y: Math.random() * (window.innerHeight || 600),
               opacity: [0, 0.6, 0],
               scale: [0, 1, 0]
             }}
@@ -105,10 +98,10 @@ const HeroSection = () => {
         ))}
 
         {/* Floating geometric shapes */}
-        {Array.from({ length: 8 }, (_, i) => (
+        {Array.from({ length: window.innerWidth > 768 ? 8 : 4 }, (_, i) => (
           <motion.div
             key={`shape-geo-${i}`}
-            className="absolute"
+            className="absolute hidden sm:block"
             animate={{
               y: [0, -30, 0],
               rotate: [0, 180, 360],
@@ -125,11 +118,69 @@ const HeroSection = () => {
               top: `${20 + i * 8}%`,
             }}
           >
-            {i % 3 === 0 && <div className="w-4 h-4 bg-accent/40 rotate-45"></div>}
-            {i % 3 === 1 && <div className="w-3 h-3 bg-white/30 rounded-full"></div>}
-            {i % 3 === 2 && <div className="w-2 h-2 bg-accent/50 rounded-full"></div>}
+            {i % 3 === 0 && <div className="w-3 h-3 sm:w-4 sm:h-4 bg-accent/40 rotate-45"></div>}
+            {i % 3 === 1 && <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white/30 rounded-full"></div>}
+            {i % 3 === 2 && <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-accent/50 rounded-full"></div>}
           </motion.div>
         ))}
+
+        {/* Pulsing energy lines - inspired by your WebGL threads */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 6 }, (_, i) => (
+            <motion.div
+              key={`energy-line-${i}`}
+              className="absolute w-full h-px"
+              style={{
+                top: `${15 + i * 15}%`,
+                background: `linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent)`,
+              }}
+              animate={{
+                scaleX: [0, 1, 0],
+                opacity: [0, 0.8, 0],
+                x: ['-100%', '0%', '100%'],
+              }}
+              transition={{
+                duration: 4 + i * 0.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 2,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Liquid-style morphing shapes */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 4 }, (_, i) => (
+            <motion.div
+              key={`liquid-morph-${i}`}
+              className="absolute blur-3xl"
+              style={{
+                width: `${150 + i * 50}px`,
+                height: `${100 + i * 30}px`,
+                background: `radial-gradient(ellipse, ${
+                  ['rgba(82, 39, 255, 0.2)', 'rgba(255, 159, 252, 0.2)', 'rgba(177, 158, 239, 0.2)', 'rgba(59, 130, 246, 0.2)'][i]
+                }, transparent)`,
+                left: `${20 + i * 20}%`,
+                top: `${10 + i * 20}%`,
+                borderRadius: '50%',
+              }}
+              animate={{
+                borderRadius: ['50%', '30% 70% 70% 30% / 30% 30% 70% 70%', '70% 30% 30% 70% / 70% 70% 30% 30%', '50%'],
+                scale: [1, 1.3, 0.8, 1],
+                x: [0, Math.sin(i * 2) * 100, 0],
+                y: [0, Math.cos(i * 2) * 80, 0],
+                opacity: [0.3, 0.6, 0.3],
+              }}
+              transition={{
+                duration: 15 + i * 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 2,
+              }}
+            />
+          ))}
+        </div>
 
         {/* Interactive cursor follower */}
         <motion.div
@@ -147,16 +198,16 @@ const HeroSection = () => {
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-3 sm:px-4 lg:px-6 relative z-10">
         <motion.div
-          className="text-center max-w-4xl mx-auto"
+          className="text-center max-w-5xl mx-auto"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
           {/* Glassmorphism container */}
-                    <motion.div
-            className="relative backdrop-blur-md bg-white/10 rounded-3xl border border-white/20 shadow-2xl p-6 sm:p-8 md:p-10 lg:p-12 text-center max-w-4xl"
+          <motion.div
+            className="relative backdrop-blur-md bg-white/10 rounded-2xl sm:rounded-3xl border border-white/20 shadow-2xl p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 text-center max-w-5xl mx-auto"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
@@ -166,25 +217,25 @@ const HeroSection = () => {
           >
             {/* Conference Year Badge */}
             <motion.div
-              className="inline-flex items-center bg-gradient-to-r from-accent/20 to-primary/20 border border-accent/30 px-6 py-3 rounded-full mb-6"
+              className="inline-flex items-center bg-gradient-to-r from-accent/20 to-primary/20 border border-accent/30 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full mb-4 sm:mb-6"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
               whileHover={{ scale: 1.05 }}
             >
-              <Zap className="w-4 h-4 mr-2 text-accent" />
-              <span className="text-sm font-semibold tracking-wide">JHC 2025</span>
+              <Zap className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-accent" />
+              <span className="text-xs sm:text-sm font-semibold tracking-wide">JHC 2025</span>
             </motion.div>
 
             {/* Main Headline */}
             <motion.h1
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 leading-tight"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
             >
               <span className="bg-gradient-to-r from-white via-accent to-white bg-clip-text text-transparent">
-                Research
+                National Research
               </span>
               <br />
               <span className="bg-gradient-to-r from-accent via-white to-accent bg-clip-text text-transparent">
@@ -194,34 +245,36 @@ const HeroSection = () => {
 
             {/* Animated Tagline */}
             <motion.div
-              className="text-lg sm:text-xl md:text-2xl mb-6 md:mb-8 text-white/90 font-light h-6 md:h-8"
+              className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-4 sm:mb-6 md:mb-8 text-white/90 font-light min-h-[1.5rem] sm:min-h-[2rem] md:min-h-[2.5rem] flex items-center justify-center"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.2 }}
             >
-              {typedText}
-              <motion.span
-                className="inline-block w-0.5 h-6 bg-accent ml-1"
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ duration: 1, repeat: Infinity }}
-              />
+              <span className="text-center">
+                {typedText}
+                <motion.span
+                  className="inline-block w-0.5 h-4 sm:h-5 md:h-6 bg-accent ml-1"
+                  animate={{ opacity: [0, 1, 0] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                />
+              </span>
             </motion.div>
 
             {/* Conference Details */}
             <motion.div
-              className="flex flex-col md:flex-row items-center justify-center gap-6 mb-8 text-white/80"
+              className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8 text-white/80"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.5 }}
             >
               <div className="flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-accent" />
-                <span className="font-medium">December 1-2, 2025</span>
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
+                <span className="font-medium text-sm sm:text-base">December 1-2, 2025</span>
               </div>
-              <div className="hidden md:block w-px h-6 bg-white/30"></div>
+              <div className="hidden sm:block w-px h-6 bg-white/30"></div>
               <div className="flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-accent" />
-                <span className="font-medium">Jai Hind College, Mumbai</span>
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
+                <span className="font-medium text-sm sm:text-base">Jai Hind College, Mumbai</span>
               </div>
             </motion.div>
 
@@ -230,6 +283,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.8 }}
+              className="mt-2 sm:mt-4"
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -237,7 +291,7 @@ const HeroSection = () => {
               >
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent text-black font-bold px-12 py-6 text-lg rounded-full shadow-2xl hover:shadow-accent/25 transition-all duration-300 relative overflow-hidden group"
+                  className="bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent text-black font-bold px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg rounded-full shadow-2xl hover:shadow-accent/25 transition-all duration-300 relative overflow-hidden group w-full sm:w-auto"
                   onClick={() => window.open('https://tinyurl.com/3p4s4zhj', '_blank', 'noopener,noreferrer')}
                 >
                   <span className="relative z-10">Register Now</span>
@@ -253,22 +307,6 @@ const HeroSection = () => {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
-        onClick={scrollToNext}
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        whileHover={{ scale: 1.2 }}
-      >
-        <motion.div
-          className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300"
-          whileHover={{ y: -5 }}
-        >
-          <ChevronDown className="h-6 w-6 text-white/80" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 };

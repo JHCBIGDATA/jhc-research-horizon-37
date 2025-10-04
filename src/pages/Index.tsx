@@ -12,7 +12,6 @@ import VisualSeparator from '@/components/VisualSeparator';
 import Footer from '@/components/Footer';
 import FloatingActionButton from '@/components/FloatingActionButton';
 import { PageTransition } from '@/components/LoadingStates';
-import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 
 const Index = () => {
@@ -151,23 +150,23 @@ const Index = () => {
                 <p className="text-sm text-muted-foreground mb-5">Choose your category and proceed to register</p>
                 <div className="divide-y divide-gray-100 space-y-2">
                   {[
-                    { label: "Participation for students", price: "Rs. 300/-", color: "from-blue-500 to-cyan-500" },
-                    { label: "Participation for Faculty/Industry Delegates", price: "Rs. 500/-", color: "from-green-500 to-emerald-500" },
-                    { label: "Paper Presentation for Student", price: "Rs. 600/-", color: "from-purple-500 to-pink-500" },
-                    { label: "Paper Presentation for Faculty", price: "Rs. 800/-", color: "from-orange-500 to-red-500" },
-                    { label: "Paper Presentation for Industry Delegates", price: "Rs. 2000/-", color: "from-red-500 to-pink-500" }
+                    { label: "Participation for students", price: "Rs. 300/-" },
+                    { label: "Participation for Faculty/Industry Delegates", price: "Rs. 500/-" },
+                    { label: "Paper Presentation for Student", price: "Rs. 600/-" },
+                    { label: "Paper Presentation for Faculty", price: "Rs. 800/-" },
+                    { label: "Paper Presentation for Industry Delegates", price: "Rs. 2000/-" }
                   ].map((item, index) => (
                     <motion.li 
                       key={item.label}
-                      className="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gradient-to-r hover:from-gray-50 hover:to-primary/5 transition-all duration-200"
+                      className="flex items-center justify-between py-3 px-3 rounded-lg hover:bg-gradient-to-r hover:from-primary/5 hover:to-accent/5 transition-all duration-300 group border border-transparent hover:border-primary/10"
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.6 + index * 0.1 }}
                       viewport={{ once: true }}
-                      whileHover={{ x: 5 }}
+                      whileHover={{ x: 5, scale: 1.02 }}
                     >
-                      <div className="text-sm font-medium">{item.label}</div>
-                      <div className={`text-base font-bold bg-gradient-to-r ${item.color} bg-clip-text text-transparent`}>
+                      <div className="text-sm font-medium text-gray-700 group-hover:text-primary transition-colors">{item.label}</div>
+                      <div className="text-lg font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
                         {item.price}
                       </div>
                     </motion.li>
@@ -221,7 +220,12 @@ const Index = () => {
                         <span className="font-semibold text-right">{item.value}</span>
                         {item.copyable && (
                           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                            <Button size="sm" variant="outline" className="h-6 px-2" onClick={() => copy(item.value)}>Copy</Button>
+                            <button 
+                              className="h-6 px-2 text-xs border border-gray-300 rounded hover:bg-gray-50 transition-colors duration-200 font-medium"
+                              onClick={() => copy(item.value)}
+                            >
+                              Copy
+                            </button>
                           </motion.div>
                         )}
                       </div>
