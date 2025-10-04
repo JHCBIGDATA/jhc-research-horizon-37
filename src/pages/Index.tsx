@@ -127,7 +127,7 @@ const Index = () => {
               Participation & Payment
             </motion.span>
           </motion.div>
-          <div id="participation-payment" className="grid md:grid-cols-2 gap-6">
+          <div id="participation-payment" className="grid sm:grid-cols-1 md:grid-cols-2 gap-6">
             {/* Enhanced Fees Card */}
             <motion.div 
               className="rounded-xl border border-primary/20 bg-gradient-to-br from-white via-primary/5 to-primary/10 shadow-lg hover:shadow-xl transition-all duration-300 group"

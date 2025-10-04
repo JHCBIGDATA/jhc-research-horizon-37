@@ -1,4 +1,4 @@
-import { Calendar, MapPin, ChevronDown, Zap } from 'lucide-react';
+import { Calendar, MapPin, ChevronDown, Sparkles, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
@@ -77,37 +77,10 @@ const HeroSection = () => {
           }}
         />
 
-        {/* Dynamic Floating Particles */}
-        {Array.from({ length: 20 }, (_, i) => (
-          <motion.div
-            key={`particle-${i}`}
-            className="absolute pointer-events-none"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-              opacity: 0
-            }}
-            animate={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-              opacity: [0, 0.6, 0],
-              scale: [0, 1, 0]
-            }}
-            transition={{
-              duration: 8 + Math.random() * 4,
-              repeat: Infinity,
-              delay: Math.random() * 5,
-              ease: "easeInOut"
-            }}
-          >
-            <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${i % 2 === 0 ? 'from-accent/40 to-white/40' : 'from-primary/40 to-accent/40'}`} />
-          </motion.div>
-        ))}
-
         {/* Floating geometric shapes */}
-        {Array.from({ length: 8 }, (_, i) => (
+        {[...Array(8)].map((_, i) => (
           <motion.div
-            key={`shape-geo-${i}`}
+            key={i}
             className="absolute"
             animate={{
               y: [0, -30, 0],
@@ -127,7 +100,7 @@ const HeroSection = () => {
           >
             {i % 3 === 0 && <div className="w-4 h-4 bg-accent/40 rotate-45"></div>}
             {i % 3 === 1 && <div className="w-3 h-3 bg-white/30 rounded-full"></div>}
-            {i % 3 === 2 && <div className="w-2 h-2 bg-accent/50 rounded-full"></div>}
+            {i % 3 === 2 && <Sparkles className="w-5 h-5 text-accent/50" />}
           </motion.div>
         ))}
 
@@ -155,13 +128,14 @@ const HeroSection = () => {
           transition={{ duration: 1, ease: "easeOut" }}
         >
           {/* Glassmorphism container */}
-                    <motion.div
-            className="relative backdrop-blur-md bg-white/10 rounded-3xl border border-white/20 shadow-2xl p-6 sm:p-8 md:p-10 lg:p-12 text-center max-w-4xl"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            style={{
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
+          <motion.div
+            className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl p-8 md:p-12 shadow-2xl"
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            whileHover={{ 
+              scale: 1.02,
+              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
             }}
           >
             {/* Conference Year Badge */}
@@ -178,7 +152,7 @@ const HeroSection = () => {
 
             {/* Main Headline */}
             <motion.h1
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 leading-tight"
+              className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
@@ -194,7 +168,7 @@ const HeroSection = () => {
 
             {/* Animated Tagline */}
             <motion.div
-              className="text-lg sm:text-xl md:text-2xl mb-6 md:mb-8 text-white/90 font-light h-6 md:h-8"
+              className="text-xl md:text-2xl mb-8 text-white/90 font-light h-8"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.2 }}

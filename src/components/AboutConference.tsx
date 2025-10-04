@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Sparkles, TrendingUp, Users, Calendar } from 'lucide-react';
@@ -48,35 +47,26 @@ const AboutConference = () => {
           animate={{
             x: [0, 30, 0],
             y: [0, 20, 0],
-            scale: [1, 1.1, 1]
           }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute -bottom-20 -left-20 w-60 h-60 bg-primary/5 rounded-full blur-3xl"
+          className="absolute -bottom-32 -left-16 w-96 h-96 bg-primary/3 rounded-full blur-3xl"
           animate={{
             x: [0, -20, 0],
-            y: [0, -30, 0],
-            scale: [1, 1.2, 1]
+            y: [0, 15, 0],
           }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
+        {/* Header */}
         <motion.div 
-          className="text-center mb-10"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
           <motion.div
@@ -94,7 +84,7 @@ const AboutConference = () => {
             About Conference
           </motion.div>
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -103,7 +93,7 @@ const AboutConference = () => {
             JHC 2025 Research Conference
           </motion.h2>
           <motion.p 
-            className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -134,16 +124,16 @@ const AboutConference = () => {
             >
               <Card className={`text-center bg-gradient-to-br ${stat.bgGradient} border-0 shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden group-hover:shadow-xl`}>
                 <div className={`absolute inset-0 bg-gradient-to-r ${stat.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
-                <CardContent className="p-4 md:p-6 relative z-10">
+                <CardContent className="p-3 sm:p-4 md:p-6 relative z-10">
                   <motion.div
-                    className={`w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-r ${stat.gradient} flex items-center justify-center`}
+                    className={`w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-xl bg-gradient-to-r ${stat.gradient} flex items-center justify-center`}
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <stat.icon className="h-6 w-6 text-white" />
+                    <stat.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </motion.div>
                   <motion.div
-                    className={`text-2xl md:text-3xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-2`}
+                    className={`text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-1 sm:mb-2`}
                     initial={{ scale: 0.5, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
                     transition={{ delay: stat.delay + 0.3, type: "spring", stiffness: 400 }}
@@ -152,31 +142,12 @@ const AboutConference = () => {
                   >
                     {stat.value}
                   </motion.div>
-                  <p className="text-xs md:text-sm text-muted-foreground font-medium leading-tight">{stat.label}</p>
+                  <p className="text-xs sm:text-sm md:text-sm text-muted-foreground font-medium leading-tight">{stat.label}</p>
                 </CardContent>
-                
-                {/* Floating particles effect */}
-                <motion.div
-                  className={`absolute top-2 right-2 w-2 h-2 bg-gradient-to-r ${stat.gradient} rounded-full opacity-60`}
-                  animate={{ 
-                    scale: [1, 1.5, 1],
-                    opacity: [0.4, 0.8, 0.4]
-                  }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                />
-                <motion.div
-                  className={`absolute bottom-2 left-2 w-1.5 h-1.5 bg-gradient-to-r ${stat.gradient} rounded-full opacity-40`}
-                  animate={{ 
-                    scale: [1, 1.3, 1],
-                    opacity: [0.2, 0.6, 0.2]
-                  }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                />
               </Card>
             </motion.div>
           ))}
         </motion.div>
-
       </div>
     </section>
   );

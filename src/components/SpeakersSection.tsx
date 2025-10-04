@@ -111,7 +111,7 @@ const SpeakersSection = () => {
             Distinguished Speakers
           </motion.div>
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -131,7 +131,7 @@ const SpeakersSection = () => {
         </motion.div>
 
         {/* Keynote Speakers */}
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {keynoteSpeeakers.map((speaker, index) => (
             <motion.div
               key={speaker.name}
@@ -143,12 +143,12 @@ const SpeakersSection = () => {
             >
               <Card className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 bg-gradient-to-br from-white via-gray-50/50 to-primary/5 h-full flex flex-col border-0 shadow-lg relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <CardHeader className="text-center relative z-10">
+                <CardHeader className="text-center relative z-10 p-4 sm:p-6">
                   <motion.div className="relative">
                     <motion.img 
                       src={speaker.image} 
                       alt={speaker.name}
-                      className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20 shadow-lg"
+                      className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-3 sm:mb-4 object-cover border-4 border-primary/20 shadow-lg"
                       whileHover={{ scale: 1.05, rotateY: 10 }}
                       transition={{ duration: 0.3 }}
                     />

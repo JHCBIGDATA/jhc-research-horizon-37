@@ -189,7 +189,7 @@ const CallForPapers = () => {
             Call for Papers
           </motion.div>
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -198,7 +198,7 @@ const CallForPapers = () => {
             Submit Your Research
           </motion.h2>
           <motion.p 
-            className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -210,9 +210,9 @@ const CallForPapers = () => {
 
         {/* Research Tracks as Enhanced Cards */}
         <div className="mb-12">
-          <h3 className="text-2xl font-bold text-primary text-center mb-2">Research Tracks</h3>
-          <p className="text-center text-sm text-muted-foreground mb-10">Next-Gen Intelligence: AI, Analytics and Data Science Across Global Domains</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <h3 className="text-xl sm:text-2xl font-bold text-primary text-center mb-2">Research Tracks</h3>
+          <p className="text-center text-xs sm:text-sm text-muted-foreground mb-8 sm:mb-10 px-4">Next-Gen Intelligence: AI, Analytics and Data Science Across Global Domains</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {researchTracks.map((track, index) => (
               <motion.div
                 key={track.title}
@@ -225,24 +225,24 @@ const CallForPapers = () => {
                   <CardContent className="p-0">
                     <Accordion type="single" collapsible>
                       <AccordionItem value={`track-${index}`}>
-                        <AccordionTrigger className="px-4 py-4 hover:no-underline">
-                          <div className="flex items-center gap-3 text-left">
-                            <span className="text-2xl">{track.icon}</span>
-                            <span className="text-base font-semibold">{track.title}</span>
+                        <AccordionTrigger className="px-3 sm:px-4 py-3 sm:py-4 hover:no-underline">
+                          <div className="flex items-center gap-2 sm:gap-3 text-left">
+                            <span className="text-xl sm:text-2xl">{track.icon}</span>
+                            <span className="text-sm sm:text-base font-semibold leading-tight">{track.title}</span>
                           </div>
                         </AccordionTrigger>
                         <AccordionContent>
-                          <div className="px-4 pb-4">
-                            <ul className="space-y-2">
+                          <div className="px-3 sm:px-4 pb-3 sm:pb-4">
+                            <ul className="space-y-1.5 sm:space-y-2">
                               {track.topics.map((topic) => (
                                 <li key={topic} className="flex items-start space-x-2">
-                                  <CheckCircle className="h-4 w-4 text-accent mt-0.5 flex-shrink-0" />
-                                  <span className="text-sm text-muted-foreground">{topic}</span>
+                                  <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-accent mt-0.5 flex-shrink-0" />
+                                  <span className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{topic}</span>
                                 </li>
                               ))}
                             </ul>
-                            <div className="mt-4">
-                              <Button size="sm" variant="outline">Submit to this track</Button>
+                            <div className="mt-3 sm:mt-4">
+                              <Button size="sm" variant="outline" className="text-xs sm:text-sm">Submit to this track</Button>
                             </div>
                           </div>
                         </AccordionContent>

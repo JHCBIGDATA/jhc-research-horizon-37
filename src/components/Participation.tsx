@@ -1,5 +1,5 @@
 
-import { GraduationCap, Users, Award, BookOpen } from 'lucide-react';
+import { GraduationCap, Users } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const Participation = () => {
@@ -23,29 +23,6 @@ const Participation = () => {
         "Data analysts and cybersecurity experts",
         "Cloud computing specialists"
       ]
-    }
-  ];
-
-  const outcomes = [
-    {
-      icon: Users,
-      title: "Network with Leaders",
-      description: "Connect with top researchers, industry experts, and academic leaders in your field"
-    },
-    {
-      icon: BookOpen,
-      title: "Present & Publish",
-      description: "Present your research and get published in UGC CARE or international journals"
-    },
-    {
-      icon: Award,
-      title: "Recognition & Awards",
-      description: "Compete for best paper awards and receive recognition from expert panels"
-    },
-    {
-      icon: GraduationCap,
-      title: "Learn & Collaborate",
-      description: "Explore new use cases, collaborate across domains, and gain peer-reviewed feedback"
     }
   ];
 
@@ -81,25 +58,6 @@ const Participation = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        <div>
-          <h3 className="text-2xl font-bold text-primary text-center mb-12">Key Outcomes</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {outcomes.map((outcome, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <CardHeader className="pb-4">
-                  <div className="mx-auto w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-                    <outcome.icon className="h-6 w-6 text-accent" />
-                  </div>
-                  <CardTitle className="text-lg">{outcome.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">{outcome.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
         </div>
       </div>
     </section>
