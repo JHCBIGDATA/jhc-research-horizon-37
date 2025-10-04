@@ -1,150 +1,182 @@
 
 import { motion } from 'framer-motion';
-import { Brain, Database, BarChart3, Cpu, Globe, Shield } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
+import { Sparkles, TrendingUp, Users, Calendar } from 'lucide-react';
 
 const AboutConference = () => {
-  const themes = [
-    {
-      icon: Brain,
-      title: "Generative AI",
-      description: "Exploring the frontiers of artificial intelligence and machine learning",
-      color: "from-purple-500 to-pink-500"
+  const stats = [
+    { 
+      value: "500+", 
+      label: "Expected Participants", 
+      delay: 0.1,
+      icon: Users,
+      gradient: "from-blue-500 to-cyan-500",
+      bgGradient: "from-blue-50 to-cyan-50"
     },
-    {
-      icon: Database,
-      title: "Data Science",
-      description: "Advanced analytics and big data processing techniques",
-      color: "from-blue-500 to-cyan-500"
+    { 
+      value: "50+", 
+      label: "Research Papers", 
+      delay: 0.2,
+      icon: Sparkles,
+      gradient: "from-purple-500 to-pink-500",
+      bgGradient: "from-purple-50 to-pink-50"
     },
-    {
-      icon: BarChart3,
-      title: "Analytics",
-      description: "Business intelligence and predictive modeling",
-      color: "from-green-500 to-teal-500"
+    { 
+      value: "20+", 
+      label: "Industry Experts", 
+      delay: 0.3,
+      icon: TrendingUp,
+      gradient: "from-green-500 to-emerald-500",
+      bgGradient: "from-green-50 to-emerald-50"
     },
-    {
-      icon: Cpu,
-      title: "Cloud Computing",
-      description: "Scalable computing solutions and infrastructure",
-      color: "from-orange-500 to-red-500"
-    },
-    {
-      icon: Globe,
-      title: "IoT & Edge Computing",
-      description: "Connected devices and distributed computing",
-      color: "from-indigo-500 to-purple-500"
-    },
-    {
-      icon: Shield,
-      title: "Cybersecurity",
-      description: "Information security and digital privacy",
-      color: "from-red-500 to-pink-500"
+    { 
+      value: "2", 
+      label: "Conference Days", 
+      delay: 0.4,
+      icon: Calendar,
+      gradient: "from-orange-500 to-red-500",
+      bgGradient: "from-orange-50 to-red-50"
     }
   ];
 
-  const stats = [
-    { value: "500+", label: "Expected Participants", delay: 0.1 },
-    { value: "50+", label: "Research Papers", delay: 0.2 },
-    { value: "20+", label: "Industry Experts", delay: 0.3 },
-    { value: "2", label: "Conference Days", delay: 0.4 }
-  ];
-
   return (
-    <section id="about-conference" className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
-      <div className="container mx-auto px-4">
+    <section id="about-conference" className="py-12 bg-gradient-to-br from-primary/5 via-accent/3 to-primary/5 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute -top-40 -right-20 w-80 h-80 bg-accent/5 rounded-full blur-3xl"
+          animate={{
+            x: [0, 30, 0],
+            y: [0, 20, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute -bottom-20 -left-20 w-60 h-60 bg-primary/5 rounded-full blur-3xl"
+          animate={{
+            x: [0, -20, 0],
+            y: [0, -30, 0],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           <motion.div
-            className="inline-flex items-center bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mb-4"
-            whileHover={{ scale: 1.05 }}
+            className="inline-flex items-center bg-gradient-to-r from-accent/15 to-primary/15 text-primary px-6 py-3 rounded-full text-sm font-medium mb-6 border border-accent/20"
+            whileHover={{ scale: 1.05, y: -2 }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
-            🎯 About Conference
+            <motion.span
+              animate={{ rotate: [0, 10, -10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="mr-2"
+            >
+              🎯
+            </motion.span>
+            About Conference
           </motion.div>
-          <h2 className="text-4xl font-bold text-primary mb-4">JHC 2025 Research Conference</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            JHC 2025 Research Conference
+          </motion.h2>
+          <motion.p 
+            className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             A premier platform for showcasing cutting-edge research and fostering innovation 
             in the rapidly evolving fields of technology and data science
-          </p>
+          </motion.p>
         </motion.div>
 
-        {/* Statistics */}
+        {/* Enhanced Statistics */}
         <motion.div 
-          className="grid md:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ staggerChildren: 0.1 }}
           viewport={{ once: true }}
         >
-          {stats.map((stat, index) => (
+          {stats.map((stat) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: stat.delay }}
+              key={stat.label}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: stat.delay, type: "spring", stiffness: 300 }}
               viewport={{ once: true }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group"
             >
-              <Card className="text-center bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-                <CardContent className="p-6">
+              <Card className={`text-center bg-gradient-to-br ${stat.bgGradient} border-0 shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden group-hover:shadow-xl`}>
+                <div className={`absolute inset-0 bg-gradient-to-r ${stat.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
+                <CardContent className="p-4 md:p-6 relative z-10">
                   <motion.div
-                    className="text-3xl font-bold text-primary mb-2"
-                    initial={{ scale: 0.5 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ delay: stat.delay + 0.2, type: "spring", stiffness: 300 }}
+                    className={`w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-r ${stat.gradient} flex items-center justify-center`}
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <stat.icon className="h-6 w-6 text-white" />
+                  </motion.div>
+                  <motion.div
+                    className={`text-2xl md:text-3xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-2`}
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: stat.delay + 0.3, type: "spring", stiffness: 400 }}
                     viewport={{ once: true }}
+                    whileHover={{ scale: 1.1 }}
                   >
                     {stat.value}
                   </motion.div>
-                  <p className="text-sm text-muted-foreground font-medium">{stat.label}</p>
+                  <p className="text-xs md:text-sm text-muted-foreground font-medium leading-tight">{stat.label}</p>
                 </CardContent>
+                
+                {/* Floating particles effect */}
+                <motion.div
+                  className={`absolute top-2 right-2 w-2 h-2 bg-gradient-to-r ${stat.gradient} rounded-full opacity-60`}
+                  animate={{ 
+                    scale: [1, 1.5, 1],
+                    opacity: [0.4, 0.8, 0.4]
+                  }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <motion.div
+                  className={`absolute bottom-2 left-2 w-1.5 h-1.5 bg-gradient-to-r ${stat.gradient} rounded-full opacity-40`}
+                  animate={{ 
+                    scale: [1, 1.3, 1],
+                    opacity: [0.2, 0.6, 0.2]
+                  }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                />
               </Card>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Research Themes */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-2xl font-bold text-primary text-center mb-12">Research Themes</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {themes.map((theme, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-              >
-                <Card className="group relative overflow-hidden bg-white hover:shadow-xl transition-all duration-300">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${theme.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-                  <CardHeader className="pb-4">
-                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${theme.color} flex items-center justify-center mb-4`}>
-                      <theme.icon className="h-6 w-6 text-white" />
-                    </div>
-                    <CardTitle className="text-lg group-hover:text-primary transition-colors">
-                      {theme.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {theme.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

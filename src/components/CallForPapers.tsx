@@ -20,7 +20,9 @@ const CallForPapers = () => {
         "AI for sustainability & environmental monitoring",
         "Hybrid AI models (symbolic + neural)"
       ],
-      icon: "🧠"
+      icon: "🧠",
+      gradient: "from-purple-500 to-pink-500",
+      bgGradient: "from-purple-50 to-pink-50"
     },
     {
       title: "Data Science & Big Data Analytics",
@@ -34,7 +36,9 @@ const CallForPapers = () => {
         "Business intelligence frameworks & dashboards",
         "Data-driven decision making in various domains"
       ],
-      icon: "📊"
+      icon: "📊",
+      gradient: "from-blue-500 to-cyan-500",
+      bgGradient: "from-blue-50 to-cyan-50"
     },
     {
       title: "Data Engineering & Infrastructure",
@@ -48,7 +52,9 @@ const CallForPapers = () => {
         "Database optimization & query performance",
         "Open-source tools for data engineering"
       ],
-      icon: "🧰"
+      icon: "🧰",
+      gradient: "from-green-500 to-emerald-500",
+      bgGradient: "from-green-50 to-emerald-50"
     },
     {
       title: "Emerging Technologies in AI & Analytics",
@@ -62,7 +68,9 @@ const CallForPapers = () => {
         "AI for smart cities & IoT ecosystems",
         "AI in climate change research"
       ],
-      icon: "🚀"
+      icon: "🚀",
+      gradient: "from-orange-500 to-red-500",
+      bgGradient: "from-orange-50 to-red-50"
     },
     {
       title: "Ethics, Privacy & Governance in AI",
@@ -76,7 +84,9 @@ const CallForPapers = () => {
         "Ethical challenges in autonomous decision-making",
         "AI transparency & accountability measures"
       ],
-      icon: "⚖️"
+      icon: "⚖️",
+      gradient: "from-indigo-500 to-purple-500",
+      bgGradient: "from-indigo-50 to-purple-50"
     },
     {
       title: "Applications of AI & Analytics in Diverse Domains",
@@ -90,7 +100,9 @@ const CallForPapers = () => {
         "AI for disaster prediction & management",
         "AI for public policy & governance"
       ],
-      icon: "🌐"
+      icon: "🌐",
+      gradient: "from-teal-500 to-blue-500",
+      bgGradient: "from-teal-50 to-blue-50"
     }
   ];
 
@@ -122,36 +134,88 @@ const CallForPapers = () => {
   ];
 
   return (
-    <section id="call-for-papers" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="call-for-papers" className="py-12 bg-gradient-to-br from-gray-50 via-white to-primary/5 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute -top-20 -right-20 w-60 h-60 bg-primary/5 rounded-full blur-3xl"
+          animate={{
+            x: [0, 30, 0],
+            y: [0, 20, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute -bottom-20 -left-20 w-40 h-40 bg-accent/5 rounded-full blur-3xl"
+          animate={{
+            x: [0, -20, 0],
+            y: [0, -30, 0],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           <motion.div
-            className="inline-flex items-center bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4"
-            whileHover={{ scale: 1.05 }}
+            className="inline-flex items-center bg-gradient-to-r from-primary/15 to-accent/15 text-primary px-6 py-3 rounded-full text-sm font-medium mb-6 border border-primary/20"
+            whileHover={{ scale: 1.05, y: -2 }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
-            📝 Call for Papers
+            <motion.span
+              animate={{ rotate: [0, 15, -15, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="mr-2"
+            >
+              📝
+            </motion.span>
+            Call for Papers
           </motion.div>
-          <h2 className="text-4xl font-bold text-primary mb-4">Submit Your Research</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            Submit Your Research
+          </motion.h2>
+          <motion.p 
+            className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             Share your groundbreaking research and innovative solutions with the global academic and industry community
-          </p>
+          </motion.p>
         </motion.div>
 
-        {/* Research Tracks as Accordion drop cards */}
-        <div className="mb-16">
+        {/* Research Tracks as Enhanced Cards */}
+        <div className="mb-12">
           <h3 className="text-2xl font-bold text-primary text-center mb-2">Research Tracks</h3>
           <p className="text-center text-sm text-muted-foreground mb-10">Next-Gen Intelligence: AI, Analytics and Data Science Across Global Domains</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {researchTracks.map((track, index) => (
               <motion.div
-                key={index}
+                key={track.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
@@ -170,8 +234,8 @@ const CallForPapers = () => {
                         <AccordionContent>
                           <div className="px-4 pb-4">
                             <ul className="space-y-2">
-                              {track.topics.map((topic, topicIndex) => (
-                                <li key={topicIndex} className="flex items-start space-x-2">
+                              {track.topics.map((topic) => (
+                                <li key={topic} className="flex items-start space-x-2">
                                   <CheckCircle className="h-4 w-4 text-accent mt-0.5 flex-shrink-0" />
                                   <span className="text-sm text-muted-foreground">{topic}</span>
                                 </li>

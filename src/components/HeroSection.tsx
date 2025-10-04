@@ -98,16 +98,16 @@ const HeroSection = () => {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 py-20 relative z-10">
+      <div className="container mx-auto px-4 py-16 relative z-10">
         <motion.div 
-          className="grid lg:grid-cols-2 gap-12 items-center"
+          className="max-w-4xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <div className="space-y-8">
+          <div className="space-y-6">
             <motion.div 
-              className="flex items-center space-x-4 mb-6"
+              className="flex items-center space-x-4 mb-4"
               variants={itemVariants}
             >
               <motion.img 
@@ -144,13 +144,13 @@ const HeroSection = () => {
                 </motion.span>
               </motion.h1>
               <motion.p 
-                className="text-xl md:text-2xl mb-6 text-white/90"
+                className="text-xl md:text-2xl mb-4 text-white/90"
                 variants={itemVariants}
               >
                 "Empowering Innovation through Generative AI, Data Science, and Analytics"
               </motion.p>
               <motion.p 
-                className="text-lg text-white/80 mb-8"
+                className="text-lg text-white/80 mb-6"
                 variants={itemVariants}
               >
                 Presented by the Department of Big Data Analytics, Jai Hind College (Empowered Autonomous)
@@ -159,7 +159,7 @@ const HeroSection = () => {
 
             {/* Enhanced cards with better animations */}
             <motion.div 
-              className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mb-6"
+              className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mb-4"
               variants={itemVariants}
             >
               <motion.div 
@@ -213,7 +213,7 @@ const HeroSection = () => {
             </motion.div>
 
             <motion.div 
-              className="space-y-4 mb-8"
+              className="space-y-3 mb-6"
               variants={itemVariants}
             >
               <motion.div 
@@ -309,62 +309,7 @@ const HeroSection = () => {
             </motion.div>
           </div>
 
-          {/* Enhanced right column with better image effects */}
-          <motion.div 
-            className="hidden lg:block relative"
-            variants={itemVariants}
-          >
-            <div className="relative overflow-hidden rounded-2xl group">
-              <motion.img 
-                src="/lovable-uploads/55c0f04d-04fc-434a-8d75-12316a82aab8.png" 
-                alt="Conference Venue" 
-                className="rounded-2xl shadow-2xl w-full object-cover"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-2xl"></div>
-              <motion.div 
-                className="absolute bottom-6 left-6 right-6 text-white"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2, duration: 0.8 }}
-              >
-                <motion.p 
-                  className="text-lg font-bold mb-2"
-                  animate={{ y: [0, -2, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  Jai Hind College Campus
-                </motion.p>
-                <p className="text-sm opacity-90 font-medium">Where innovation meets excellence in research</p>
-              </motion.div>
-              
-              {/* Enhanced floating elements */}
-              <motion.div
-                className="absolute top-6 right-6 w-3 h-3 bg-accent rounded-full"
-                animate={{ 
-                  scale: [1, 1.5, 1],
-                  opacity: [0.5, 1, 0.5]
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <motion.div
-                className="absolute top-16 right-12 w-2 h-2 bg-white rounded-full"
-                animate={{ 
-                  scale: [1, 1.3, 1],
-                  opacity: [0.3, 0.8, 0.3]
-                }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              />
-              
-              {/* Shimmer effect on hover */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full"
-                whileHover={{ x: '200%' }}
-                transition={{ duration: 0.8 }}
-              />
-            </div>
-          </motion.div>
+
         </motion.div>
       </div>
 

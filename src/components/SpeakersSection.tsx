@@ -57,47 +57,107 @@ const SpeakersSection = () => {
   ];
 
   return (
-    <section id="speakers" className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
-      <div className="container mx-auto px-4">
+    <section id="speakers" className="py-12 bg-gradient-to-br from-primary/5 via-accent/3 to-primary/5 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute -top-20 -right-20 w-60 h-60 bg-accent/5 rounded-full blur-3xl"
+          animate={{
+            x: [0, 30, 0],
+            y: [0, 20, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute -bottom-20 -left-20 w-40 h-40 bg-primary/5 rounded-full blur-3xl"
+          animate={{
+            x: [0, -20, 0],
+            y: [0, -30, 0],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           <motion.div
-            className="inline-flex items-center bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mb-4"
-            whileHover={{ scale: 1.05 }}
+            className="inline-flex items-center bg-gradient-to-r from-accent/15 to-primary/15 text-accent px-6 py-3 rounded-full text-sm font-medium mb-6 border border-accent/20"
+            whileHover={{ scale: 1.05, y: -2 }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
-            🎤 Distinguished Speakers
+            <motion.span
+              animate={{ rotate: [0, 10, -10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="mr-2"
+            >
+              🎤
+            </motion.span>
+            Distinguished Speakers
           </motion.div>
-          <h2 className="text-4xl font-bold text-primary mb-4">Keynote Speakers</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            Keynote Speakers
+          </motion.h2>
+          <motion.p 
+            className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             Learn from industry leaders and renowned researchers who are shaping the future of AI and Data Science
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Keynote Speakers */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid lg:grid-cols-3 gap-6">
           {keynoteSpeeakers.map((speaker, index) => (
             <motion.div
-              key={index}
+              key={speaker.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
               viewport={{ once: true }}
               className="h-full"
             >
-              <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-white h-full flex flex-col">
-                <CardHeader className="text-center">
-                  <motion.img 
-                    src={speaker.image} 
-                    alt={speaker.name}
-                    className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/10"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                  />
+              <Card className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 bg-gradient-to-br from-white via-gray-50/50 to-primary/5 h-full flex flex-col border-0 shadow-lg relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <CardHeader className="text-center relative z-10">
+                  <motion.div className="relative">
+                    <motion.img 
+                      src={speaker.image} 
+                      alt={speaker.name}
+                      className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20 shadow-lg"
+                      whileHover={{ scale: 1.05, rotateY: 10 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <motion.div
+                      className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-accent to-primary rounded-full"
+                      animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                  </motion.div>
                   <CardTitle className="text-xl group-hover:text-primary transition-colors">
                     {speaker.name}
                   </CardTitle>
@@ -127,25 +187,6 @@ const SpeakersSection = () => {
         </div>
 
 
-        {/* Call to Action */}
-        <motion.div 
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="bg-white rounded-xl p-8 max-w-2xl mx-auto shadow-lg">
-            <Award className="h-12 w-12 text-accent mx-auto mb-4" />
-            <h4 className="text-xl font-bold text-primary mb-2">Don't Miss Out!</h4>
-            <p className="text-muted-foreground mb-4">
-              Secure your seat to learn from these distinguished speakers and network with industry leaders
-            </p>
-            <div className="text-sm text-muted-foreground">
-              Limited seats available for interactive Q&A sessions
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

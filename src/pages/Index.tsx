@@ -13,13 +13,14 @@ import Footer from '@/components/Footer';
 import FloatingActionButton from '@/components/FloatingActionButton';
 import { PageTransition } from '@/components/LoadingStates';
 import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 
 const Index = () => {
   const copy = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
-    } catch (e) {
-      // noop
+    } catch (error) {
+      console.warn('Failed to copy text:', error);
     }
   };
   return (
@@ -27,15 +28,51 @@ const Index = () => {
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 relative">
         <Header />
         <HeroSection />
-        {/* Quick Registration/Brochure highlight */}
-        <div className="container mx-auto px-4 mt-4">
-          <div className="rounded-lg border border-accent/30 bg-accent/10 p-4 text-center text-sm md:text-base">
-            <span className="font-semibold">Registration Form:</span> <a className="underline font-medium" href="https://tinyurl.com/3p4s4zhj" target="_blank" rel="noreferrer">Open external form</a>
-            <span className="mx-2">|</span>
-            <span className="font-semibold">Brochure (with bank details):</span> <a className="underline font-medium" href="https://www.canva.com/design/DAGslINhSs0/VzEkMwyPX5Seyf-O-W-aqw/edit?utm_content=DAGslINhSs0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noreferrer">View brochure</a>
-            <span className="mx-2">|</span>
-            <a className="underline font-medium" href="#participation-payment">Jump to Payment Details</a>
-          </div>
+        {/* Enhanced Quick Registration/Brochure highlight */}
+        <div className="container mx-auto px-4 py-6">
+          <motion.div 
+            className="rounded-xl border border-gradient-to-r from-accent/40 to-primary/40 bg-gradient-to-r from-accent/15 via-primary/10 to-accent/15 p-6 text-center backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            whileHover={{ scale: 1.02, y: -2 }}
+          >
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-sm md:text-base">
+              <motion.div 
+                className="flex items-center gap-2"
+                whileHover={{ scale: 1.05 }}
+              >
+                <span className="inline-flex items-center bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-medium">
+                  📝 Registration
+                </span>
+                <a className="underline font-medium hover:text-primary transition-colors" href="https://tinyurl.com/3p4s4zhj" target="_blank" rel="noopener noreferrer">Open external form</a>
+              </motion.div>
+              
+              <div className="hidden md:block w-px h-6 bg-gradient-to-b from-transparent via-accent/50 to-transparent"></div>
+              
+              <motion.div 
+                className="flex items-center gap-2"
+                whileHover={{ scale: 1.05 }}
+              >
+                <span className="inline-flex items-center bg-accent/20 text-accent px-3 py-1 rounded-full text-xs font-medium">
+                  📄 Brochure
+                </span>
+                <a className="underline font-medium hover:text-accent transition-colors" href="https://www.canva.com/design/DAGslINhSs0/VzEkMwyPX5Seyf-O-W-aqw/edit?utm_content=DAGslINhSs0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">View details</a>
+              </motion.div>
+              
+              <div className="hidden md:block w-px h-6 bg-gradient-to-b from-transparent via-primary/50 to-transparent"></div>
+              
+              <motion.div 
+                className="flex items-center gap-2"
+                whileHover={{ scale: 1.05 }}
+              >
+                <span className="inline-flex items-center bg-green-500/20 text-green-600 px-3 py-1 rounded-full text-xs font-medium">
+                  💳 Payment
+                </span>
+                <a className="underline font-medium hover:text-green-600 transition-colors" href="#participation-payment">Jump to details</a>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
         
         {/* Enhanced visual separators with subtle animations */}
@@ -60,95 +97,150 @@ const Index = () => {
         
         <CallForPapers />
         
-        {/* Participation & Payment section */}
-        <div className="container mx-auto px-4 py-12">
-          <div className="text-center mb-8">
-            <span className="inline-flex items-center bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">💳 Participation & Payment</span>
-          </div>
+        {/* Enhanced Participation & Payment section */}
+        <motion.div 
+          className="container mx-auto px-4 py-8"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <motion.div 
+            className="text-center mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <motion.span 
+              className="inline-flex items-center bg-gradient-to-r from-primary/15 to-accent/15 text-primary px-6 py-3 rounded-full text-sm font-medium border border-primary/20"
+              whileHover={{ scale: 1.05, y: -2 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <motion.span 
+                className="mr-2"
+                animate={{ rotate: [0, 15, -15, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                💳
+              </motion.span>
+              Participation & Payment
+            </motion.span>
+          </motion.div>
           <div id="participation-payment" className="grid md:grid-cols-2 gap-6">
-            {/* Fees Card */}
-            <div className="rounded-xl border border-primary/10 bg-gradient-to-br from-white to-primary/5 shadow-sm">
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-primary mb-1">Participation Fees</h3>
+            {/* Enhanced Fees Card */}
+            <motion.div 
+              className="rounded-xl border border-primary/20 bg-gradient-to-br from-white via-primary/5 to-primary/10 shadow-lg hover:shadow-xl transition-all duration-300 group"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -5, scale: 1.02 }}
+            >
+              <div className="p-6 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
+                <motion.h3 
+                  className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-1"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  Participation Fees
+                </motion.h3>
                 <p className="text-sm text-muted-foreground mb-5">Choose your category and proceed to register</p>
-                <ul className="divide-y divide-gray-100">
-                  <li className="flex items-center justify-between py-3">
-                    <div className="text-sm">Participation for students</div>
-                    <div className="text-base font-semibold tracking-wide">Rs. 300/-</div>
-                  </li>
-                  <li className="flex items-center justify-between py-3">
-                    <div className="text-sm">Participation for Faculty/Industry Delegates</div>
-                    <div className="text-base font-semibold tracking-wide">Rs. 500/-</div>
-                  </li>
-                  <li className="flex items-center justify-between py-3">
-                    <div className="text-sm">Paper Presentation for Student</div>
-                    <div className="text-base font-semibold tracking-wide">Rs. 600/-</div>
-                  </li>
-                  <li className="flex items-center justify-between py-3">
-                    <div className="text-sm">Paper Presentation for Faculty</div>
-                    <div className="text-base font-semibold tracking-wide">Rs. 800/-</div>
-                  </li>
-                  <li className="flex items-center justify-between py-3">
-                    <div className="text-sm">Paper Presentation for Industry Delegates</div>
-                    <div className="text-base font-semibold tracking-wide">Rs. 2000/-</div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Bank Card */}
-            <div className="rounded-xl border border-accent/10 bg-gradient-to-br from-white to-accent/5 shadow-sm">
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-primary mb-1">Bank Details</h3>
-                <p className="text-sm text-muted-foreground mb-5">Use bank transfer and upload proof during registration</p>
-                <div className="grid grid-cols-1 gap-3 text-sm">
-                  <div className="flex items-start justify-between">
-                    <span className="text-muted-foreground">Beneficiary Name</span>
-                    <span className="font-semibold text-right">Sind Educationists Association</span>
-                  </div>
-                  <div className="flex items-start justify-between">
-                    <span className="text-muted-foreground">Bank Name</span>
-                    <span className="font-semibold">Union Bank of India</span>
-                  </div>
-                  <div className="flex items-start justify-between">
-                    <span className="text-muted-foreground">Bank Address</span>
-                    <span className="font-semibold text-right">Union Bank of India, V.N Road, Mumbai - 400020</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-muted-foreground">Bank Account No</span>
-                    <div className="flex items-center gap-2">
-                      <span className="font-semibold">319501010029167</span>
-                      <Button size="xs" variant="outline" className="h-6 px-2" onClick={() => copy('319501010029167')}>Copy</Button>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-muted-foreground">Branch Name</span>
-                    <span className="font-semibold">Veer Nariman Road, Mumbai</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-muted-foreground">IFSC Code</span>
-                    <div className="flex items-center gap-2">
-                      <span className="font-semibold">UBIN0531952</span>
-                      <Button size="xs" variant="outline" className="h-6 px-2" onClick={() => copy('UBIN0531952')}>Copy</Button>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-muted-foreground">MICR Code</span>
-                    <span className="font-semibold">400026021</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-muted-foreground">PAN No</span>
-                    <div className="flex items-center gap-2">
-                      <span className="font-semibold">AAATS1063P</span>
-                      <Button size="xs" variant="outline" className="h-6 px-2" onClick={() => copy('AAATS1063P')}>Copy</Button>
-                    </div>
-                  </div>
-                  <div className="text-xs text-muted-foreground pt-1">Payment reference: <span className="font-medium">JHC2025-YourName</span></div>
+                <div className="divide-y divide-gray-100 space-y-2">
+                  {[
+                    { label: "Participation for students", price: "Rs. 300/-", color: "from-blue-500 to-cyan-500" },
+                    { label: "Participation for Faculty/Industry Delegates", price: "Rs. 500/-", color: "from-green-500 to-emerald-500" },
+                    { label: "Paper Presentation for Student", price: "Rs. 600/-", color: "from-purple-500 to-pink-500" },
+                    { label: "Paper Presentation for Faculty", price: "Rs. 800/-", color: "from-orange-500 to-red-500" },
+                    { label: "Paper Presentation for Industry Delegates", price: "Rs. 2000/-", color: "from-red-500 to-pink-500" }
+                  ].map((item, index) => (
+                    <motion.li 
+                      key={item.label}
+                      className="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gradient-to-r hover:from-gray-50 hover:to-primary/5 transition-all duration-200"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.6 + index * 0.1 }}
+                      viewport={{ once: true }}
+                      whileHover={{ x: 5 }}
+                    >
+                      <div className="text-sm font-medium">{item.label}</div>
+                      <div className={`text-base font-bold bg-gradient-to-r ${item.color} bg-clip-text text-transparent`}>
+                        {item.price}
+                      </div>
+                    </motion.li>
+                  ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
+
+            {/* Enhanced Bank Card */}
+            <motion.div 
+              className="rounded-xl border border-accent/20 bg-gradient-to-br from-white via-accent/5 to-accent/10 shadow-lg hover:shadow-xl transition-all duration-300 group"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -5, scale: 1.02 }}
+            >
+              <div className="p-6 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent/10 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
+                <motion.h3 
+                  className="text-2xl font-bold bg-gradient-to-r from-accent to-accent/80 bg-clip-text text-transparent mb-1"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  Bank Details
+                </motion.h3>
+                <p className="text-sm text-muted-foreground mb-5">Use bank transfer and upload proof during registration</p>
+                <div className="grid grid-cols-1 gap-3 text-sm">
+                  {[
+                    { label: "Beneficiary Name", value: "Sind Educationists Association", copyable: false },
+                    { label: "Bank Name", value: "Union Bank of India", copyable: false },
+                    { label: "Bank Address", value: "Union Bank of India, V.N Road, Mumbai - 400020", copyable: false },
+                    { label: "Bank Account No", value: "319501010029167", copyable: true },
+                    { label: "Branch Name", value: "Veer Nariman Road, Mumbai", copyable: false },
+                    { label: "IFSC Code", value: "UBIN0531952", copyable: true },
+                    { label: "MICR Code", value: "400026021", copyable: false },
+                    { label: "PAN No", value: "AAATS1063P", copyable: true }
+                  ].map((item, index) => (
+                    <motion.div 
+                      key={item.label}
+                      className="flex items-center justify-between gap-3 p-2 rounded-lg hover:bg-gradient-to-r hover:from-gray-50 hover:to-accent/5 transition-all duration-200"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.6 + index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <span className="text-muted-foreground font-medium">{item.label}</span>
+                      <div className="flex items-center gap-2">
+                        <span className="font-semibold text-right">{item.value}</span>
+                        {item.copyable && (
+                          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                            <Button size="sm" variant="outline" className="h-6 px-2" onClick={() => copy(item.value)}>Copy</Button>
+                          </motion.div>
+                        )}
+                      </div>
+                    </motion.div>
+                  ))}
+                  <motion.div 
+                    className="text-xs text-muted-foreground pt-2 text-center"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 1.4 }}
+                    viewport={{ once: true }}
+                  >
+                    Payment reference: <span className="font-medium bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">JHC2025-YourName</span>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
         
         <Participation />
         
