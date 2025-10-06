@@ -1,29 +1,61 @@
 import { Calendar, MapPin, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [typedText, setTypedText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
   const fullText = "Empowering Innovation through AI & Data Science";
+
+  // Memoize viewport-based calculations
+  const { isMobile, particleCount, shapeCount } = useMemo(() => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    return {
+      isMobile,
+      particleCount: isMobile ? 6 : 12, // Reduced from 10/20
+      shapeCount: isMobile ? 3 : 6, // Reduced from 4/8
+    };
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      // Throttle mouse movement updates
+      requestAnimationFrame(() => {
+        setMousePosition({ x: e.clientX, y: e.clientY });
+      });
     };
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   useEffect(() => {
+    const typeSpeed = isDeleting ? 50 : 100;
+    const pauseTime = isDeleting ? 0 : 2000;
+
+    if (!isDeleting && typedText === fullText) {
+      // Pause at full text before starting to delete
+      const timer = setTimeout(() => setIsDeleting(true), pauseTime);
+      return () => clearTimeout(timer);
+    }
+
+    if (isDeleting && typedText === '') {
+      // Start typing again after deleting all text
+      setIsDeleting(false);
+      return;
+    }
+
     const timer = setTimeout(() => {
-      if (typedText.length < fullText.length) {
-        setTypedText(fullText.slice(0, typedText.length + 1));
+      if (isDeleting) {
+        setTypedText(current => current.slice(0, -1));
+      } else {
+        setTypedText(current => fullText.slice(0, current.length + 1));
       }
-    }, 100);
+    }, typeSpeed);
+
     return () => clearTimeout(timer);
-  }, [typedText, fullText]);
+  }, [typedText, isDeleting, fullText]);
 
   return (
     <section id="home" className="hero-gradient min-h-screen flex items-center justify-center text-white relative overflow-hidden">
@@ -70,129 +102,123 @@ const HeroSection = () => {
           }}
         />
 
-        {/* Dynamic Floating Particles */}
-        {Array.from({ length: window.innerWidth > 768 ? 20 : 10 }, (_, i) => (
+        {/* Dynamic Floating Particles - Optimized */}
+        {Array.from({ length: particleCount }, (_, i) => (
           <motion.div
             key={`particle-${i}`}
-            className="absolute pointer-events-none"
+            className="absolute pointer-events-none will-change-transform"
             initial={{
-              x: Math.random() * (window.innerWidth || 400),
-              y: Math.random() * (window.innerHeight || 600),
+              x: Math.random() * 400,
+              y: Math.random() * 600,
               opacity: 0
             }}
             animate={{
-              x: Math.random() * (window.innerWidth || 400),
-              y: Math.random() * (window.innerHeight || 600),
+              x: Math.random() * 400,
+              y: Math.random() * 600,
               opacity: [0, 0.6, 0],
-              scale: [0, 1, 0]
             }}
             transition={{
-              duration: 8 + Math.random() * 4,
+              duration: 6 + Math.random() * 3, // Reduced duration
               repeat: Infinity,
-              delay: Math.random() * 5,
-              ease: "easeInOut"
+              delay: Math.random() * 3, // Reduced delay
+              ease: "linear", // More performant than easeInOut
             }}
           >
-            <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${i % 2 === 0 ? 'from-accent/40 to-white/40' : 'from-primary/40 to-accent/40'}`} />
+            <div className={`w-2 h-2 rounded-full ${i % 2 === 0 ? 'bg-accent/40' : 'bg-primary/40'}`} />
           </motion.div>
         ))}
 
-        {/* Floating geometric shapes */}
-        {Array.from({ length: window.innerWidth > 768 ? 8 : 4 }, (_, i) => (
+        {/* Floating geometric shapes - Optimized */}
+        {Array.from({ length: shapeCount }, (_, i) => (
           <motion.div
             key={`shape-geo-${i}`}
-            className="absolute hidden sm:block"
+            className="absolute hidden sm:block will-change-transform"
             animate={{
-              y: [0, -30, 0],
+              y: [0, -20, 0], // Reduced movement
               rotate: [0, 180, 360],
-              opacity: [0.3, 0.7, 0.3],
             }}
             transition={{
-              duration: 10 + i * 2,
+              duration: 8 + i, // Reduced duration
               repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 1.5,
+              ease: "linear", // More performant
+              delay: i,
             }}
             style={{
-              left: `${15 + i * 10}%`,
-              top: `${20 + i * 8}%`,
+              left: `${15 + i * 12}%`,
+              top: `${20 + i * 10}%`,
             }}
           >
-            {i % 3 === 0 && <div className="w-3 h-3 sm:w-4 sm:h-4 bg-accent/40 rotate-45"></div>}
-            {i % 3 === 1 && <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white/30 rounded-full"></div>}
-            {i % 3 === 2 && <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-accent/50 rounded-full"></div>}
+            {i % 3 === 0 && <div className="w-3 h-3 bg-accent/30 rotate-45"></div>}
+            {i % 3 === 1 && <div className="w-2 h-2 bg-white/20 rounded-full"></div>}
+            {i % 3 === 2 && <div className="w-2 h-2 bg-accent/40 rounded-full"></div>}
           </motion.div>
         ))}
 
-        {/* Pulsing energy lines - inspired by your WebGL threads */}
+        {/* Pulsing energy lines - Optimized */}
         <div className="absolute inset-0">
-          {Array.from({ length: 6 }, (_, i) => (
+          {Array.from({ length: 4 }, (_, i) => ( // Reduced from 6 to 4
             <motion.div
               key={`energy-line-${i}`}
-              className="absolute w-full h-px"
+              className="absolute w-full h-px will-change-transform"
               style={{
-                top: `${15 + i * 15}%`,
-                background: `linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent)`,
+                top: `${20 + i * 20}%`,
+                background: `linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent)`,
               }}
               animate={{
-                scaleX: [0, 1, 0],
-                opacity: [0, 0.8, 0],
-                x: ['-100%', '0%', '100%'],
+                opacity: [0, 0.6, 0],
+                x: ['-100%', '100%'],
               }}
               transition={{
-                duration: 4 + i * 0.5,
+                duration: 3 + i * 0.5, // Reduced duration
                 repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 2,
+                ease: "linear",
+                delay: i * 1.5,
               }}
             />
           ))}
         </div>
 
-        {/* Liquid-style morphing shapes */}
+        {/* Liquid-style morphing shapes - Simplified */}
         <div className="absolute inset-0">
-          {Array.from({ length: 4 }, (_, i) => (
+          {Array.from({ length: 3 }, (_, i) => ( // Reduced from 4 to 3
             <motion.div
               key={`liquid-morph-${i}`}
-              className="absolute blur-3xl"
+              className="absolute blur-2xl will-change-transform" // Reduced blur from blur-3xl
               style={{
-                width: `${150 + i * 50}px`,
-                height: `${100 + i * 30}px`,
+                width: `${120 + i * 40}px`, // Smaller sizes
+                height: `${80 + i * 25}px`,
                 background: `radial-gradient(ellipse, ${
-                  ['rgba(82, 39, 255, 0.2)', 'rgba(255, 159, 252, 0.2)', 'rgba(177, 158, 239, 0.2)', 'rgba(59, 130, 246, 0.2)'][i]
+                  ['rgba(82, 39, 255, 0.15)', 'rgba(255, 159, 252, 0.15)', 'rgba(59, 130, 246, 0.15)'][i]
                 }, transparent)`,
-                left: `${20 + i * 20}%`,
-                top: `${10 + i * 20}%`,
+                left: `${25 + i * 25}%`,
+                top: `${15 + i * 25}%`,
                 borderRadius: '50%',
               }}
               animate={{
-                borderRadius: ['50%', '30% 70% 70% 30% / 30% 30% 70% 70%', '70% 30% 30% 70% / 70% 70% 30% 30%', '50%'],
-                scale: [1, 1.3, 0.8, 1],
-                x: [0, Math.sin(i * 2) * 100, 0],
-                y: [0, Math.cos(i * 2) * 80, 0],
-                opacity: [0.3, 0.6, 0.3],
+                scale: [1, 1.2, 1],
+                opacity: [0.2, 0.4, 0.2],
               }}
               transition={{
-                duration: 15 + i * 3,
+                duration: 12 + i * 2, // Reduced duration
                 repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 2,
+                ease: "linear",
+                delay: i * 1.5,
               }}
             />
           ))}
         </div>
 
-        {/* Interactive cursor follower */}
+        {/* Interactive cursor follower - Simplified */}
         <motion.div
-          className="absolute w-96 h-96 bg-gradient-to-r from-accent/10 to-primary/10 rounded-full blur-2xl pointer-events-none"
+          className="absolute w-64 h-64 bg-gradient-to-r from-accent/5 to-primary/5 rounded-full blur-xl pointer-events-none will-change-transform"
           animate={{
-            x: mousePosition.x - 192,
-            y: mousePosition.y - 192,
+            x: mousePosition.x - 128,
+            y: mousePosition.y - 128,
           }}
           transition={{
             type: "spring",
-            stiffness: 20,
-            damping: 10,
+            stiffness: 50, // Increased stiffness for better performance
+            damping: 20,
           }}
         />
       </div>

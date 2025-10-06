@@ -1,10 +1,10 @@
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FileText, Award, CheckCircle, Download } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { useState } from 'react';
 
 const CallForPapers = () => {
   const [hoveredTrack, setHoveredTrack] = useState<number | null>(null);
@@ -151,32 +151,30 @@ const CallForPapers = () => {
 
   return (
     <section id="call-for-papers" className="py-12 bg-gradient-to-br from-gray-50 via-white to-primary/5 relative overflow-hidden">
-      {/* Animated background elements */}
+      {/* Animated background elements - Optimized */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute -top-20 -right-20 w-60 h-60 bg-primary/5 rounded-full blur-3xl"
+          className="absolute -top-20 -right-20 w-60 h-60 bg-primary/3 rounded-full blur-2xl will-change-transform"
           animate={{
-            x: [0, 30, 0],
-            y: [0, 20, 0],
-            scale: [1, 1.1, 1]
+            x: [0, 20, 0],
+            scale: [1, 1.05, 1]
           }}
           transition={{
-            duration: 20,
+            duration: 15,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "linear"
           }}
         />
         <motion.div
-          className="absolute -bottom-20 -left-20 w-40 h-40 bg-accent/5 rounded-full blur-3xl"
+          className="absolute -bottom-20 -left-20 w-40 h-40 bg-accent/3 rounded-full blur-2xl will-change-transform"
           animate={{
-            x: [0, -20, 0],
-            y: [0, -30, 0],
-            scale: [1, 1.2, 1]
+            x: [0, -15, 0],
+            scale: [1, 1.1, 1]
           }}
           transition={{
-            duration: 25,
+            duration: 18,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "linear"
           }}
         />
       </div>

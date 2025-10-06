@@ -30,45 +30,45 @@ const Index = () => {
         {/* Enhanced Quick Registration/Brochure highlight */}
         <div className="container mx-auto px-4 py-6">
           <motion.div 
-            className="rounded-xl border border-gradient-to-r from-accent/40 to-primary/40 bg-gradient-to-r from-accent/15 via-primary/10 to-accent/15 p-6 text-center backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300"
+            className="rounded-xl border border-gradient-to-r from-accent/40 to-primary/40 bg-gradient-to-r from-accent/15 via-primary/10 to-accent/15 p-4 sm:p-6 text-center backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
             whileHover={{ scale: 1.02, y: -2 }}
           >
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-sm md:text-base">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-xs sm:text-sm md:text-base">
               <motion.div 
-                className="flex items-center gap-2"
+                className="flex items-center gap-1.5 sm:gap-2 w-full sm:w-auto justify-center"
                 whileHover={{ scale: 1.05 }}
               >
-                <span className="inline-flex items-center bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-medium">
+                <span className="inline-flex items-center bg-primary/20 text-primary px-2 sm:px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap">
                   📝 Registration
                 </span>
-                <a className="underline font-medium hover:text-primary transition-colors" href="https://tinyurl.com/3p4s4zhj" target="_blank" rel="noopener noreferrer">Open external form</a>
+                <a className="underline font-medium hover:text-primary transition-colors text-xs sm:text-sm truncate" href="https://tinyurl.com/3p4s4zhj" target="_blank" rel="noopener noreferrer">Open form</a>
               </motion.div>
               
-              <div className="hidden md:block w-px h-6 bg-gradient-to-b from-transparent via-accent/50 to-transparent"></div>
+              <div className="hidden sm:block w-px h-6 bg-gradient-to-b from-transparent via-accent/50 to-transparent"></div>
               
               <motion.div 
-                className="flex items-center gap-2"
+                className="flex items-center gap-1.5 sm:gap-2 w-full sm:w-auto justify-center"
                 whileHover={{ scale: 1.05 }}
               >
-                <span className="inline-flex items-center bg-accent/20 text-accent px-3 py-1 rounded-full text-xs font-medium">
+                <span className="inline-flex items-center bg-accent/20 text-accent px-2 sm:px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap">
                   📄 Brochure
                 </span>
-                <a className="underline font-medium hover:text-accent transition-colors" href="https://www.canva.com/design/DAGslINhSs0/VzEkMwyPX5Seyf-O-W-aqw/edit?utm_content=DAGslINhSs0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">View details</a>
+                <a className="underline font-medium hover:text-accent transition-colors text-xs sm:text-sm truncate" href="https://www.canva.com/design/DAGslINhSs0/VzEkMwyPX5Seyf-O-W-aqw/edit?utm_content=DAGslINhSs0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">View details</a>
               </motion.div>
               
-              <div className="hidden md:block w-px h-6 bg-gradient-to-b from-transparent via-primary/50 to-transparent"></div>
+              <div className="hidden sm:block w-px h-6 bg-gradient-to-b from-transparent via-primary/50 to-transparent"></div>
               
               <motion.div 
-                className="flex items-center gap-2"
+                className="flex items-center gap-1.5 sm:gap-2 w-full sm:w-auto justify-center"
                 whileHover={{ scale: 1.05 }}
               >
-                <span className="inline-flex items-center bg-green-500/20 text-green-600 px-3 py-1 rounded-full text-xs font-medium">
+                <span className="inline-flex items-center bg-green-500/20 text-green-600 px-2 sm:px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap">
                   💳 Payment
                 </span>
-                <a className="underline font-medium hover:text-green-600 transition-colors" href="#participation-payment">Jump to details</a>
+                <a className="underline font-medium hover:text-green-600 transition-colors text-xs sm:text-sm truncate" href="#participation-payment">Jump to details</a>
               </motion.div>
             </div>
           </motion.div>
@@ -96,57 +96,40 @@ const Index = () => {
         
         <CallForPapers />
         
-        {/* Enhanced Participation & Payment section */}
+        {/* Enhanced Participation & Payment section - Optimized */}
         <motion.div 
           className="container mx-auto px-4 py-8"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
           viewport={{ once: true }}
         >
           <motion.div 
             className="text-center mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.1, duration: 0.3 }}
             viewport={{ once: true }}
           >
-            <motion.span 
-              className="inline-flex items-center bg-gradient-to-r from-primary/15 to-accent/15 text-primary px-6 py-3 rounded-full text-sm font-medium border border-primary/20"
-              whileHover={{ scale: 1.05, y: -2 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <motion.span 
-                className="mr-2"
-                animate={{ rotate: [0, 15, -15, 0] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              >
-                💳
-              </motion.span>
+            <span className="inline-flex items-center bg-gradient-to-r from-primary/15 to-accent/15 text-primary px-6 py-3 rounded-full text-sm font-medium border border-primary/20">
+              <span className="mr-2">💳</span>
               Participation & Payment
-            </motion.span>
+            </span>
           </motion.div>
           <div id="participation-payment" className="grid sm:grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Enhanced Fees Card */}
+            {/* Optimized Fees Card */}
             <motion.div 
-              className="rounded-xl border border-primary/20 bg-gradient-to-br from-white via-primary/5 to-primary/10 shadow-lg hover:shadow-xl transition-all duration-300 group"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              className="rounded-xl border border-primary/20 bg-gradient-to-br from-white via-primary/5 to-primary/10 shadow-lg hover:shadow-xl transition-shadow duration-200"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.4 }}
               viewport={{ once: true }}
-              whileHover={{ y: -5, scale: 1.02 }}
             >
               <div className="p-6 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
-                <motion.h3 
-                  className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-1"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  viewport={{ once: true }}
-                >
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-1">
                   Participation Fees
-                </motion.h3>
+                </h3>
                 <p className="text-sm text-muted-foreground mb-5">Choose your category and proceed to register</p>
                 <div className="divide-y divide-gray-100 space-y-2">
                   {[
@@ -156,45 +139,33 @@ const Index = () => {
                     { label: "Paper Presentation for Faculty", price: "Rs. 800/-" },
                     { label: "Paper Presentation for Industry Delegates", price: "Rs. 2000/-" }
                   ].map((item, index) => (
-                    <motion.li 
+                    <div 
                       key={item.label}
-                      className="flex items-center justify-between py-3 px-3 rounded-lg hover:bg-gradient-to-r hover:from-primary/5 hover:to-accent/5 transition-all duration-300 group border border-transparent hover:border-primary/10"
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.6 + index * 0.1 }}
-                      viewport={{ once: true }}
-                      whileHover={{ x: 5, scale: 1.02 }}
+                      className="flex items-center justify-between py-3 px-3 rounded-lg hover:bg-gradient-to-r hover:from-primary/5 hover:to-accent/5 transition-all duration-200 border border-transparent hover:border-primary/10"
                     >
-                      <div className="text-sm font-medium text-gray-700 group-hover:text-primary transition-colors">{item.label}</div>
+                      <div className="text-sm font-medium text-gray-700">{item.label}</div>
                       <div className="text-lg font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
                         {item.price}
                       </div>
-                    </motion.li>
+                    </div>
                   ))}
                 </div>
               </div>
             </motion.div>
 
-            {/* Enhanced Bank Card */}
+            {/* Optimized Bank Card */}
             <motion.div 
-              className="rounded-xl border border-accent/20 bg-gradient-to-br from-white via-accent/5 to-accent/10 shadow-lg hover:shadow-xl transition-all duration-300 group"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              className="rounded-xl border border-accent/20 bg-gradient-to-br from-white via-accent/5 to-accent/10 shadow-lg hover:shadow-xl transition-shadow duration-200"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.4 }}
               viewport={{ once: true }}
-              whileHover={{ y: -5, scale: 1.02 }}
             >
               <div className="p-6 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent/10 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
-                <motion.h3 
-                  className="text-2xl font-bold bg-gradient-to-r from-accent to-accent/80 bg-clip-text text-transparent mb-1"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  viewport={{ once: true }}
-                >
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-accent to-accent/80 bg-clip-text text-transparent mb-1">
                   Bank Details
-                </motion.h3>
+                </h3>
                 <p className="text-sm text-muted-foreground mb-5">Use bank transfer and upload proof during registration</p>
                 <div className="grid grid-cols-1 gap-3 text-sm">
                   {[
@@ -207,39 +178,27 @@ const Index = () => {
                     { label: "MICR Code", value: "400026021", copyable: false },
                     { label: "PAN No", value: "AAATS1063P", copyable: true }
                   ].map((item, index) => (
-                    <motion.div 
+                    <div 
                       key={item.label}
                       className="flex items-center justify-between gap-3 p-2 rounded-lg hover:bg-gradient-to-r hover:from-gray-50 hover:to-accent/5 transition-all duration-200"
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.6 + index * 0.1 }}
-                      viewport={{ once: true }}
                     >
                       <span className="text-muted-foreground font-medium">{item.label}</span>
                       <div className="flex items-center gap-2">
                         <span className="font-semibold text-right">{item.value}</span>
                         {item.copyable && (
-                          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                            <button 
-                              className="h-6 px-2 text-xs border border-gray-300 rounded hover:bg-gray-50 transition-colors duration-200 font-medium"
-                              onClick={() => copy(item.value)}
-                            >
-                              Copy
-                            </button>
-                          </motion.div>
+                          <button 
+                            className="h-6 px-2 text-xs border border-gray-300 rounded hover:bg-gray-50 transition-colors duration-200 font-medium"
+                            onClick={() => copy(item.value)}
+                          >
+                            Copy
+                          </button>
                         )}
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
-                  <motion.div 
-                    className="text-xs text-muted-foreground pt-2 text-center"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 1.4 }}
-                    viewport={{ once: true }}
-                  >
+                  <div className="text-xs text-muted-foreground pt-2 text-center">
                     Payment reference: <span className="font-medium bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">JHC2025-YourName</span>
-                  </motion.div>
+                  </div>
                 </div>
               </div>
             </motion.div>

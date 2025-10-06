@@ -165,186 +165,92 @@ const Guidelines = () => {
           ))}
         </div>
 
-        {/* Enhanced Detailed Requirements */}
+        {/* Simplified Detailed Requirements */}
         <motion.div 
           className="relative"
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <Card className="bg-white/90 backdrop-blur-sm border-0 shadow-2xl overflow-hidden">
-            {/* Header with gradient */}
-            <div className="bg-gradient-to-r from-primary to-accent p-6 sm:p-8 text-white relative overflow-hidden">
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent"
-                animate={{ x: ['100%', '-100%'] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-              />
-              <div className="relative z-10 flex items-center gap-4">
-                <motion.div
-                  className="p-3 bg-white/20 rounded-full backdrop-blur-sm"
-                  whileHover={{ scale: 1.1, rotate: 360 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <Award className="h-8 w-8 text-white" />
-                </motion.div>
+          <Card className="bg-white border border-gray-200 shadow-lg overflow-hidden">
+            {/* Compact Header */}
+            <div className="bg-gradient-to-r from-primary to-accent p-4 text-white">
+              <div className="flex items-center gap-3">
+                <Award className="h-6 w-6 text-white" />
                 <div>
-                  <h3 className="text-2xl sm:text-3xl font-bold">Detailed Requirements</h3>
-                  <p className="text-white/90 text-sm sm:text-base mt-1">Professional standards for research excellence</p>
+                  <h3 className="text-xl font-bold">Detailed Requirements</h3>
+                  <p className="text-white/90 text-sm">Professional standards for research excellence</p>
                 </div>
               </div>
             </div>
 
-            <CardContent className="p-6 sm:p-8">
-              <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
+            <CardContent className="p-4">
+              <div className="grid lg:grid-cols-2 gap-6">
                 {/* Format Specifications */}
-                <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2, duration: 0.6 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="relative">
-                    <motion.div 
-                      className="absolute -top-2 -left-2 w-6 h-6 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full"
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    />
-                    <h4 className="text-xl sm:text-2xl font-bold text-primary mb-6 flex items-center gap-3">
-                      <div className="p-2 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg">
-                        <FileText className="h-6 w-6 text-blue-600" />
-                      </div>
-                      Format Specifications
-                    </h4>
-                  </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-primary mb-3 flex items-center gap-2">
+                    <FileText className="h-5 w-5 text-blue-600" />
+                    Format Specifications
+                  </h4>
                   
-                  <div className="space-y-4">
+                  <div className="space-y-2">
                     {[
                       "Abstract length: 250-300 words",
                       "Font: Times New Roman, Size 12",
                       "Line spacing: 1.15",
                       "Text alignment: Justified",
                       "File format: PDF only"
-                    ].map((spec, index) => (
-                      <motion.div
-                        key={spec}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1, duration: 0.4 }}
-                        viewport={{ once: true }}
-                        className="group"
-                      >
-                        <div className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-300 border border-transparent hover:border-blue-100">
-                          <motion.div
-                            whileHover={{ scale: 1.2, rotate: 360 }}
-                            transition={{ duration: 0.3 }}
-                          >
-                            <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                          </motion.div>
-                          <span className="text-gray-700 group-hover:text-blue-700 transition-colors duration-300 font-medium">
-                            {spec}
-                          </span>
-                        </div>
-                      </motion.div>
+                    ].map((spec) => (
+                      <div key={spec} className="flex items-start space-x-2 text-sm">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">{spec}</span>
+                      </div>
                     ))}
                   </div>
-                </motion.div>
+                </div>
                 
                 {/* Required Information */}
-                <motion.div
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4, duration: 0.6 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="relative">
-                    <motion.div 
-                      className="absolute -top-2 -left-2 w-6 h-6 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full"
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                    />
-                    <h4 className="text-xl sm:text-2xl font-bold text-primary mb-6 flex items-center gap-3">
-                      <div className="p-2 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-lg">
-                        <Mail className="h-6 w-6 text-emerald-600" />
-                      </div>
-                      Required Information
-                    </h4>
-                  </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-primary mb-3 flex items-center gap-2">
+                    <Mail className="h-5 w-5 text-emerald-600" />
+                    Required Information
+                  </h4>
                   
-                  <div className="space-y-4">
+                                    <div className="space-y-2">
                     {[
                       "Research paper title",
                       "Author name(s) and credentials",
                       "Institutional affiliations",
                       "Contact email addresses",
-                      "Phone numbers"
-                    ].map((info, index) => (
-                      <motion.div
-                        key={info}
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1, duration: 0.4 }}
-                        viewport={{ once: true }}
-                        className="group"
-                      >
-                        <div className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 transition-all duration-300 border border-transparent hover:border-emerald-100">
-                          <motion.div
-                            whileHover={{ scale: 1.2, rotate: 360 }}
-                            transition={{ duration: 0.3 }}
-                          >
-                            <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                          </motion.div>
-                          <span className="text-gray-700 group-hover:text-emerald-700 transition-colors duration-300 font-medium">
-                            {info}
-                          </span>
-                        </div>
-                      </motion.div>
+                      "5-7 relevant keywords",
+                      "Abstract (250-300 words)"
+                    ].map((info) => (
+                      <div key={info} className="flex items-start space-x-2 text-sm">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">{info}</span>
+                      </div>
                     ))}
                   </div>
-                </motion.div>
+                </div>
               </div>
 
-              {/* Enhanced CTA Section */}
-              <motion.div 
-                className="mt-8 sm:mt-12 p-6 sm:p-8 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5 rounded-2xl border border-primary/10 relative overflow-hidden"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.02 }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent" />
-                <div className="relative z-10 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-                  <motion.div
-                    animate={{ 
-                      scale: [1, 1.1, 1],
-                      rotate: [0, 10, -10, 0]
-                    }}
-                    transition={{ 
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  >
-                    <Download className="h-8 w-8 text-primary" />
-                  </motion.div>
-                  <div className="text-center sm:text-left flex-1">
-                    <h4 className="text-lg sm:text-xl font-bold text-primary mb-2">Ready to Submit?</h4>
-                    <p className="text-sm sm:text-base text-muted-foreground">
-                      Download our submission template and follow these guidelines for the best results
-                    </p>
+              {/* Compact CTA Section */}
+              <div className="mt-6 p-4 bg-gradient-to-r from-primary/5 to-accent/5 rounded-lg border border-primary/10">
+                <div className="flex items-center gap-4">
+                  <Download className="h-6 w-6 text-primary" />
+                  <div className="flex-1">
+                    <h4 className="text-lg font-semibold text-primary">Ready to Submit?</h4>
+                    <p className="text-sm text-muted-foreground">Download template and follow guidelines</p>
                   </div>
-                  <motion.button
-                    className="px-6 py-3 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                  <button
+                    className="px-4 py-2 bg-gradient-to-r from-primary to-accent text-white font-medium rounded-lg shadow hover:shadow-lg transition-all duration-200"
                     onClick={() => window.open('https://tinyurl.com/3p4s4zhj', '_blank', 'noopener,noreferrer')}
                   >
                     Start Submission
-                  </motion.button>
+                  </button>
                 </div>
-              </motion.div>
+              </div>
             </CardContent>
           </Card>
         </motion.div>
