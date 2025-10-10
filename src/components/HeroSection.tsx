@@ -41,7 +41,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
           className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-700 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
-          src="/lovable-uploads/12777808_2560_1440_30fps.mp4"
+          src="https://res.cloudinary.com/dhrixwtfw/video/upload/v1760102494/12777808_2560_1440_30fps_rwfmun.mp4"
           autoPlay
           loop
           muted
@@ -167,7 +167,7 @@ const HeroSection = () => {
           <div className="relative w-full max-w-xl aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black mx-auto mt-8 lg:mt-0 flex items-center justify-center">
             <video
               className="w-full h-full object-cover rounded-2xl"
-              src="/lovable-uploads/8327799-uhd_3840_2160_25fps.mp4"
+              src="https://res.cloudinary.com/dhrixwtfw/video/upload/v1760102488/8327799-uhd_3840_2160_25fps_qaftbp.mp4"
               controls
               autoPlay
               loop
