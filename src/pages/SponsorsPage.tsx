@@ -107,10 +107,7 @@ const SponsorsPage = () => {
             animate="visible"
           >
             {/* Decorative Elements */}
-            <motion.div
-              variants={itemVariants}
-              className="flex justify-center items-center space-x-4 mb-6"
-            >
+            <div className="flex justify-center items-center space-x-4 mb-6">
               <div className="h-px w-12 bg-gradient-to-r from-transparent to-accent"></div>
               <div className="flex space-x-2">
                 <div className="w-2 h-2 rounded-full bg-accent"></div>
@@ -118,7 +115,7 @@ const SponsorsPage = () => {
                 <div className="w-2 h-2 rounded-full bg-accent"></div>
               </div>
               <div className="h-px w-12 bg-gradient-to-l from-transparent to-accent"></div>
-            </motion.div>
+            </div>
 
             <motion.div
               variants={itemVariants}
@@ -285,35 +282,99 @@ const SponsorsPage = () => {
       </section>
 
       {/* Knowledge Partner Section */}
-      <section className="pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-primary/10"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="max-w-5xl mx-auto"
-          >
-            <motion.div variants={itemVariants} className="text-center mb-8">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">Knowledge Partner</h2>
-              <p className="text-muted-foreground mt-2">We’re proud to collaborate with our knowledge partner</p>
+      <section className="py-24 relative overflow-hidden bg-gradient-to-b from-background via-primary/5 to-background">
+        {/* Background elements */}
+        <div className="absolute top-20 right-10 w-72 h-72 bg-gradient-to-br from-accent/10 to-primary/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-tr from-primary/10 to-accent/10 rounded-full blur-3xl"></div>
+        
+        <div className="container mx-auto px-4">
+          <motion.div variants={containerVariants} initial="hidden" animate="visible" className="max-w-5xl mx-auto relative z-10">
+            {/* Section header */}
+            <motion.div variants={itemVariants} className="text-center mb-12">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary mb-4">Knowledge Partner</h2>
+              <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+                Collaborating with a global leader to bridge research and real-world innovation
+              </p>
             </motion.div>
 
-            <motion.div
-              variants={itemVariants}
-              className="bg-card/60 backdrop-blur-md rounded-2xl border border-white/10 p-8 sm:p-10 flex items-center justify-center"
-            >
-              <div className="w-full flex flex-col items-center gap-4">
-                <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md">
-                  {/* Prefer light logo on dark backgrounds */}
-                  <img
-                    src="/lovable-uploads/tcs-light-logo-1.jpeg"
-                    alt="Tata Consultancy Services (TCS)"
-                    className="w-full h-auto object-contain"
-                    draggable="false"
-                  />
+            {/* Premium partner card */}
+            <motion.div variants={itemVariants}>
+              <div className="relative group">
+                {/* Subtle glow on hover */}
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-accent via-primary to-accent rounded-3xl opacity-20 group-hover:opacity-30 blur transition duration-500"></div>
+                
+                <div className="relative rounded-3xl border-2 border-transparent bg-white/95 backdrop-blur-md shadow-2xl overflow-hidden"
+                  style={{
+                    backgroundImage: 'linear-gradient(white, white), conic-gradient(from var(--angle), transparent 70%, #f59e0b 80%, transparent 90%)',
+                    backgroundOrigin: 'border-box',
+                    backgroundClip: 'padding-box, border-box',
+                    animation: 'border-beam 3s linear infinite',
+                  }}
+                >
+                  <style>{`
+                    @property --angle {
+                      syntax: '<angle>';
+                      initial-value: 0deg;
+                      inherits: false;
+                    }
+                    @keyframes border-beam {
+                      0% {
+                        --angle: 0deg;
+                      }
+                      100% {
+                        --angle: 360deg;
+                      }
+                    }
+                  `}</style>
+                  {/* Top accent bar */}
+                  <div className="h-1.5 bg-gradient-to-r from-accent via-primary to-accent"></div>
+                  
+                  <div className="p-6 sm:p-8 md:p-10">
+                    {/* Logo section */}
+                    <div className="flex flex-col items-center text-center mb-6 sm:mb-8">
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-primary/20 rounded-2xl blur-xl"></div>
+                        <div className="relative bg-white/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/40">
+                          <img
+                            src="/lovable-uploads/tcs-light-logo-1.jpeg"
+                            alt="Tata Consultancy Services"
+                            className="h-28 sm:h-36 md:h-40 w-auto object-contain select-none"
+                            draggable="false"
+                          />
+                        </div>
+                      </div>
+                      <h3 className="mt-6 text-xl sm:text-2xl font-bold text-foreground">Tata Consultancy Services</h3>
+                      <p className="mt-2 text-sm text-muted-foreground">Global Leader in IT Services & Consulting</p>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-center text-base text-muted-foreground max-w-2xl mx-auto mb-8">
+                      TCS empowers academic excellence through mentorship, expert-led sessions, and pathways that connect research with industry impact.
+                    </p>
+
+                    {/* CTA buttons */}
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                      <motion.a
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        href="https://www.tcs.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-6 py-3 rounded-xl bg-gradient-to-r from-accent to-accent/90 text-black font-semibold hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 text-center"
+                      >
+                        Explore TCS
+                      </motion.a>
+                      <motion.a
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        href="/contact"
+                        className="px-6 py-3 rounded-xl border-2 border-primary/30 text-foreground hover:bg-primary/5 transition-all duration-300 text-center font-semibold"
+                      >
+                        Become a Partner
+                      </motion.a>
+                    </div>
+                  </div>
                 </div>
-                <span className="text-sm text-muted-foreground">Tata Consultancy Services</span>
               </div>
             </motion.div>
           </motion.div>
