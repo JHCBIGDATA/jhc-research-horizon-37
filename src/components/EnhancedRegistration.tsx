@@ -165,20 +165,20 @@ const EnhancedRegistration = () => {
               </div>
 
               {/* CTA Section */}
-              <div className="mt-8 p-4 bg-gradient-to-r from-primary/5 to-accent/5 rounded-lg border border-primary/10">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center">
-                    <Send className="h-6 w-6 text-white" />
+              <div className="mt-8 p-4 sm:p-6 bg-gradient-to-r from-primary/5 to-accent/5 rounded-lg border border-primary/10">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Send className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-lg font-semibold text-primary">Ready to Get Started?</h4>
-                    <p className="text-sm text-muted-foreground">Begin your submission journey today</p>
+                    <h4 className="text-base sm:text-lg font-semibold text-primary">Ready to Get Started?</h4>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Begin your submission journey today</p>
                   </div>
                   <button
-                    className="px-6 py-3 bg-gradient-to-r from-primary to-accent text-white font-medium rounded-lg shadow hover:shadow-lg transition-all duration-200 group"
+                    className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-primary to-accent text-white font-medium text-sm sm:text-base rounded-lg shadow hover:shadow-lg transition-all duration-200 group"
                     onClick={() => window.open('https://tinyurl.com/3p4s4zhj', '_blank', 'noopener,noreferrer')}
                   >
-                    <span className="flex items-center gap-2">
+                    <span className="flex items-center justify-center gap-2">
                       Start Registration
                       <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </span>

@@ -27,8 +27,8 @@ const Index = () => {
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 relative">
         <Header />
         <HeroSection />
-        {/* Enhanced Quick Registration/Brochure highlight */}
-        <div className="container mx-auto px-4 py-6">
+        {/* Enhanced Quick Registration/Brochure highlight - Hidden on mobile */}
+        <div className="container mx-auto px-4 py-6 hidden md:block">
           <div className="rounded-xl border border-gradient-to-r from-accent/40 to-primary/40 bg-gradient-to-r from-accent/15 via-primary/10 to-accent/15 p-4 sm:p-6 text-center backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-xs sm:text-sm md:text-base">
               <div className="flex items-center gap-1.5 sm:gap-2 w-full sm:w-auto justify-center">

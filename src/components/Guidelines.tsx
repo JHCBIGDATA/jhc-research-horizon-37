@@ -175,22 +175,22 @@ const Guidelines = () => {
         >
           <Card className="bg-white border border-gray-200 shadow-lg overflow-hidden">
             {/* Compact Header */}
-            <div className="bg-gradient-to-r from-primary to-accent p-4 text-white">
+            <div className="bg-gradient-to-r from-primary to-accent p-4 sm:p-6 text-white">
               <div className="flex items-center gap-3">
-                <Award className="h-6 w-6 text-white" />
+                <Award className="h-5 w-5 sm:h-6 sm:w-6 text-white flex-shrink-0" />
                 <div>
-                  <h3 className="text-xl font-bold">Detailed Requirements</h3>
-                  <p className="text-white/90 text-sm">Professional standards for research excellence</p>
+                  <h3 className="text-lg sm:text-xl font-bold">Detailed Requirements</h3>
+                  <p className="text-white/90 text-xs sm:text-sm">Professional standards for research excellence</p>
                 </div>
               </div>
             </div>
 
-            <CardContent className="p-4">
-              <div className="grid lg:grid-cols-2 gap-6">
+            <CardContent className="p-4 sm:p-6">
+              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
                 {/* Format Specifications */}
                 <div>
-                  <h4 className="text-lg font-semibold text-primary mb-3 flex items-center gap-2">
-                    <FileText className="h-5 w-5 text-blue-600" />
+                  <h4 className="text-base sm:text-lg font-semibold text-primary mb-3 flex items-center gap-2">
+                    <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600 flex-shrink-0" />
                     Format Specifications
                   </h4>
                   
@@ -212,8 +212,8 @@ const Guidelines = () => {
                 
                 {/* Required Information */}
                 <div>
-                  <h4 className="text-lg font-semibold text-primary mb-3 flex items-center gap-2">
-                    <Mail className="h-5 w-5 text-emerald-600" />
+                  <h4 className="text-base sm:text-lg font-semibold text-primary mb-3 flex items-center gap-2">
+                    <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-emerald-600 flex-shrink-0" />
                     Required Information
                   </h4>
                   
@@ -236,15 +236,15 @@ const Guidelines = () => {
               </div>
 
               {/* Compact CTA Section */}
-              <div className="mt-6 p-4 bg-gradient-to-r from-primary/5 to-accent/5 rounded-lg border border-primary/10">
-                <div className="flex items-center gap-4">
-                  <Download className="h-6 w-6 text-primary" />
+              <div className="mt-6 p-4 sm:p-6 bg-gradient-to-r from-primary/5 to-accent/5 rounded-lg border border-primary/10">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  <Download className="h-5 w-5 sm:h-6 sm:w-6 text-primary flex-shrink-0" />
                   <div className="flex-1">
-                    <h4 className="text-lg font-semibold text-primary">Ready to Submit?</h4>
-                    <p className="text-sm text-muted-foreground">Download template and follow guidelines</p>
+                    <h4 className="text-base sm:text-lg font-semibold text-primary">Ready to Submit?</h4>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Download template and follow guidelines</p>
                   </div>
                   <button
-                    className="px-4 py-2 bg-gradient-to-r from-primary to-accent text-white font-medium rounded-lg shadow hover:shadow-lg transition-all duration-200"
+                    className="w-full sm:w-auto px-4 py-2.5 bg-gradient-to-r from-primary to-accent text-white font-medium text-sm sm:text-base rounded-lg shadow hover:shadow-lg transition-all duration-200"
                     onClick={() => window.open('https://tinyurl.com/3p4s4zhj', '_blank', 'noopener,noreferrer')}
                   >
                     Start Submission
