@@ -63,13 +63,13 @@ const Schedule = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-primary mb-4">Conference Schedule</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Two days of intensive learning, networking, and knowledge sharing
+            One day of intensive learning, networking, and knowledge sharing
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-1 gap-8">
           <div>
-            <h3 className="text-2xl font-bold text-primary mb-8 text-center">Day 1 - 01st December 2025</h3>
+            <h3 className="text-2xl font-bold text-primary mb-8 text-center">Conference Day - January 7, 2026</h3>
             <div className="space-y-4">
               {day1Schedule.map((item, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
@@ -81,30 +81,6 @@ const Schedule = () => {
                       <div>
                         <CardTitle className="text-lg">{item.event}</CardTitle>
                         <p className="text-sm text-accent font-medium">{item.time}</p>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">{item.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-bold text-primary mb-8 text-center">Day 2 - 02nd December 2025</h3>
-            <div className="space-y-4">
-              {day2Schedule.map((item, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                  <CardHeader className="pb-3">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center">
-                        <item.icon className="h-5 w-5 text-accent" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-lg">{item.event}</CardTitle>
-                        <p className="text-sm text-primary font-medium">{item.time}</p>
                       </div>
                     </div>
                   </CardHeader>

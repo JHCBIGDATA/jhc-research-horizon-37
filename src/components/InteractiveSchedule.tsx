@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { useState } from 'react';
 
 const InteractiveSchedule = () => {
-  const [selectedDay, setSelectedDay] = useState<1 | 2>(1);
+  const [selectedDay] = useState<1>(1);
 
   const schedule = {
     1: [
@@ -218,40 +218,18 @@ const InteractiveSchedule = () => {
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">Interactive Schedule</h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
-            Two days of intensive learning, networking, and knowledge sharing with industry experts
+            One day of intensive learning, networking, and knowledge sharing with industry experts
           </p>
         </div>
 
-        {/* Enhanced Day Selector */}
-        <div className="flex justify-center mb-8 sm:mb-12 px-4">
-          <div className="bg-gradient-to-r from-white via-primary/5 to-white rounded-full p-1 sm:p-2 shadow-xl backdrop-blur-sm border border-primary/10 w-full max-w-2xl">
-            <div className="flex space-x-1 sm:space-x-2">
-              {[1, 2].map((day) => (
-                <button
-                  key={day}
-                  onClick={() => setSelectedDay(day as 1 | 2)}
-                  className={`flex-1 px-3 sm:px-6 md:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 relative overflow-hidden ${
-                    selectedDay === day
-                      ? 'bg-gradient-to-r from-primary via-accent to-primary text-white shadow-2xl'
-                      : 'text-primary hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10 hover:text-primary/80'
-                  }`}
-                >
-                  <span className="relative z-10 whitespace-nowrap">
-                    <span className="hidden sm:inline">Day {day} - {day === 1 ? '01st December' : '02nd December'}</span>
-                    <span className="sm:hidden">Day {day}</span>
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
+        {/* Single Day - selector removed */}
 
         {/* Enhanced Schedule Timeline */}
         <div className="relative">
           {/* Gradient timeline */}
           <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-accent to-primary/20 rounded-full shadow-sm"></div>
           <div className="space-y-6 sm:space-y-8">
-            {schedule[selectedDay].map((item, index) => (
+            {schedule[1].map((item, index) => (
               <div key={`${selectedDay}-${index}`} className="relative group">
                 {/* Timeline dot */}
                 <div className={`absolute left-4 sm:left-6 w-5 h-5 sm:w-6 sm:h-6 rounded-full border-3 sm:border-4 border-white shadow-xl flex items-center justify-center z-10 bg-gradient-to-r ${getEventIconColor(item.type)}`}>

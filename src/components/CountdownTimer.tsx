@@ -2,7 +2,11 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-const CountdownTimer = () => {
+type CountdownTimerProps = {
+  compact?: boolean;
+};
+
+const CountdownTimer = ({ compact = false }: CountdownTimerProps) => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -11,7 +15,7 @@ const CountdownTimer = () => {
   });
 
   useEffect(() => {
-    const targetDate = new Date('2025-12-01T00:00:00').getTime();
+    const targetDate = new Date('2026-01-07T00:00:00').getTime();
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -38,9 +42,9 @@ const CountdownTimer = () => {
   ];
 
   return (
-    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
-      <h3 className="text-xl font-bold text-center mb-6 text-white">Conference Countdown</h3>
-      <div className="grid grid-cols-4 gap-4">
+    <div className={compact ? "bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/15" : "bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20"}>
+      {!compact && <h3 className="text-xl font-bold text-center mb-6 text-white">Conference Countdown</h3>}
+      <div className={compact ? "grid grid-cols-2 sm:grid-cols-4 gap-3" : "grid grid-cols-4 gap-4"}>
         {timeUnits.map((unit, index) => (
           <motion.div
             key={unit.label}
@@ -50,12 +54,12 @@ const CountdownTimer = () => {
             transition={{ delay: index * 0.1 }}
           >
             <motion.div
-              className="bg-white/20 rounded-lg p-3 mb-2"
+              className={compact ? "bg-white/15 rounded-md p-2 mb-1" : "bg-white/20 rounded-lg p-3 mb-2"}
               animate={{ scale: unit.value !== timeLeft[unit.label.toLowerCase() as keyof typeof timeLeft] ? [1, 1.05, 1] : 1 }}
               transition={{ duration: 0.3 }}
             >
               <motion.span
-                className="text-2xl font-bold text-accent block"
+                className={compact ? "text-xl font-bold text-accent block" : "text-2xl font-bold text-accent block"}
                 key={unit.value}
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -64,7 +68,7 @@ const CountdownTimer = () => {
                 {unit.value.toString().padStart(2, '0')}
               </motion.span>
             </motion.div>
-            <span className="text-sm text-white/80 font-medium">{unit.label}</span>
+            <span className={compact ? "text-xs text-white/80 font-medium" : "text-sm text-white/80 font-medium"}>{unit.label}</span>
           </motion.div>
         ))}
       </div>

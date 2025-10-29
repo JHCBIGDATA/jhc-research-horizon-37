@@ -78,8 +78,7 @@ const Header = () => {
               className="h-10 w-auto"
             />
             <div className="hidden md:block">
-              <h1 className="text-lg font-bold text-primary">JHC 2025</h1>
-              <p className="text-xs text-muted-foreground">Research Conference</p>
+              <h1 className="text-lg font-bold text-primary">JHC NATIONAL RESEARCH CONFERENCE</h1>
             </div>
           </div>
 
@@ -159,8 +158,7 @@ const Header = () => {
                 className="h-8 w-auto"
               />
               <div>
-                <h1 className="text-base font-bold text-primary">JHC 2025</h1>
-                <p className="text-xs text-muted-foreground">Research Conference</p>
+                <h1 className="text-base font-bold text-primary">JHC NATIONAL RESEARCH CONFERENCE</h1>
               </div>
             </div>
             <Button

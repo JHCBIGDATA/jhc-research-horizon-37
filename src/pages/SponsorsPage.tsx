@@ -284,6 +284,42 @@ const SponsorsPage = () => {
         </div>
       </section>
 
+      {/* Knowledge Partner Section */}
+      <section className="pb-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-primary/10"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="max-w-5xl mx-auto"
+          >
+            <motion.div variants={itemVariants} className="text-center mb-8">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">Knowledge Partner</h2>
+              <p className="text-muted-foreground mt-2">We’re proud to collaborate with our knowledge partner</p>
+            </motion.div>
+
+            <motion.div
+              variants={itemVariants}
+              className="bg-card/60 backdrop-blur-md rounded-2xl border border-white/10 p-8 sm:p-10 flex items-center justify-center"
+            >
+              <div className="w-full flex flex-col items-center gap-4">
+                <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md">
+                  {/* Prefer light logo on dark backgrounds */}
+                  <img
+                    src="/lovable-uploads/tcs-light-logo-1.jpeg"
+                    alt="Tata Consultancy Services (TCS)"
+                    className="w-full h-auto object-contain"
+                    draggable="false"
+                  />
+                </div>
+                <span className="text-sm text-muted-foreground">Tata Consultancy Services</span>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );

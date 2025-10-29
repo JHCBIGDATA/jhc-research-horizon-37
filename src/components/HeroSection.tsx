@@ -1,5 +1,6 @@
 import { Calendar, MapPin, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import CountdownTimer from '@/components/CountdownTimer';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
@@ -8,7 +9,7 @@ const HeroSection = () => {
   const [typedText, setTypedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
-  const fullText = "Empowering Innovation through AI & Data Science";
+  const fullText = "NEXT GEN INTELLIGENCE - AI, ANALYTICS AND DATA SCIENCE ACROSS GLOBAL DOMAINS";
 
   useEffect(() => {
     const typeSpeed = isDeleting ? 50 : 100;
@@ -62,14 +63,25 @@ const HeroSection = () => {
               className="w-full h-full object-cover animate-pulse"
               draggable="false"
             />
-            <div className="absolute bottom-4 left-0 right-0 text-center text-red-400 font-bold text-lg">
-              Video failed to load or is not supported by your browser.
-            </div>
           </div>
         )}
         {/* Gradient overlays above video */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-accent/80 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-tl from-accent/20 via-transparent to-primary/30 pointer-events-none" />
+      </div>
+
+      {/* Scroll Cue */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
+        <button
+          aria-label="Scroll to next section"
+          onClick={() => {
+            const el = document.querySelector('#about-conference');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className="group inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 transition"
+        >
+          <span className="block w-2 h-2 border-b-2 border-r-2 border-white rotate-45 translate-y-0 group-hover:translate-y-0.5 transition"></span>
+        </button>
       </div>
       
   {/* Main Layout */}
@@ -91,7 +103,7 @@ const HeroSection = () => {
               transition={{ delay: 0.3 }}
             >
               <Zap className="w-4 h-4 mr-2 text-accent" />
-              <span className="text-sm font-semibold">JHC 2025</span>
+              <span className="text-sm font-semibold">JHC 2026</span>
             </motion.div>
 
             {/* Main Headline */}
@@ -127,40 +139,68 @@ const HeroSection = () => {
               </span>
             </motion.div>
 
-            {/* Details */}
-            <motion.div
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-4 text-white/80"
-              initial={{ opacity: 0, y: 20 }}
+            {/* Subheading */}
+            <motion.p
+              className="text-base md:text-lg text-white/80 max-w-2xl"
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 }}
             >
-              <div className="flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-accent" />
-                <span className="font-medium">December 1-2, 2025</span>
-              </div>
-              <div className="hidden sm:block w-px h-6 bg-white/30"></div>
-              <div className="flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-accent" />
-                <span className="font-medium">Jai Hind College, Mumbai</span>
-              </div>
+              A national forum spotlighting next‑gen AI, analytics and data science applications across global domains.
+            </motion.p>
+
+            {/* Date/Venue Chip */}
+            <motion.div
+              className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-white/90"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1 }}
+            >
+              <span className="inline-flex items-center gap-2">
+                <Calendar className="w-4 h-4 text-accent" />
+                <span className="text-sm font-medium">January 7, 2026</span>
+              </span>
+              <span className="w-px h-4 bg-white/30" />
+              <span className="inline-flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-accent" />
+                <span className="text-sm font-medium">Jai Hind College, Churchgate, Mumbai</span>
+              </span>
             </motion.div>
 
-            {/* CTA Button */}
+            {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2 }}
             >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent text-black font-bold px-8 py-4 text-lg rounded-full shadow-2xl hover:shadow-accent/25 transition-all duration-300"
-                  onClick={() => window.open('https://tinyurl.com/3p4s4zhj', '_blank', 'noopener,noreferrer')}
-                >
-                  Register Now
-                </Button>
-              </motion.div>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent text-black font-bold px-8 py-4 text-lg rounded-full shadow-2xl hover:shadow-accent/25 transition-all duration-300"
+                    onClick={() => window.open('https://tinyurl.com/3p4s4zhj', '_blank', 'noopener,noreferrer')}
+                  >
+                    Register Now
+                  </Button>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-white/60 text-white bg-transparent hover:bg-white hover:text-primary font-bold px-8 py-4 text-lg rounded-full backdrop-blur-sm transition-all duration-300"
+                    onClick={() => window.open('/Nationalconference_JHC_MSc_BDA.pdf', '_blank', 'noopener,noreferrer')}
+                  >
+                    Download Brochure
+                  </Button>
+                </motion.div>
+              </div>
             </motion.div>
+            {/* Countdown */}
+            <div className="mt-6 max-w-md">
+              <CountdownTimer compact />
+            </div>
+
+            
           </motion.div>
 
           {/* Right Side: Foreground video with controls */}
@@ -168,7 +208,6 @@ const HeroSection = () => {
             <video
               className="w-full h-full object-cover rounded-2xl"
               src="https://res.cloudinary.com/dhrixwtfw/video/upload/v1760102488/8327799-uhd_3840_2160_25fps_qaftbp.mp4"
-              controls
               autoPlay
               loop
               muted

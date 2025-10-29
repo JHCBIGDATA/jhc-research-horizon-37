@@ -154,7 +154,7 @@ const Index = () => {
                     </div>
                   ))}
                   <div className="text-xs text-muted-foreground pt-2 text-center">
-                    Payment reference: <span className="font-medium bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">JHC2025-YourName</span>
+                    Payment reference: <span className="font-medium bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">JHC2026-YourName</span>
                   </div>
                 </div>
               </div>
