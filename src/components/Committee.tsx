@@ -32,7 +32,7 @@ const Committee = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-primary mb-4">Organizing Committee</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Dedicated faculty and staff members ensuring the success of JHC 2025 National Research Conference
+            Dedicated faculty and staff members ensuring the success of JHC 2026 National Research Conference
           </p>
         </div>
 
@@ -75,7 +75,7 @@ const Committee = () => {
             alt="Organizing Team" 
             className="rounded-lg shadow-lg mx-auto max-w-4xl w-full"
           />
-          <p className="mt-4 text-sm text-muted-foreground">The dedicated organizing team behind JHC 2025</p>
+          <p className="mt-4 text-sm text-muted-foreground">The dedicated organizing team behind JHC 2026</p>
         </div>
       </div>
     </section>

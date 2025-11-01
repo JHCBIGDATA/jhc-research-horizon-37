@@ -47,7 +47,7 @@ const ContactPage = () => {
               Get In <span className="text-accent">Touch</span>
             </h1>
             <p className="text-xl mb-8 leading-relaxed opacity-90">
-              Have questions about JHC 2025? We're here to help with all your conference-related inquiries, 
+              Have questions about JHC 2026? We're here to help with all your conference-related inquiries, 
               submissions, and registration queries.
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">

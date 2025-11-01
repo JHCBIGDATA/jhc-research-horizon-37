@@ -60,7 +60,7 @@ const EnhancedNavbar = () => {
               className="h-10 w-auto"
             />
             <div className="hidden md:block">
-              <h1 className="text-lg font-bold text-primary">JHC 2025</h1>
+              <h1 className="text-lg font-bold text-primary">JHC 2026</h1>
               <p className="text-xs text-muted-foreground">Research Conference</p>
             </div>
           </motion.div>

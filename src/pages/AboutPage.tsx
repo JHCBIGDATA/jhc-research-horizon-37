@@ -152,7 +152,7 @@ const AboutPage = () => {
               }}
             >
               <span className="mr-2">✨</span>
-              Premier Research Conference 2025
+              Premier Research Conference 2026
             </motion.div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight">
@@ -171,7 +171,7 @@ const AboutPage = () => {
                   backgroundSize: "200% 200%"
                 }}
               >
-                JHC 2025
+                JHC 2026
               </motion.span>
             </h1>
             
@@ -429,7 +429,7 @@ const AboutPage = () => {
                 
                 <div className="space-y-4 text-base text-muted-foreground leading-relaxed">
                   <p>
-                    The JHC 2025 National Research Conference represents a groundbreaking initiative that brings together the brightest minds in artificial intelligence, data science, and analytics.
+                    The JHC 2026 National Research Conference represents a groundbreaking initiative that brings together the brightest minds in artificial intelligence, data science, and analytics.
                   </p>
                   
                   <p>

@@ -9,7 +9,7 @@ import { Download, FileText } from 'lucide-react';
 const GalleryPage = () => {
   const handleBrochureDownload = () => {
     // This would typically trigger a download of the actual brochure file
-    console.log('Downloading JHC 2025 Conference Brochure...');
+    console.log('Downloading JHC 2026 Conference Brochure...');
     // For now, we'll show a message - in production, this would download the actual file
     alert('Brochure download will be available soon. Please check back later or contact us for more information.');
   };
@@ -46,7 +46,7 @@ const GalleryPage = () => {
                       <FileText className="h-6 w-6 text-primary" />
                     </div>
                     <div className="text-left">
-                      <h3 className="text-lg font-semibold text-primary mb-1">JHC 2025 Conference Brochure</h3>
+                      <h3 className="text-lg font-semibold text-primary mb-1">JHC 2026 Conference Brochure</h3>
                       <p className="text-sm text-muted-foreground">Download the complete conference details, schedule, and guidelines</p>
                     </div>
                   </div>
@@ -58,7 +58,7 @@ const GalleryPage = () => {
                     Download Conference Brochure
                   </Button>
                   <p className="text-xs text-muted-foreground mt-2">
-                    Contains call for papers, registration details, and conference schedule for JHC 2025
+                    Contains call for papers, registration details, and conference schedule for JHC 2026
                   </p>
                 </CardContent>
               </Card>
@@ -69,7 +69,7 @@ const GalleryPage = () => {
           <div className="bg-accent/10 border border-accent/20 rounded-lg p-4 mb-8 max-w-4xl mx-auto">
             <p className="text-sm text-center text-muted-foreground">
               <span className="font-medium text-accent">📸 Archive Gallery:</span> The images below showcase highlights from our successful 
-              JHC 2024 National Research Conference. As we prepare for JHC 2025, these memories inspire us to create an even more 
+              JHC 2024 National Research Conference. As we prepare for JHC 2026, these memories inspire us to create an even more 
               impactful experience for our upcoming conference.
             </p>
           </div>

@@ -132,7 +132,7 @@ const SponsorsPage = () => {
                 Coming Soon
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 sm:mb-8 px-4">
-                We're preparing an amazing lineup of sponsors for JHC 2025
+                We're preparing an amazing lineup of sponsors for JHC 2026
               </p>
             </motion.div>
 

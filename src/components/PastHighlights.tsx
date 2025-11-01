@@ -179,7 +179,7 @@ const PastHighlights = () => {
                   <BookOpen className="h-6 w-6 text-primary" />
                 </div>
               </div>
-              <h3 className="text-3xl font-bold text-primary mb-4">Ready for JHC 2025?</h3>
+              <h3 className="text-3xl font-bold text-primary mb-4">Ready for JHC 2026?</h3>
               <p className="text-muted-foreground text-lg leading-relaxed mb-6">
                 Building on the success of 2024, we're preparing an even more impactful conference experience. 
                 Join leading researchers, innovative thinkers, and industry pioneers as we shape the future of 

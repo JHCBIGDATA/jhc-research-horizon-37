@@ -14,7 +14,7 @@ const NotFound = () => {
       location.pathname
     );
     const titleBefore = document.title;
-    document.title = "404 | JHC 2025";
+    document.title = "404 | JHC 2026";
     const interval = setInterval(() => setSeconds((s) => (s > 0 ? s - 1 : 0)), 1000);
     const timeout = setTimeout(() => navigate('/'), 10000);
     return () => {

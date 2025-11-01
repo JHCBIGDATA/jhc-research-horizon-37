@@ -70,7 +70,7 @@ const EnhancedRegistration = () => {
             Registration Process
           </h3>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Follow these simple steps to submit your research and join JHC 2025
+            Follow these simple steps to submit your research and join JHC 2026
           </p>
         </motion.div>
 

@@ -90,7 +90,7 @@ const AboutConference = () => {
             transition={{ delay: 0.2, duration: 0.6 }}
             viewport={{ once: true }}
           >
-            JHC 2025 Research Conference
+            JHC 2026 Research Conference
           </motion.h2>
           <motion.p 
             className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4"

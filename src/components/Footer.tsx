@@ -17,7 +17,7 @@ const Footer = () => {
                 className="h-12 w-auto"
               />
               <div>
-                <h3 className="text-lg font-bold">JHC 2025</h3>
+                <h3 className="text-lg font-bold">JHC 2026</h3>
                 <p className="text-sm text-white/80">National Research Conference</p>
               </div>
             </div>
@@ -71,7 +71,7 @@ const Footer = () => {
 
         <div className="border-t border-white/20 mt-8 pt-8 text-center">
           <p className="text-white/80 text-sm">
-            © 2025 Jai Hind College (Empowered Autonomous). All rights reserved.
+            © 2026 Jai Hind College (Empowered Autonomous). All rights reserved.
           </p>
           <p className="text-white/60 text-xs mt-2">
             Department of B.Sc. IT, B.Voc. Software Development & M.Sc. Big Data Analytics

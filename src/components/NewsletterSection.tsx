@@ -66,7 +66,7 @@ const NewsletterSection = () => {
                     transition={{ delay: 0.4 }}
                     viewport={{ once: true }}
                   >
-                    Get the latest updates about JHC 2025, including speaker announcements, 
+                    Get the latest updates about JHC 2026, including speaker announcements, 
                     workshop details, networking opportunities, and important deadlines delivered 
                     straight to your inbox.
                   </motion.p>

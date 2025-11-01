@@ -29,7 +29,7 @@ const Registration = () => {
           </motion.div>
           <h2 className="text-4xl font-bold text-primary mb-4">Registration & Submission</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Join us at JHC 2025 and be part of the leading research conference in AI, Data Science, and Analytics
+            Join us at JHC 2026 and be part of the leading research conference in AI, Data Science, and Analytics
           </p>
         </motion.div>
 

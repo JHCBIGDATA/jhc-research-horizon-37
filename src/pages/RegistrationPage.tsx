@@ -94,7 +94,7 @@ const RegistrationPage = () => {
           className="text-center mb-12"
         >
           <h1 className="text-4xl font-bold text-primary mb-4">Conference Registration</h1>
-          <p className="text-xl text-muted-foreground">Join JHC 2025 National Research Conference</p>
+          <p className="text-xl text-muted-foreground">Join JHC 2026 National Research Conference</p>
         </motion.div>
 
         {/* Progress Bar */}
