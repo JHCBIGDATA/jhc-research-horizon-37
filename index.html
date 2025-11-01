@@ -96,6 +96,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
+    <!-- CRITICAL: Video Optimization - Preconnect to Cloudinary -->
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+    <link rel="dns-prefetch" href="//res.cloudinary.com">
+    
+    <!-- CRITICAL: Preload Hero Videos for Instant Playback -->
+    <link rel="preload" as="video" href="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1920,f_mp4/v1760102494/12777808_2560_1440_30fps_rwfmun.mp4" type="video/mp4" fetchpriority="high">
+    <link rel="preload" as="video" href="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1280,f_mp4/v1760102488/8327799-uhd_3840_2160_25fps_qaftbp.mp4" type="video/mp4">
+    
+    <!-- CRITICAL: Preload Video Posters -->
+    <link rel="preload" as="image" href="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1920,f_jpg/v1760102494/12777808_2560_1440_30fps_rwfmun.jpg" type="image/jpeg" fetchpriority="high">
+    <link rel="preload" as="image" href="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1280,f_jpg/v1760102488/8327799-uhd_3840_2160_25fps_qaftbp.jpg" type="image/jpeg">
   </head>
 
   <body>

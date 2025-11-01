@@ -2,14 +2,46 @@ import { Calendar, MapPin, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CountdownTimer from '@/components/CountdownTimer';
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const HeroSection = () => {
 
   const [typedText, setTypedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
+  const [foregroundVideoReady, setForegroundVideoReady] = useState(false);
+  const bgVideoRef = useRef<HTMLVideoElement>(null);
+  const fgVideoRef = useRef<HTMLVideoElement>(null);
   const fullText = "NEXT GEN INTELLIGENCE - AI, ANALYTICS AND DATA SCIENCE ACROSS GLOBAL DOMAINS";
+
+  // Aggressive video preloading and optimization
+  useEffect(() => {
+    // Preload both videos immediately
+    if (bgVideoRef.current) {
+      bgVideoRef.current.load();
+    }
+    if (fgVideoRef.current) {
+      fgVideoRef.current.load();
+    }
+
+    // Prefetch video resources
+    const linkBg = document.createElement('link');
+    linkBg.rel = 'prefetch';
+    linkBg.as = 'video';
+    linkBg.href = 'https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1920,f_mp4/v1760102494/12777808_2560_1440_30fps_rwfmun.mp4';
+    document.head.appendChild(linkBg);
+
+    const linkFg = document.createElement('link');
+    linkFg.rel = 'prefetch';
+    linkFg.as = 'video';
+    linkFg.href = 'https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1280,f_mp4/v1760102488/8327799-uhd_3840_2160_25fps_qaftbp.mp4';
+    document.head.appendChild(linkFg);
+
+    return () => {
+      document.head.removeChild(linkBg);
+      document.head.removeChild(linkFg);
+    };
+  }, []);
 
   useEffect(() => {
     const typeSpeed = isDeleting ? 50 : 100;
@@ -41,27 +73,35 @@ const HeroSection = () => {
       {/* Video Background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
-          className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-700 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
-          src="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1920/v1760102494/12777808_2560_1440_30fps_rwfmun.mp4"
+          ref={bgVideoRef}
+          className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-500 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
+          src="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1920,f_mp4/v1760102494/12777808_2560_1440_30fps_rwfmun.mp4"
           autoPlay
           loop
           muted
           playsInline
-          preload="metadata"
-          poster="https://res.cloudinary.com/dhrixwtfw/video/upload/w_1920,so_0/v1760102494/12777808_2560_1440_30fps_rwfmun.jpg"
+          preload="auto"
+          poster="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1920,f_jpg/v1760102494/12777808_2560_1440_30fps_rwfmun.jpg"
           aria-hidden="true"
           tabIndex={-1}
-          onCanPlayThrough={() => setVideoReady(true)}
+          onLoadedData={() => setVideoReady(true)}
+          onCanPlay={() => {
+            if (bgVideoRef.current) {
+              bgVideoRef.current.play().catch(() => {});
+            }
+          }}
           onError={() => setVideoReady(false)}
         />
         {/* Loader/Poster overlay until video is ready */}
         {!videoReady && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-10 transition-opacity duration-700">
+          <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-10 transition-opacity duration-500">
             <img
-              src="https://res.cloudinary.com/dhrixwtfw/video/upload/w_1920,so_0/v1760102494/12777808_2560_1440_30fps_rwfmun.jpg"
+              src="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1920,f_jpg/v1760102494/12777808_2560_1440_30fps_rwfmun.jpg"
               alt="Loading preview"
-              className="w-full h-full object-cover animate-pulse"
+              className="w-full h-full object-cover"
               draggable="false"
+              loading="eager"
+              fetchPriority="high"
             />
           </div>
         )}
@@ -206,15 +246,22 @@ const HeroSection = () => {
           {/* Right Side: Foreground video with controls */}
           <div className="relative w-full max-w-xl aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black mx-auto mt-8 lg:mt-0 flex items-center justify-center">
             <video
-              className="w-full h-full object-cover rounded-2xl"
-              src="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1280/v1760102488/8327799-uhd_3840_2160_25fps_qaftbp.mp4"
+              ref={fgVideoRef}
+              className={`w-full h-full object-cover rounded-2xl transition-opacity duration-500 ${foregroundVideoReady ? 'opacity-100' : 'opacity-80'}`}
+              src="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1280,f_mp4/v1760102488/8327799-uhd_3840_2160_25fps_qaftbp.mp4"
               autoPlay
               loop
               muted
               playsInline
-              preload="metadata"
-              poster="https://res.cloudinary.com/dhrixwtfw/video/upload/w_1280,so_0/v1760102488/8327799-uhd_3840_2160_25fps_qaftbp.jpg"
+              preload="auto"
+              poster="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1280,f_jpg/v1760102488/8327799-uhd_3840_2160_25fps_qaftbp.jpg"
               style={{ background: '#000' }}
+              onLoadedData={() => setForegroundVideoReady(true)}
+              onCanPlay={() => {
+                if (fgVideoRef.current) {
+                  fgVideoRef.current.play().catch(() => {});
+                }
+              }}
             />
           </div>
         </div>
