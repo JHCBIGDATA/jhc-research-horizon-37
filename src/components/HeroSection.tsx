@@ -42,13 +42,13 @@ const HeroSection = () => {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
           className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-700 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
-          src="https://res.cloudinary.com/dhrixwtfw/video/upload/f_auto,q_auto:low,w_1920,c_limit,br_1500k,vc_h264/v1760102494/12777808_2560_1440_30fps_rwfmun.mp4"
+          src="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1920/v1760102494/12777808_2560_1440_30fps_rwfmun.mp4"
           autoPlay
           loop
           muted
           playsInline
           preload="metadata"
-          poster="https://res.cloudinary.com/dhrixwtfw/video/upload/f_auto,q_auto:low,w_1920,c_limit,so_0/v1760102494/12777808_2560_1440_30fps_rwfmun.jpg"
+          poster="https://res.cloudinary.com/dhrixwtfw/video/upload/w_1920,so_0/v1760102494/12777808_2560_1440_30fps_rwfmun.jpg"
           aria-hidden="true"
           tabIndex={-1}
           onCanPlayThrough={() => setVideoReady(true)}
@@ -58,7 +58,7 @@ const HeroSection = () => {
         {!videoReady && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-10 transition-opacity duration-700">
             <img
-              src="https://res.cloudinary.com/dhrixwtfw/video/upload/f_auto,q_auto:low,w_1920,c_limit,so_0/v1760102494/12777808_2560_1440_30fps_rwfmun.jpg"
+              src="https://res.cloudinary.com/dhrixwtfw/video/upload/w_1920,so_0/v1760102494/12777808_2560_1440_30fps_rwfmun.jpg"
               alt="Loading preview"
               className="w-full h-full object-cover animate-pulse"
               draggable="false"
@@ -207,13 +207,13 @@ const HeroSection = () => {
           <div className="relative w-full max-w-xl aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black mx-auto mt-8 lg:mt-0 flex items-center justify-center">
             <video
               className="w-full h-full object-cover rounded-2xl"
-              src="https://res.cloudinary.com/dhrixwtfw/video/upload/f_auto,q_auto:low,w_1280,c_limit,br_1200k,vc_h264/v1760102488/8327799-uhd_3840_2160_25fps_qaftbp.mp4"
+              src="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1280/v1760102488/8327799-uhd_3840_2160_25fps_qaftbp.mp4"
               autoPlay
               loop
               muted
               playsInline
               preload="metadata"
-              poster="https://res.cloudinary.com/dhrixwtfw/video/upload/f_auto,q_auto:low,w_1280,c_limit,so_0/v1760102488/8327799-uhd_3840_2160_25fps_qaftbp.jpg"
+              poster="https://res.cloudinary.com/dhrixwtfw/video/upload/w_1280,so_0/v1760102488/8327799-uhd_3840_2160_25fps_qaftbp.jpg"
               style={{ background: '#000' }}
             />
           </div>
