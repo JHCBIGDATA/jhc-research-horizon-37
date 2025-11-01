@@ -101,7 +101,7 @@ const HeroSection = () => {
               className="w-full h-full object-cover"
               draggable="false"
               loading="eager"
-              fetchPriority="high"
+              fetchpriority="high"
             />
           </div>
         )}
