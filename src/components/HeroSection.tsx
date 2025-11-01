@@ -10,6 +10,7 @@ const HeroSection = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
   const [foregroundVideoReady, setForegroundVideoReady] = useState(false);
+  const [posterLoaded, setPosterLoaded] = useState(false);
   const bgVideoRef = useRef<HTMLVideoElement>(null);
   const fgVideoRef = useRef<HTMLVideoElement>(null);
   const fullText = "NEXT GEN INTELLIGENCE - AI, ANALYTICS AND DATA SCIENCE ACROSS GLOBAL DOMAINS";
@@ -72,16 +73,29 @@ const HeroSection = () => {
     <section id="home" className="hero-gradient min-h-screen flex items-center text-white relative overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
+        {/* Poster Image - Shows INSTANTLY, no loading delay */}
+        <div className={`absolute inset-0 transition-opacity duration-1000 ${videoReady ? 'opacity-0' : 'opacity-100'}`}>
+          <img
+            src="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1920,f_jpg/v1760102494/12777808_2560_1440_30fps_rwfmun.jpg"
+            alt="Conference background"
+            className="w-full h-full object-cover"
+            draggable="false"
+            loading="eager"
+            fetchpriority="high"
+            onLoad={() => setPosterLoaded(true)}
+          />
+        </div>
+        
+        {/* Video - Fades in over poster when ready */}
         <video
           ref={bgVideoRef}
-          className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-500 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
+          className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
           src="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1920,f_mp4/v1760102494/12777808_2560_1440_30fps_rwfmun.mp4"
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
-          poster="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1920,f_jpg/v1760102494/12777808_2560_1440_30fps_rwfmun.jpg"
           aria-hidden="true"
           tabIndex={-1}
           onLoadedData={() => setVideoReady(true)}
@@ -92,19 +106,7 @@ const HeroSection = () => {
           }}
           onError={() => setVideoReady(false)}
         />
-        {/* Loader/Poster overlay until video is ready */}
-        {!videoReady && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-10 transition-opacity duration-500">
-            <img
-              src="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1920,f_jpg/v1760102494/12777808_2560_1440_30fps_rwfmun.jpg"
-              alt="Loading preview"
-              className="w-full h-full object-cover"
-              draggable="false"
-              loading="eager"
-              fetchpriority="high"
-            />
-          </div>
-        )}
+        
         {/* Gradient overlays above video */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-accent/80 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-tl from-accent/20 via-transparent to-primary/30 pointer-events-none" />
@@ -245,16 +247,28 @@ const HeroSection = () => {
 
           {/* Right Side: Foreground video with controls */}
           <div className="relative w-full max-w-xl aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black mx-auto mt-8 lg:mt-0 flex items-center justify-center">
+            {/* Poster Image - Shows instantly */}
+            <div className={`absolute inset-0 transition-opacity duration-1000 ${foregroundVideoReady ? 'opacity-0' : 'opacity-100'}`}>
+              <img
+                src="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1280,f_jpg/v1760102488/8327799-uhd_3840_2160_25fps_qaftbp.jpg"
+                alt="Conference preview"
+                className="w-full h-full object-cover rounded-2xl"
+                draggable="false"
+                loading="eager"
+                fetchpriority="high"
+              />
+            </div>
+            
+            {/* Video - Fades in when ready */}
             <video
               ref={fgVideoRef}
-              className={`w-full h-full object-cover rounded-2xl transition-opacity duration-500 ${foregroundVideoReady ? 'opacity-100' : 'opacity-80'}`}
+              className={`w-full h-full object-cover rounded-2xl transition-opacity duration-1000 ${foregroundVideoReady ? 'opacity-100' : 'opacity-0'}`}
               src="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1280,f_mp4/v1760102488/8327799-uhd_3840_2160_25fps_qaftbp.mp4"
               autoPlay
               loop
               muted
               playsInline
               preload="auto"
-              poster="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1280,f_jpg/v1760102488/8327799-uhd_3840_2160_25fps_qaftbp.jpg"
               style={{ background: '#000' }}
               onLoadedData={() => setForegroundVideoReady(true)}
               onCanPlay={() => {
