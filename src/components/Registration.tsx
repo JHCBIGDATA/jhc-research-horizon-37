@@ -151,7 +151,7 @@ const Registration = () => {
                   <Calendar className="h-5 w-5 text-accent" />
                   <div>
                     <p className="font-medium">Conference Dates</p>
-                    <p className="text-sm text-muted-foreground">December 1–2, 2025</p>
+                    <p className="text-sm text-muted-foreground">January 7, 2026</p>
                   </div>
                 </motion.div>
               </div>

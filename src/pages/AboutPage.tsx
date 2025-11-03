@@ -36,8 +36,8 @@ const AboutPage = () => {
   const conferenceFeatures = [
     {
       icon: Calendar,
-      title: "2-Day Intensive Program",
-      description: "Comprehensive conference spanning two full days with keynote sessions, technical presentations, panel discussions, and networking events.",
+      title: "Full-Day Intensive Program",
+      description: "Comprehensive full-day conference with keynote sessions, technical presentations, panel discussions, and networking events.",
       color: "bg-blue-50 border-blue-200"
     },
     {
@@ -408,7 +408,7 @@ const AboutPage = () => {
             />
             
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              A premier 2-day National Research Conference fostering innovation, collaboration, and 
+              A premier National Research Conference fostering innovation, collaboration, and 
               knowledge exchange in Generative AI, Machine Learning, Data Science, and Advanced Analytics.
             </p>
           </motion.div>

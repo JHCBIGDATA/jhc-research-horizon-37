@@ -218,7 +218,7 @@ const InteractiveSchedule = () => {
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">Interactive Schedule</h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
-            One day of intensive learning, networking, and knowledge sharing with industry experts
+            A full day of intensive learning, networking, and knowledge sharing with industry experts
           </p>
         </div>
 

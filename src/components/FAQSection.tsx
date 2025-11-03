@@ -29,7 +29,7 @@ const FAQSection = () => {
         },
         {
           question: "How do I pay the fees?",
-          answer: "Bank transfer to: Beneficiary: Sind Educationists Association. Bank: Union Bank of India. Bank Address: Union Bank of India, V.N Road, Mumbai - 400020. Account No: 319501010029167. Branch: Veer Nariman Road, Mumbai. IFSC: UBIN0531952. MICR: 400026021. PAN: AAATS1063P. Use reference: JHC2025-YourName. Upload proof in the registration form or email it to the conference team."
+          answer: "Bank transfer to: Beneficiary: Sind Educationists Association. Bank: Union Bank of India. Bank Address: Union Bank of India, V.N Road, Mumbai - 400020. Account No: 319501010029167. Branch: Veer Nariman Road, Mumbai. IFSC: UBIN0531952. MICR: 400026021. PAN: AAATS1063P. Use reference: JHC2026-YourName. Upload proof in the registration form or email it to the conference team."
         },
         {
           question: "What format should I use for paper submission?",
@@ -46,7 +46,7 @@ const FAQSection = () => {
         },
         {
           question: "What networking opportunities are available?",
-          answer: "We offer welcome reception, coffee breaks, lunch networking, industry panel discussions, and a dedicated networking session on Day 2."
+          answer: "We offer welcome reception, coffee breaks, lunch networking, industry panel discussions, and dedicated networking sessions throughout the day."
         },
         {
           question: "Are workshop/presentation resources provided?",
@@ -67,7 +67,7 @@ const FAQSection = () => {
         },
         {
           question: "When are awards announced?",
-          answer: "Awards and recognitions are announced on Day 2 during the closing ceremony."
+          answer: "Awards and recognitions are announced during the closing ceremony at the end of the conference day."
         },
         {
           question: "Do I need to be present to win an award?",
@@ -113,7 +113,7 @@ const FAQSection = () => {
         },
         {
           question: "Can I make changes to my submitted paper after the deadline?",
-          answer: "Minor revisions may be allowed until the camera-ready deadline (November 5, 2025). Major changes require committee approval."
+          answer: "Minor revisions may be allowed until the camera-ready deadline. Major changes require committee approval. Please contact the organizing committee for specific deadline details."
         }
       ]
     }

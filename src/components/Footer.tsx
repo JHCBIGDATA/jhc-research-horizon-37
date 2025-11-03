@@ -50,7 +50,7 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <Calendar className="h-4 w-4 text-accent mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-white/80">21st-22nd November 2025</p>
+                  <p className="text-white/80">7th January 2026</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
