@@ -1,11 +1,11 @@
 
-# 🎓 JHC 2026 National Research Conference
+# 🎓 National Research Conference 2026 - Jai Hind College
 
-[![Website](https://img.shields.io/website?url=https%3A%2F%2Fjhc2026.vercel.app)](https://jhc2026.vercel.app)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fjhc-bda-research.vercel.app)](https://jhc-bda-research.vercel.app)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://vercel.com)
 
-**Official website for the JHC 2026 National Research Conference organized by Jai Hind College (Empowered Autonomous)**
+**Official website for the National Research Conference 2026 organized by Jai Hind College (Empowered Autonomous)**
 
 > **Theme:** *Empowering Innovation through Generative AI, Data Science, and Analytics*  
 > **Date:** December 1-2, 2026  
@@ -15,7 +15,7 @@
 
 ## 🌟 About the Conference
 
-The JHC 2026 National Research Conference brings together researchers, academicians, and industry professionals to explore cutting-edge developments in technology and innovation. Organized by the Department of B.Sc. IT, B.Voc. Software Development & M.Sc. Big Data Analytics.
+The National Research Conference 2026 brings together researchers, academicians, and industry professionals to explore cutting-edge developments in technology and innovation. Organized by the Department of B.Sc. IT, B.Voc. Software Development & M.Sc. Big Data Analytics at Jai Hind College.
 
 ### 🎯 Key Features
 - **Multi-track Sessions** across various technology domains
@@ -134,7 +134,7 @@ Maharashtra, India
 ### 📧 Conference Inquiries
 - **Email:** jhc.research@jaihindcollege.edu.in
 - **Phone:** +91-22-2266-4070
-- **Website:** [jhc2026.vercel.app](https://jhc2026.vercel.app)
+- **Website:** [jhc-bda-research.vercel.app](https://jhc-bda-research.vercel.app)
 
 ### 👨‍💻 Technical Support
 **Website Developer:** Vishesh Sanghvi  

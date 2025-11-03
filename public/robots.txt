@@ -48,8 +48,8 @@ User-agent: SemrushBot
 Disallow: /
 
 # Important files
-Sitemap: https://jhc2026.vercel.app/sitemap.xml
-Host: https://jhc2026.vercel.app
+Sitemap: https://jhc-bda-research.vercel.app/sitemap.xml
+Host: https://jhc-bda-research.vercel.app
 
 # Contact
 # For any queries: jhc.research@jaihindcollege.edu.in
