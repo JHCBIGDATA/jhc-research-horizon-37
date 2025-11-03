@@ -8,7 +8,7 @@
 **Official website for the National Research Conference 2026 organized by Jai Hind College (Empowered Autonomous)**
 
 > **Theme:** *Empowering Innovation through Generative AI, Data Science, and Analytics*  
-> **Date:** December 1-2, 2026  
+> **Date:** January 7, 2026  
 > **Venue:** Jai Hind College, Mumbai
 
 ---
