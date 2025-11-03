@@ -1,21 +1,21 @@
 
-# 🎓 JHC 2025 National Research Conference
+# 🎓 JHC 2026 National Research Conference
 
-[![Website](https://img.shields.io/website?url=https%3A%2F%2Fjhc2025.vercel.app)](https://jhc2025.vercel.app)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fjhc2026.vercel.app)](https://jhc2026.vercel.app)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://vercel.com)
 
-**Official website for the JHC 2025 National Research Conference organized by Jai Hind College (Empowered Autonomous)**
+**Official website for the JHC 2026 National Research Conference organized by Jai Hind College (Empowered Autonomous)**
 
-> **Theme:** *Emerging Technologies and Innovation in Research*  
-> **Date:** March 15-16, 2025  
+> **Theme:** *Empowering Innovation through Generative AI, Data Science, and Analytics*  
+> **Date:** December 1-2, 2026  
 > **Venue:** Jai Hind College, Mumbai
 
 ---
 
 ## 🌟 About the Conference
 
-The JHC 2025 National Research Conference brings together researchers, academicians, and industry professionals to explore cutting-edge developments in technology and innovation. Organized by the Department of B.Sc. IT, B.Voc. Software Development & M.Sc. Big Data Analytics.
+The JHC 2026 National Research Conference brings together researchers, academicians, and industry professionals to explore cutting-edge developments in technology and innovation. Organized by the Department of B.Sc. IT, B.Voc. Software Development & M.Sc. Big Data Analytics.
 
 ### 🎯 Key Features
 - **Multi-track Sessions** across various technology domains
@@ -134,7 +134,7 @@ Maharashtra, India
 ### 📧 Conference Inquiries
 - **Email:** jhc.research@jaihindcollege.edu.in
 - **Phone:** +91-22-2266-4070
-- **Website:** [jhc2025.vercel.app](https://jhc2025.vercel.app)
+- **Website:** [jhc2026.vercel.app](https://jhc2026.vercel.app)
 
 ### 👨‍💻 Technical Support
 **Website Developer:** Vishesh Sanghvi  
@@ -164,7 +164,7 @@ We welcome contributions to improve the conference website! Please see [CONTRIBU
 
 ## 📊 Project Stats
 
-- **Launch Date:** January 2025
+- **Launch Date:** November 2025
 - **Pages:** 8+ comprehensive pages
 - **Components:** 25+ reusable components
 - **Responsive Breakpoints:** 5+ device sizes
@@ -178,4 +178,4 @@ We welcome contributions to improve the conference website! Please see [CONTRIBU
 
 ---
 
-© 2025 Jai Hind College (Empowered Autonomous). All rights reserved.
+© 2026 Jai Hind College (Empowered Autonomous). All rights reserved.
