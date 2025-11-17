@@ -87,9 +87,9 @@ const Index = () => {
           </div>
           <div id="participation-payment" className="grid sm:grid-cols-1 md:grid-cols-2 gap-6">
             {/* Optimized Fees Card */}
-            <div className="rounded-xl border border-primary/20 bg-gradient-to-br from-white via-primary/5 to-primary/10 shadow-lg hover:shadow-xl transition-shadow duration-200">
+            <div className="rounded-xl border border-primary/30 bg-gradient-to-br from-white via-primary/15 to-primary/30 shadow-lg hover:shadow-xl transition-shadow duration-200">
               <div className="p-6 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/30 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-1">
                   Participation Fees
                 </h3>
@@ -107,7 +107,7 @@ const Index = () => {
                       className="flex items-center justify-between py-3 px-3 rounded-lg hover:bg-gradient-to-r hover:from-primary/5 hover:to-accent/5 transition-all duration-200 border border-transparent hover:border-primary/10"
                     >
                       <div className="text-sm font-medium text-gray-700">{item.label}</div>
-                      <div className="text-lg font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                      <div className="text-lg font-bold text-gray-900">
                         {item.price}
                       </div>
                     </div>
