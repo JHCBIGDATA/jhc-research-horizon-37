@@ -97,17 +97,13 @@ const SpeakersSection = () => {
           viewport={{ once: true }}
         >
           <motion.div
-            className="inline-flex items-center bg-gradient-to-r from-accent/15 to-primary/15 text-accent px-6 py-3 rounded-full text-sm font-medium mb-6 border border-accent/20"
+            className="inline-flex items-center bg-gradient-to-r from-primary to-accent text-white px-6 py-3 rounded-full text-sm font-bold mb-6 border-0 shadow-lg"
             whileHover={{ scale: 1.05, y: -2 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <motion.span
-              animate={{ rotate: [0, 10, -10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="mr-2"
-            >
+            <span className="mr-2">
               🎤
-            </motion.span>
+            </span>
             Distinguished Speakers
           </motion.div>
           <motion.h2 

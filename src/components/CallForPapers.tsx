@@ -139,7 +139,7 @@ const CallForPapers = () => {
       <div className="container mx-auto px-4 relative z-10">
         
         <div className="text-center mb-12">
-          <div className="inline-flex items-center bg-gradient-to-r from-primary/15 to-accent/15 text-primary px-6 py-3 rounded-full text-sm font-medium mb-6 border border-primary/20">
+          <div className="inline-flex items-center bg-gradient-to-r from-primary to-accent text-white px-6 py-3 rounded-full text-sm font-bold mb-6 border-0 shadow-lg">
             <span className="mr-2">📝</span>
             Call for Papers
           </div>
@@ -154,8 +154,8 @@ const CallForPapers = () => {
         {/* Research Tracks as Simple Cards (no animation) */}
         <div className="mb-12">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 px-4 py-2 rounded-full mb-4">
-              <span className="text-primary text-sm font-medium">🔬 Research Areas</span>
+            <div className="inline-flex items-center bg-gradient-to-r from-primary to-accent border-0 px-4 py-2 rounded-full mb-4 shadow-lg">
+              <span className="text-white text-sm font-bold">🔬 Research Areas</span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
               Research Tracks
@@ -226,21 +226,24 @@ const CallForPapers = () => {
 
         {/* Publication Opportunities */}
         <div className="text-center">
-          <Card className="max-w-3xl mx-auto bg-gradient-to-br from-accent/10 to-primary/10 border-accent/20">
-            <CardContent className="p-8">
-              <Award className="h-12 w-12 text-accent mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-primary mb-4">Publication Opportunities</h3>
-              <p className="text-muted-foreground mb-6">
-                Selected high-quality papers will be recommended for publication in:
-              </p>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-white rounded-lg p-4">
-                  <h4 className="font-semibold text-primary">UGC CARE Listed Journals</h4>
-                  <p className="text-sm text-muted-foreground">Peer-reviewed publication in recognized journals</p>
-                </div>
-                <div className="bg-white rounded-lg p-4">
-                  <h4 className="font-semibold text-primary">International Journals</h4>
-                  <p className="text-sm text-muted-foreground">Global reach with international editorial boards</p>
+          <Card className="max-w-3xl mx-auto bg-gradient-to-br from-primary to-accent border-0 overflow-hidden shadow-xl">
+            <CardContent className="p-8 relative">
+              <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+              <div className="relative z-10">
+                <Award className="h-12 w-12 text-white mx-auto mb-4" />
+                <h3 className="text-2xl font-bold text-white mb-4">Publication Opportunities</h3>
+                <p className="text-white/90 mb-6">
+                  Selected high-quality papers will be recommended for publication in:
+                </p>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 shadow-md">
+                    <h4 className="font-semibold text-primary">UGC CARE Listed Journals</h4>
+                    <p className="text-sm text-muted-foreground">Peer-reviewed publication in recognized journals</p>
+                  </div>
+                  <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 shadow-md">
+                    <h4 className="font-semibold text-primary">International Journals</h4>
+                    <p className="text-sm text-muted-foreground">Global reach with international editorial boards</p>
+                  </div>
                 </div>
               </div>
             </CardContent>

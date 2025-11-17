@@ -1,4 +1,4 @@
-import { Calendar, MapPin, Zap } from 'lucide-react';
+import { Calendar, MapPin, Users, Award, FileText, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CountdownTimer from '@/components/CountdownTimer';
 import { motion } from 'framer-motion';
@@ -6,14 +6,11 @@ import { useState, useEffect, useRef } from 'react';
 
 const HeroSection = () => {
 
-  const [typedText, setTypedText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
   const [foregroundVideoReady, setForegroundVideoReady] = useState(false);
   const [posterLoaded, setPosterLoaded] = useState(false);
   const bgVideoRef = useRef<HTMLVideoElement>(null);
   const fgVideoRef = useRef<HTMLVideoElement>(null);
-  const fullText = "NEXT GEN INTELLIGENCE - AI, ANALYTICS AND DATA SCIENCE ACROSS GLOBAL DOMAINS";
 
   // Aggressive video preloading and optimization
   useEffect(() => {
@@ -44,36 +41,13 @@ const HeroSection = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const typeSpeed = isDeleting ? 50 : 100;
-    const pauseTime = isDeleting ? 0 : 2000;
 
-    if (!isDeleting && typedText === fullText) {
-      const timer = setTimeout(() => setIsDeleting(true), pauseTime);
-      return () => clearTimeout(timer);
-    }
-
-    if (isDeleting && typedText === '') {
-      setIsDeleting(false);
-      return;
-    }
-
-    const timer = setTimeout(() => {
-      if (isDeleting) {
-        setTypedText(current => current.slice(0, -1));
-      } else {
-        setTypedText(current => fullText.slice(0, current.length + 1));
-      }
-    }, typeSpeed);
-
-    return () => clearTimeout(timer);
-  }, [typedText, isDeleting, fullText]);
 
   return (
-    <section id="home" className="hero-gradient min-h-screen flex items-center text-white relative overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center text-white overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* Poster Image - Shows INSTANTLY, no loading delay */}
+        {/* Poster Image */}
         <div className={`absolute inset-0 transition-opacity duration-1000 ${videoReady ? 'opacity-0' : 'opacity-100'}`}>
           <img
             src="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1920,f_jpg/v1760102494/12777808_2560_1440_30fps_rwfmun.jpg"
@@ -86,7 +60,7 @@ const HeroSection = () => {
           />
         </div>
         
-        {/* Video - Fades in over poster when ready */}
+        {/* Video */}
         <video
           ref={bgVideoRef}
           className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
@@ -107,205 +81,158 @@ const HeroSection = () => {
           onError={() => setVideoReady(false)}
         />
         
-        {/* Gradient overlays above video */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-accent/80 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-tl from-accent/20 via-transparent to-primary/30 pointer-events-none" />
-      </div>
-
-      {/* Scroll Cue */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
-        <button
-          aria-label="Scroll to next section"
-          onClick={() => {
-            const el = document.querySelector('#about-conference');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }}
-          className="group inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 transition"
-        >
-          <span className="block w-2 h-2 border-b-2 border-r-2 border-white rotate-45 translate-y-0 group-hover:translate-y-0.5 transition"></span>
-        </button>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/75 via-primary/70 to-accent/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-tl from-accent/25 via-transparent to-primary/30"></div>
       </div>
       
-  {/* Main Layout */}
-  <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
+      {/* Main Content */}
+      <div className="container mx-auto px-4 py-20 relative z-10">
+        <div className="max-w-7xl mx-auto">
           
-          {/* Left Side: Content */}
+          {/* Top info bar - hidden on mobile */}
           <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            className="hidden md:flex flex-wrap items-center justify-center gap-6 mb-12"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            {/* Badge */}
+            <div className="flex items-center gap-2 text-sm text-white/80">
+              <Calendar className="w-4 h-4 text-accent" />
+              <span className="font-medium">January 7, 2026</span>
+            </div>
+            <div className="w-px h-4 bg-white/20"></div>
+            <div className="flex items-center gap-2 text-sm text-white/80">
+              <MapPin className="w-4 h-4 text-accent" />
+              <span className="font-medium">Jai Hind College, Mumbai</span>
+            </div>
+            <div className="w-px h-4 bg-white/20"></div>
+            <div className="flex items-center gap-2 text-sm text-white/80">
+              <Users className="w-4 h-4 text-accent" />
+              <span className="font-medium">Research • Academia • Industry</span>
+            </div>
+          </motion.div>
+
+          {/* Main hero content - centered */}
+          <div className="text-center max-w-5xl mx-auto space-y-4">
+            
+            {/* NRC Logo */}
             <motion.div
-              className="inline-flex items-center bg-gradient-to-r from-accent/20 to-primary/20 border border-accent/30 px-4 py-2 rounded-full"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              className="flex justify-center"
             >
-              <Zap className="w-4 h-4 mr-2 text-accent" />
-              <span className="text-sm font-semibold">JHC 2026</span>
+              <img 
+                src="/lovable-uploads/image-removebg-preview.png" 
+                alt="JHC NRC Logo" 
+                className="w-28 h-28 md:w-32 md:h-32 object-contain drop-shadow-2xl"
+              />
+            </motion.div>
+            
+            {/* Conference badge */}
+            <motion.div
+              className="inline-flex items-center gap-2 bg-accent/10 border border-accent/30 px-4 py-2 rounded-full"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <Award className="w-4 h-4 text-accent" />
+              <span className="text-sm font-semibold text-accent">National Research Conference 2026</span>
             </motion.div>
 
-            {/* Main Headline */}
-            <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            >
-              <span className="bg-gradient-to-r from-white via-accent to-white bg-clip-text text-transparent">
-                National Research
-              </span>
-              <br />
-              <span className="bg-gradient-to-r from-accent via-white to-accent bg-clip-text text-transparent">
-                Conference
-              </span>
-            </motion.h1>
-
-            {/* Typing Animation */}
+            {/* Main title */}
             <motion.div
-              className="text-lg md:text-xl text-white/90 font-light min-h-[2rem]"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.7 }}
             >
-              <span>
-                {typedText}
-                <motion.span
-                  className="inline-block w-0.5 h-5 bg-accent ml-1"
-                  animate={{ opacity: [0, 1, 0] }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                />
-              </span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 leading-[1.2]">
+                <span className="block bg-gradient-to-r from-accent via-yellow-300 to-accent bg-clip-text text-transparent pb-1">
+                  Next Gen Intelligence
+                </span>
+                <span className="block text-white mt-3">
+                  AI, Analytics & Data Science
+                </span>
+              </h1>
+              <p className="text-lg md:text-xl text-white/60 font-medium mt-4">
+                Across Global Domains
+              </p>
             </motion.div>
 
-            {/* Subheading */}
+            {/* Subtitle */}
             <motion.p
-              className="text-base md:text-lg text-white/80 max-w-2xl"
-              initial={{ opacity: 0, y: 10 }}
+              className="text-base md:text-lg text-white max-w-3xl mx-auto leading-relaxed font-medium"
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1 }}
+              transition={{ delay: 0.5 }}
             >
-              A national forum spotlighting next‑gen AI, analytics and data science applications across global domains.
+              Join leading researchers, academicians, and industry experts to present cutting-edge research and explore transformative applications across global domains.
             </motion.p>
 
-            {/* Date/Venue Chip */}
+            {/* Key Highlights - hidden on mobile */}
             <motion.div
-              className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-white/90"
-              initial={{ opacity: 0, y: 10 }}
+              className="hidden md:flex flex-wrap items-center justify-center gap-4 pt-2"
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1 }}
+              transition={{ delay: 0.6 }}
             >
-              <span className="inline-flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-accent" />
-                <span className="text-sm font-medium">January 7, 2026</span>
-              </span>
-              <span className="w-px h-4 bg-white/30" />
-              <span className="inline-flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-accent" />
-                <span className="text-sm font-medium">Jai Hind College, Churchgate, Mumbai</span>
-              </span>
+              {[
+                { icon: "🎓", text: "Research Presentations" },
+                { icon: "🏆", text: "Best Paper Awards" },
+                { icon: "🤝", text: "Networking" },
+                { icon: "📜", text: "Publication Opportunity" }
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 hover:bg-white/15 transition-all duration-300"
+                >
+                  <span className="text-lg">{item.icon}</span>
+                  <span className="text-sm font-medium text-white/90">{item.text}</span>
+                </div>
+              ))}
             </motion.div>
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2"
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2 }}
+              transition={{ delay: 0.8 }}
             >
-              <div className="flex flex-col sm:flex-row gap-3">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button
-                    size="lg"
-                    className="bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent text-black font-bold px-8 py-4 text-lg rounded-full shadow-2xl hover:shadow-accent/25 transition-all duration-300"
-                    onClick={() => window.open('https://tinyurl.com/3p4s4zhj', '_blank', 'noopener,noreferrer')}
-                  >
-                    Register Now
-                  </Button>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-2 border-white/60 text-white bg-transparent hover:bg-white hover:text-primary font-bold px-8 py-4 text-lg rounded-full backdrop-blur-sm transition-all duration-300"
-                    onClick={() => window.open('/Nationalconference_JHC_MSc_BDA.pdf', '_blank', 'noopener,noreferrer')}
-                  >
-                    Download Brochure
-                  </Button>
-                </motion.div>
-              </div>
+              <Button
+                size="lg"
+                className="group bg-accent hover:bg-yellow-400 text-black font-bold px-8 py-4 text-base rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                onClick={() => window.open('https://tinyurl.com/3p4s4zhj', '_blank', 'noopener,noreferrer')}
+              >
+                Register Now
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-primary font-semibold px-8 py-4 text-base rounded-lg backdrop-blur-sm transition-all duration-300"
+                onClick={() => window.open('/Nationalconference_JHC_MSc_BDA.pdf', '_blank', 'noopener,noreferrer')}
+              >
+                <FileText className="mr-2 w-4 h-4" />
+                View Brochure
+              </Button>
             </motion.div>
-            {/* Countdown */}
-            <div className="mt-6 max-w-md">
+
+            {/* Countdown timer */}
+            <motion.div
+              className="pt-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.0 }}
+            >
               <CountdownTimer compact />
-            </div>
+            </motion.div>
 
-            
-          </motion.div>
-
-          {/* Right Side: Foreground video with controls */}
-          <div className="relative w-full max-w-xl aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black mx-auto mt-8 lg:mt-0 flex items-center justify-center">
-            {/* Poster Image - Shows instantly */}
-            <div className={`absolute inset-0 transition-opacity duration-1000 ${foregroundVideoReady ? 'opacity-0' : 'opacity-100'}`}>
-              <img
-                src="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1280,f_jpg/v1760102488/8327799-uhd_3840_2160_25fps_qaftbp.jpg"
-                alt="Conference preview"
-                className="w-full h-full object-cover rounded-2xl"
-                draggable="false"
-                loading="eager"
-                fetchpriority="high"
-              />
-            </div>
-            
-            {/* Video - Fades in when ready */}
-            <video
-              ref={fgVideoRef}
-              className={`w-full h-full object-cover rounded-2xl transition-opacity duration-1000 ${foregroundVideoReady ? 'opacity-100' : 'opacity-0'}`}
-              src="https://res.cloudinary.com/dhrixwtfw/video/upload/q_auto:low,w_1280,f_mp4/v1760102488/8327799-uhd_3840_2160_25fps_qaftbp.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              style={{ background: '#000' }}
-              onLoadedData={() => setForegroundVideoReady(true)}
-              onCanPlay={() => {
-                if (fgVideoRef.current) {
-                  fgVideoRef.current.play().catch(() => {});
-                }
-              }}
-            />
           </div>
         </div>
       </div>
 
-      {/* Subtle Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Floating particles */}
-        {Array.from({ length: 8 }, (_, i) => (
-          <motion.div
-            key={`particle-${i}`}
-            className="absolute w-2 h-2 bg-accent/30 rounded-full"
-            animate={{
-              x: [0, 100, 0],
-              y: [0, -50, 0],
-              opacity: [0, 0.6, 0],
-            }}
-            transition={{
-              duration: 8 + i,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.5,
-            }}
-            style={{
-              left: `${10 + i * 10}%`,
-              top: `${20 + i * 8}%`,
-            }}
-          />
-        ))}
-      </div>
     </section>
   );
 };

@@ -88,12 +88,12 @@ const Guidelines = () => {
           viewport={{ once: true }}
         >
           <motion.div
-            className="inline-flex items-center bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 px-4 py-2 rounded-full mb-6"
+            className="inline-flex items-center bg-gradient-to-r from-primary to-accent border-0 px-4 py-2 rounded-full mb-6 shadow-lg"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <Star className="w-4 h-4 text-primary mr-2" />
-            <span className="text-primary text-sm font-medium">Submission Excellence</span>
+            <Star className="w-4 h-4 text-white mr-2" />
+            <span className="text-white text-sm font-bold">Submission Excellence</span>
           </motion.div>
           <motion.h2 
             className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4"

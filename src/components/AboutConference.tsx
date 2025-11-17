@@ -1,11 +1,16 @@
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Sparkles, TrendingUp, Users, Calendar } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
 
 const AboutConference = () => {
-  const stats = [
+  const statsRef = useRef(null);
+  const isInView = useInView(statsRef, { once: true });
+  
+  const statsConfig = [
     { 
-      value: "500+", 
+      end: 500,
+      suffix: "+",
       label: "Expected Participants", 
       delay: 0.1,
       icon: Users,
@@ -13,7 +18,8 @@ const AboutConference = () => {
       bgGradient: "from-blue-50 to-cyan-50"
     },
     { 
-      value: "50+", 
+      end: 50,
+      suffix: "+",
       label: "Research Papers", 
       delay: 0.2,
       icon: Sparkles,
@@ -21,7 +27,8 @@ const AboutConference = () => {
       bgGradient: "from-purple-50 to-pink-50"
     },
     { 
-      value: "20+", 
+      end: 20,
+      suffix: "+",
       label: "Industry Experts", 
       delay: 0.3,
       icon: TrendingUp,
@@ -29,7 +36,8 @@ const AboutConference = () => {
       bgGradient: "from-green-50 to-emerald-50"
     },
     { 
-      value: "2", 
+      end: 2,
+      suffix: "",
       label: "Conference Days", 
       delay: 0.4,
       icon: Calendar,
@@ -37,6 +45,39 @@ const AboutConference = () => {
       bgGradient: "from-orange-50 to-red-50"
     }
   ];
+  
+  const [stats, setStats] = useState(
+    statsConfig.map(s => ({ ...s, current: 0 }))
+  );
+
+  useEffect(() => {
+    if (isInView) {
+      statsConfig.forEach((stat, index) => {
+        const duration = 2000;
+        const startTime = Date.now();
+        
+        const animate = () => {
+          const now = Date.now();
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+          const currentValue = Math.floor(stat.end * easeOutQuart);
+          
+          setStats(prev => {
+            const newStats = [...prev];
+            newStats[index] = { ...newStats[index], current: currentValue };
+            return newStats;
+          });
+          
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          }
+        };
+        
+        setTimeout(() => animate(), index * 200);
+      });
+    }
+  }, [isInView]);
 
   return (
     <section id="about-conference" className="py-12 bg-gradient-to-br from-primary/5 via-accent/3 to-primary/5 relative overflow-hidden">
@@ -70,17 +111,13 @@ const AboutConference = () => {
           viewport={{ once: true }}
         >
           <motion.div
-            className="inline-flex items-center bg-gradient-to-r from-accent/15 to-primary/15 text-primary px-6 py-3 rounded-full text-sm font-medium mb-6 border border-accent/20"
+            className="inline-flex items-center bg-gradient-to-r from-primary to-accent text-white px-6 py-3 rounded-full text-sm font-bold mb-6 border-0 shadow-lg"
             whileHover={{ scale: 1.05, y: -2 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <motion.span
-              animate={{ rotate: [0, 10, -10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="mr-2"
-            >
+            <span className="mr-2">
               🎯
-            </motion.span>
+            </span>
             About Conference
           </motion.div>
           <motion.h2 
@@ -106,6 +143,7 @@ const AboutConference = () => {
 
         {/* Enhanced Statistics */}
         <motion.div 
+          ref={statsRef}
           className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -125,13 +163,11 @@ const AboutConference = () => {
               <Card className={`text-center bg-gradient-to-br ${stat.bgGradient} border-0 shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden group-hover:shadow-xl`}>
                 <div className={`absolute inset-0 bg-gradient-to-r ${stat.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
                 <CardContent className="p-3 sm:p-4 md:p-6 relative z-10">
-                  <motion.div
-                    className={`w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-xl bg-gradient-to-r ${stat.gradient} flex items-center justify-center`}
-                    whileHover={{ rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
+                  <div
+                    className={`w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-xl bg-gradient-to-r ${stat.gradient} flex items-center justify-center transition-transform hover:scale-110 duration-300`}
                   >
                     <stat.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-                  </motion.div>
+                  </div>
                   <motion.div
                     className={`text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-1 sm:mb-2`}
                     initial={{ scale: 0.5, opacity: 0 }}
@@ -140,7 +176,7 @@ const AboutConference = () => {
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.1 }}
                   >
-                    {stat.value}
+                    {stat.current}{stat.suffix}
                   </motion.div>
                   <p className="text-xs sm:text-sm md:text-sm text-muted-foreground font-medium leading-tight">{stat.label}</p>
                 </CardContent>

@@ -42,14 +42,14 @@ const Index = () => {
                 <span className="inline-flex items-center bg-accent/20 text-accent px-2 sm:px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap">
                   📄 Brochure
                 </span>
-                <a className="underline font-medium hover:text-accent transition-colors text-xs sm:text-sm truncate" href="https://www.canva.com/design/DAGslINhSs0/VzEkMwyPX5Seyf-O-W-aqw/edit?utm_content=DAGslINhSs0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">View details</a>
+                <a className="underline font-medium hover:text-accent transition-colors text-xs sm:text-sm truncate" href="/Nationalconference_JHC_MSc_BDA.pdf" target="_blank" rel="noopener noreferrer">View details</a>
               </div>
               <div className="hidden sm:block w-px h-6 bg-gradient-to-b from-transparent via-primary/50 to-transparent"></div>
               <div className="flex items-center gap-1.5 sm:gap-2 w-full sm:w-auto justify-center">
                 <span className="inline-flex items-center bg-green-500/20 text-green-600 px-2 sm:px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap">
                   💳 Payment
                 </span>
-                <a className="underline font-medium hover:text-green-600 transition-colors text-xs sm:text-sm truncate" href="#participation-payment">Jump to details</a>
+                <a className="underline font-medium hover:text-green-600 transition-colors text-xs sm:text-sm truncate" href="#participation-payment" onClick={(e) => { e.preventDefault(); document.getElementById('participation-payment')?.scrollIntoView({ behavior: 'smooth' }); }}>Jump to details</a>
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@ const Index = () => {
         {/* Enhanced Participation & Payment section - Optimized */}
         <div className="container mx-auto px-4 py-8">
           <div className="text-center mb-8">
-            <span className="inline-flex items-center bg-gradient-to-r from-primary/15 to-accent/15 text-primary px-6 py-3 rounded-full text-sm font-medium border border-primary/20">
+            <span className="inline-flex items-center bg-gradient-to-r from-primary to-accent text-white px-6 py-3 rounded-full text-sm font-bold border-0 shadow-lg">
               <span className="mr-2">💳</span>
               Participation & Payment
             </span>

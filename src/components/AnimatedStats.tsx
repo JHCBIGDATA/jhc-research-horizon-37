@@ -68,7 +68,7 @@ const AnimatedStats = () => {
     { end: 500, label: 'Expected Participants', suffix: '+' },
     { end: 50, label: 'Research Papers', suffix: '+' },
     { end: 20, label: 'Industry Experts', suffix: '+' },
-    { end: 15, label: 'Academic Sessions', suffix: '+' }
+    { end: 2, label: 'Conference Days', suffix: '' }
   ];
 
   return (
