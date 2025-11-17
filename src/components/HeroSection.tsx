@@ -116,17 +116,20 @@ const HeroSection = () => {
           {/* Main hero content - centered */}
           <div className="text-center max-w-5xl mx-auto space-y-4">
             
-            {/* NRC Logo */}
+            {/* NRC Logo Video */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1, duration: 0.6 }}
               className="flex justify-center"
             >
-              <img 
-                src="/lovable-uploads/image-removebg-preview.png" 
-                alt="JHC NRC Logo" 
-                className="w-28 h-28 md:w-32 md:h-32 object-contain drop-shadow-2xl"
+              <video 
+                src="/lovable-uploads/rr.mp4" 
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-28 h-28 md:w-32 md:h-32 object-contain drop-shadow-2xl rounded-full bg-white/10 backdrop-blur-sm"
               />
             </motion.div>
             
