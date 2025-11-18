@@ -79,47 +79,56 @@ const TeamPage = () => {
     {
       name: "Prasad",
       role: "Overall Coordinator",
-      department: "Event Management"
+      department: "Event Management",
+      command: "sudo run event.coordinator --mode=overall"
     },
     {
       name: "Pooja",
       role: "Overall Coordinator",
-      department: "Event Management"
+      department: "Event Management",
+      command: "sudo run event.coordinator --mode=overall"
     },
     {
       name: "Musab",
       role: "Overall Coordinator",
-      department: "Event Management"
+      department: "Event Management",
+      command: "sudo run event.coordinator --mode=overall"
     },
     {
       name: "Vishesh",
       role: "Website Manager",
-      department: "Technical Team"
+      department: "Technical Team",
+      command: "npm run dev:website --port=3000"
     },
     {
       name: "Sonakshi",
       role: "Social Media Manager",
-      department: "Marketing Team"
+      department: "Marketing Team",
+      command: "sh run-social-media.sh --platform=all"
     },
     {
       name: "Pranay",
       role: "PR Manager",
-      department: "Public Relations"
+      department: "Public Relations",
+      command: "python pr_manager.py --mode=outreach"
     },
     {
       name: "Priyanshu",
       role: "PR Manager",
-      department: "Public Relations"
+      department: "Public Relations",
+      command: "python pr_manager.py --mode=outreach"
     },
     {
       name: "Pranav",
       role: "Publishing Head",
-      department: "Publications Team"
+      department: "Publications Team",
+      command: "git push publications main --force"
     },
     {
       name: "Rudra",
       role: "Publishing Manager",
-      department: "Publications Team"
+      department: "Publications Team",
+      command: "latex compile paper.tex && pdf generate"
     }
   ];
 
@@ -235,30 +244,79 @@ const TeamPage = () => {
               </div>
             </motion.div>
 
-            {/* Student Coordinators Section */}
+            {/* Student Coordinators Section - Terminal Style */}
             <motion.div
               variants={itemVariants}
               className="mb-16"
             >
-              <h2 className="text-2xl sm:text-3xl font-bold text-primary text-center mb-4 sm:mb-8">Student Coordinators</h2>
-              <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Our dynamic student team managing various aspects of the conference including website, social media, PR, publications, and overall coordination
-              </p>
+              <div className="text-center mb-8">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 font-mono">
+                  <span className="text-green-500">student@jhc2026:~$</span>{" "}
+                  <span className="text-primary">cat team_coordinators.json</span>
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto font-mono text-sm">
+                  {"{"} "message": "Loading student coordination team..." {"}"}
+                </p>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {studentTeam.map((member, index) => (
                   <motion.div
                     key={index}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    transition={{ duration: 0.3 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.02, y: -5 }}
                   >
-                    <Card className="hover:shadow-xl transition-all duration-300 text-center border-2 hover:border-accent/30 bg-gradient-to-br from-white to-accent/5">
-                      <CardContent className="p-6">
-                        <div className="mx-auto w-20 h-20 bg-gradient-to-br from-accent to-primary rounded-full flex items-center justify-center mb-4 shadow-lg">
-                          <User className="h-10 w-10 text-white" />
+                    <Card className="hover:shadow-2xl transition-all duration-300 border-2 border-gray-800 bg-black text-green-400 overflow-hidden group">
+                      <CardContent className="p-0">
+                        {/* Terminal Header */}
+                        <div className="bg-gray-800 px-4 py-2 flex items-center space-x-2 border-b border-gray-700">
+                          <div className="flex space-x-2">
+                            <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                          </div>
+                          <span className="text-xs text-gray-400 font-mono flex-1 text-center">
+                            {member.name.toLowerCase()}@terminal
+                          </span>
                         </div>
-                        <h3 className="font-bold text-xl text-foreground mb-2">{member.name}</h3>
-                        <p className="text-sm text-accent font-semibold mb-1">{member.role}</p>
-                        <p className="text-xs text-muted-foreground">{member.department}</p>
+                        
+                        {/* Terminal Content */}
+                        <div className="p-5 font-mono text-sm space-y-2 bg-black">
+                          <div className="flex items-start space-x-2">
+                            <span className="text-blue-400">$</span>
+                            <div className="flex-1">
+                              <p className="text-green-400 group-hover:text-green-300 transition-colors">
+                                whoami
+                              </p>
+                              <p className="text-white font-bold text-lg mt-1">{member.name}</p>
+                            </div>
+                          </div>
+                          
+                          <div className="flex items-start space-x-2 pt-2">
+                            <span className="text-blue-400">$</span>
+                            <div className="flex-1">
+                              <p className="text-green-400 group-hover:text-green-300 transition-colors">
+                                cat role.txt
+                              </p>
+                              <p className="text-yellow-400 font-semibold mt-1">{member.role}</p>
+                              <p className="text-gray-500 text-xs mt-1">{member.department}</p>
+                            </div>
+                          </div>
+                          
+                          <div className="flex items-start space-x-2 pt-2">
+                            <span className="text-blue-400">$</span>
+                            <div className="flex-1">
+                              <p className="text-green-400 group-hover:text-green-300 transition-colors break-all">
+                                {member.command}
+                              </p>
+                              <p className="text-green-500 text-xs mt-1 animate-pulse">
+                                ● Running... [OK]
+                              </p>
+                            </div>
+                          </div>
+                        </div>
                       </CardContent>
                     </Card>
                   </motion.div>
