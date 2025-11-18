@@ -340,7 +340,7 @@ const TeamPage = () => {
                               ease: "linear"
                             }}
                           >
-                            {'ハッカー\nデータ\n解析中\n実行中\n処理中\n'.split('\n').map((char, idx) => (
+                            {['ハッカー', 'データ', '解析中', '実行中', '処理中'].map((char, idx) => (
                               <div key={idx} style={{ opacity: Math.max(0, 1 - idx * 0.15) }}>{char}</div>
                             ))}
                           </motion.div>
