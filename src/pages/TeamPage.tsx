@@ -75,23 +75,83 @@ const TeamPage = () => {
     }
   };
 
+  const studentTeam = [
+    {
+      name: "Prasad",
+      role: "Overall Coordinator",
+      department: "Event Management"
+    },
+    {
+      name: "Pooja",
+      role: "Overall Coordinator",
+      department: "Event Management"
+    },
+    {
+      name: "Musab",
+      role: "Overall Coordinator",
+      department: "Event Management"
+    },
+    {
+      name: "Vishesh",
+      role: "Website Manager",
+      department: "Technical Team"
+    },
+    {
+      name: "Sonakshi",
+      role: "Social Media Manager",
+      department: "Marketing Team"
+    },
+    {
+      name: "Pranay",
+      role: "PR Manager",
+      department: "Public Relations"
+    },
+    {
+      name: "Priyanshu",
+      role: "PR Manager",
+      department: "Public Relations"
+    },
+    {
+      name: "Pranav",
+      role: "Publishing Head",
+      department: "Publications Team"
+    },
+    {
+      name: "Rudra",
+      role: "Publishing Manager",
+      department: "Publications Team"
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-white to-accent/5">
       <Header />
       
-      <section className="pt-24 pb-20 section-gradient">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-16"
+      {/* Hero Section */}
+      <section className="pt-20 pb-20 hero-gradient text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div 
+            className="text-center max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">Organizing Team</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Meet the dedicated faculty and staff members ensuring the success of JHC 2026 National Research Conference
+            <h1 className="text-6xl font-bold mb-6 leading-tight">
+              Our <span className="text-accent">Team</span>
+            </h1>
+            <p className="text-xl mb-8 leading-relaxed opacity-90">
+              Meet the dedicated faculty, staff, and student coordinators who are working tirelessly 
+              to make JHC 2026 National Research Conference a grand success
             </p>
           </motion.div>
+        </div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-accent/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
+      </section>
+
+      <section className="py-24">
+        <div className="container mx-auto px-4">
 
           <motion.div
             variants={containerVariants}
@@ -175,6 +235,37 @@ const TeamPage = () => {
               </div>
             </motion.div>
 
+            {/* Student Coordinators Section */}
+            <motion.div
+              variants={itemVariants}
+              className="mb-16"
+            >
+              <h2 className="text-2xl sm:text-3xl font-bold text-primary text-center mb-4 sm:mb-8">Student Coordinators</h2>
+              <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+                Our dynamic student team managing various aspects of the conference including website, social media, PR, publications, and overall coordination
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {studentTeam.map((member, index) => (
+                  <motion.div
+                    key={index}
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Card className="hover:shadow-xl transition-all duration-300 text-center border-2 hover:border-accent/30 bg-gradient-to-br from-white to-accent/5">
+                      <CardContent className="p-6">
+                        <div className="mx-auto w-20 h-20 bg-gradient-to-br from-accent to-primary rounded-full flex items-center justify-center mb-4 shadow-lg">
+                          <User className="h-10 w-10 text-white" />
+                        </div>
+                        <h3 className="font-bold text-xl text-foreground mb-2">{member.name}</h3>
+                        <p className="text-sm text-accent font-semibold mb-1">{member.role}</p>
+                        <p className="text-xs text-muted-foreground">{member.department}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
             {/* Team Photo Section */}
             <motion.div
               variants={itemVariants}
@@ -182,8 +273,8 @@ const TeamPage = () => {
             >
               <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-4 sm:mb-6">JHC 2024 Organizing Team</h2>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                The successful organizing team from our 2024 conference. While the organizing team structure will evolve for 2026, 
-                our core leadership and committee members remain committed to delivering another exceptional conference experience.
+                The successful organizing team from our 2024 conference. For JHC 2026, we maintain our proven leadership structure 
+                along with an energetic student coordination team to deliver an even more exceptional conference experience.
               </p>
               <motion.div
                 whileHover={{ scale: 1.02 }}
@@ -195,13 +286,6 @@ const TeamPage = () => {
                   className="rounded-xl shadow-2xl mx-auto max-w-5xl w-full"
                 />
               </motion.div>
-              <div className="mt-6 bg-primary/5 rounded-lg p-4 max-w-3xl mx-auto">
-                <p className="text-sm text-muted-foreground">
-                  <span className="font-medium text-primary">JHC 2024 Conference Team:</span> This photo showcases our dedicated 2024 organizing team. 
-                  For JHC 2026, we maintain our proven leadership structure while preparing an enhanced organizing framework to deliver 
-                  an even more impactful conference experience.
-                </p>
-              </div>
             </motion.div>
           </motion.div>
         </div>
