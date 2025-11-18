@@ -665,6 +665,64 @@ const TeamPage = () => {
                 />
               </motion.div>
             </motion.div>
+
+            {/* Spotlight Inspiration */}
+            <motion.div
+              variants={itemVariants}
+              className="mt-20"
+            >
+              <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
+                <motion.div
+                  className="relative order-2 lg:order-1"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/10 blur-2xl opacity-60" aria-hidden="true"></div>
+                  <figure className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                    <motion.img
+                      src="https://images.pexels.com/photos/9242844/pexels-photo-9242844.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1200"
+                      alt="Students collaborating around a table with holographic charts"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      initial={{ scale: 1.05 }}
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.6 }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" aria-hidden="true"></div>
+                    <div className="absolute bottom-4 left-4 right-4 text-left text-white">
+                      <p className="text-sm font-semibold tracking-wide uppercase">Collaboration War Room</p>
+                      <p className="text-xs mt-1 text-white/80">Capturing the momentum we channel into every strategic sprint and research design session.</p>
+                    </div>
+                  </figure>
+                </motion.div>
+
+                <div className="space-y-5 order-1 lg:order-2 text-center lg:text-left">
+                  <motion.span
+                    className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-[0.25em] text-primary"
+                    animate={{ opacity: [0.4, 1, 0.4] }}
+                    transition={{ duration: 2.5, repeat: Infinity }}
+                  >
+                    ● Vision Snapshot 2026
+                  </motion.span>
+                  <h3 className="text-2xl sm:text-3xl font-bold gradient-text">
+                    Inspiring Collaboration For Research Horizons
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    This visual captures the energy we aim to bring into every strategic sprint, workshop, and brainstorming session. The multi-disciplinary team dynamic mirrors how JHC 2026 merges academia, industry, and student innovation.
+                  </p>
+                  <div className="grid sm:grid-cols-2 gap-4 text-sm">
+                    <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 backdrop-blur">
+                      <p className="font-semibold text-primary">Interdisciplinary Pods</p>
+                      <p className="text-muted-foreground mt-1">Faculty mentorship meets student initiative to convert research clues into actionable outcomes.</p>
+                    </div>
+                    <div className="rounded-xl border border-accent/30 bg-accent/10 p-4 backdrop-blur">
+                      <p className="font-semibold text-accent-foreground">Tech-First Facilitation</p>
+                      <p className="text-muted-foreground mt-1">Immersive dashboards and live metrics drive smarter coordination across conference verticals.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>

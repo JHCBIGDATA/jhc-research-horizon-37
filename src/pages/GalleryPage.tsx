@@ -1,17 +1,51 @@
 
+import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ImageGallery from '@/components/ImageGallery';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Download, FileText } from 'lucide-react';
+import { Download, FileText, Loader2 } from 'lucide-react';
+import { toast } from '@/hooks/use-toast';
 
 const GalleryPage = () => {
-  const handleBrochureDownload = () => {
-    // This would typically trigger a download of the actual brochure file
-    console.log('Downloading JHC 2026 Conference Brochure...');
-    // For now, we'll show a message - in production, this would download the actual file
-    alert('Brochure download will be available soon. Please check back later or contact us for more information.');
+  const [isDownloading, setIsDownloading] = useState(false);
+  const brochurePath = '/Nationalconference_JHC_MSc_BDA.pdf';
+
+  const handleBrochureDownload = async () => {
+    if (isDownloading) return;
+
+    try {
+      setIsDownloading(true);
+      const response = await fetch(brochurePath);
+      if (!response.ok) {
+        throw new Error('Unable to reach brochure');
+      }
+
+      const blob = await response.blob();
+      const downloadUrl = window.URL.createObjectURL(blob);
+      const anchor = document.createElement('a');
+      anchor.href = downloadUrl;
+      anchor.download = 'JHC-2026-Conference-Brochure.pdf';
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      window.URL.revokeObjectURL(downloadUrl);
+
+      toast({
+        title: 'Brochure download started',
+        description: 'Check your downloads folder for the latest JHC 2026 conference brochure.',
+      });
+    } catch (error) {
+      console.error('Brochure download failed', error);
+      toast({
+        title: 'Download failed',
+        description: 'We could not start the brochure download. Please try again or contact us for assistance.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   return (
@@ -34,7 +68,8 @@ const GalleryPage = () => {
             <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
               Explore our comprehensive collection of images from the successful JHC 2024 National Research Conference, 
               showcasing keynote sessions, research presentations, awards ceremonies, and memorable moments 
-              from our academic community. Use the search and filter options to find specific moments from our 2024 event.
+              from our academic community. You&apos;ll also find Gemini-generated concept visuals previewing our 2026 experience.
+              Use the search and filter options to discover the stories that inspire our next chapter.
             </p>
             
             {/* Conference Materials Section */}
@@ -53,9 +88,19 @@ const GalleryPage = () => {
                   <Button 
                     onClick={handleBrochureDownload}
                     className="w-full sm:w-auto bg-primary hover:bg-primary/90"
+                    disabled={isDownloading}
                   >
-                    <Download className="h-4 w-4 mr-2" />
-                    Download Conference Brochure
+                    {isDownloading ? (
+                      <>
+                        <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                        Preparing download...
+                      </>
+                    ) : (
+                      <>
+                        <Download className="h-4 w-4 mr-2" />
+                        Download Conference Brochure
+                      </>
+                    )}
                   </Button>
                   <p className="text-xs text-muted-foreground mt-2">
                     Contains call for papers, registration details, and conference schedule for JHC 2026
@@ -68,9 +113,9 @@ const GalleryPage = () => {
           {/* Historical Context Note */}
           <div className="bg-accent/10 border border-accent/20 rounded-lg p-4 mb-8 max-w-4xl mx-auto">
             <p className="text-sm text-center text-muted-foreground">
-              <span className="font-medium text-accent">📸 Archive Gallery:</span> The images below showcase highlights from our successful 
-              JHC 2024 National Research Conference. As we prepare for JHC 2026, these memories inspire us to create an even more 
-              impactful experience for our upcoming conference.
+              <span className="font-medium text-accent">📸 Archive & Vision Gallery:</span> Highlights from our successful 
+              JHC 2024 National Research Conference sit alongside Gemini-generated concept boards revealing our JHC 2026 vision. 
+              These stories energize our planning for an even more impactful experience ahead.
             </p>
           </div>
           

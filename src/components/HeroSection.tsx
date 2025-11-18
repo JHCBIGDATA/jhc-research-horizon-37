@@ -41,6 +41,12 @@ const HeroSection = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (bgVideoRef.current) {
+      bgVideoRef.current.playbackRate = 1.2;
+    }
+  }, [videoReady]);
+
 
 
   return (
@@ -75,6 +81,7 @@ const HeroSection = () => {
           onLoadedData={() => setVideoReady(true)}
           onCanPlay={() => {
             if (bgVideoRef.current) {
+              bgVideoRef.current.playbackRate = 1.2;
               bgVideoRef.current.play().catch(() => {});
             }
           }}

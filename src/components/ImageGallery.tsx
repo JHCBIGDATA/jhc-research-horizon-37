@@ -20,7 +20,7 @@ const ImageGallery = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [loadingImages, setLoadingImages] = useState<Record<string, boolean>>({});
 
-  const conferenceImages: GalleryImage[] = [
+  const conferenceImages = useMemo<GalleryImage[]>(() => [
     {
       id: 'conf-1',
       url: '/lovable-uploads/138790b0-7483-4f48-ae16-2db2f83b5253.png',
@@ -108,14 +108,86 @@ const ImageGallery = () => {
       description: 'Complete organizing committee and distinguished guests from JHC 2024',
       year: '2024',
       category: 'Team'
+    },
+    {
+      id: 'vision-2',
+      url: '/lovable-uploads/Gemini_Generated_Image_d94fh4d94fh4d94f.png',
+      title: 'JHC 2026 Vision: Data Immersion Foyer',
+      description: 'Gemini generated view of the welcome gallery featuring dynamic data walls and projection mapping.',
+      year: '2026 Vision',
+      category: 'Experience Design'
+    },
+    {
+      id: 'vision-3',
+      url: '/lovable-uploads/Gemini_Generated_Image_fg0olxfg0olxfg0o.png',
+      title: 'JHC 2026 Vision: Live Analytics Dome',
+      description: 'Immersive visualization zone designed to surround delegates with real-time research insights.',
+      year: '2026 Vision',
+      category: 'Vision 2026'
+    },
+    {
+      id: 'vision-4',
+      url: '/lovable-uploads/Gemini_Generated_Image_glek9bglek9bglek.png',
+      title: 'JHC 2026 Vision: Innovation Sprint Bay',
+      description: 'Flexible collaboration bay fusing futurist workstations with adaptive lighting for sprint sessions.',
+      year: '2026 Vision',
+      category: 'Innovation Labs'
+    },
+    {
+      id: 'vision-5',
+      url: '/lovable-uploads/Gemini_Generated_Image_jvf60bjvf60bjvf6.png',
+      title: 'JHC 2026 Vision: Strategic Command Center',
+      description: 'Central orchestration room concept for coordinating multi-track conference experiences.',
+      year: '2026 Vision',
+      category: 'Vision 2026'
+    },
+    {
+      id: 'vision-7',
+      url: '/lovable-uploads/Gemini_Generated_Image_qox012qox012qox0.png',
+      title: 'JHC 2026 Vision: Networking Concourse',
+      description: 'Community lounge concept blending informal meet-ups with digital concierge dashboards.',
+      year: '2026 Vision',
+      category: 'Networking'
+    },
+    {
+      id: 'vision-8',
+      url: '/lovable-uploads/Gemini_Generated_Image_u29v9eu29v9eu29v.png',
+      title: 'JHC 2026 Vision: Future Workforce Studio',
+      description: 'Creative lab layout celebrating student innovation and applied research showcases.',
+      year: '2026 Vision',
+      category: 'Experience Design'
+    },
+    {
+      id: 'vision-9',
+      url: '/lovable-uploads/Gemini_Generated_Image_vxqqhevxqqhevxqq.png',
+      title: 'JHC 2026 Vision: Innovation Atrium',
+      description: 'Two-level atrium concept capturing the energy of cross-disciplinary collaboration.',
+      year: '2026 Vision',
+      category: 'Innovation Labs'
+    },
+    {
+      id: 'vision-10',
+      url: '/lovable-uploads/Gemini_Generated_Image_x89sm3x89sm3x89s.png',
+      title: 'JHC 2026 Vision: Strategic Keynote Theater',
+      description: 'Reimagined keynote venue with adaptive lighting and spine-LED runways for high-impact storytelling.',
+      year: '2026 Vision',
+      category: 'Vision 2026'
+    },
+    {
+      id: 'vision-11',
+      url: '/lovable-uploads/Gemini_Generated_Image_xs2m6qxs2m6qxs2m.png',
+      title: 'JHC 2026 Vision: Data Storytelling Gallery',
+      description: 'Interactive visualization promenade for showcasing research narratives and impact metrics.',
+      year: '2026 Vision',
+      category: 'Immersive Tech'
     }
-  ];
+  ], []);
 
   // Get unique categories
   const categories = useMemo(() => {
     const cats = ['All', ...new Set(conferenceImages.map(img => img.category))];
     return cats;
-  }, []);
+  }, [conferenceImages]);
 
   // Filter images based on search and category
   const filteredImages = useMemo(() => {
@@ -125,7 +197,7 @@ const ImageGallery = () => {
       const matchesCategory = selectedCategory === 'All' || image.category === selectedCategory;
       return matchesSearch && matchesCategory;
     });
-  }, [searchTerm, selectedCategory]);
+  }, [conferenceImages, searchTerm, selectedCategory]);
 
   const openModal = (image: GalleryImage) => {
     setSelectedImage(image);
@@ -189,7 +261,7 @@ const ImageGallery = () => {
           <div className="relative flex-1 max-w-md">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <Input
-              placeholder="Search JHC 2024 conference images..."
+              placeholder="Search gallery moments..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10"
@@ -215,7 +287,7 @@ const ImageGallery = () => {
         </div>
         
         <div className="text-sm text-muted-foreground">
-          Showing {filteredImages.length} of {conferenceImages.length} images from JHC 2024 conference
+          Showing {filteredImages.length} of {conferenceImages.length} curated images from our JHC 2024 archive and 2026 concept boards
         </div>
       </div>
 
