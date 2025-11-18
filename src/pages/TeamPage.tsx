@@ -295,7 +295,7 @@ const TeamPage = () => {
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.02, y: -5 }}
                   >
-                    <Card className={`hover:shadow-2xl hover:shadow-${member.color.split(' ')[0].split('-')[1]}-500/50 transition-all duration-500 border-2 border-green-500/30 hover:border-green-400 bg-gradient-to-br from-black via-gray-900 to-black text-green-400 overflow-hidden group relative hover:scale-[1.03] hover:rotate-1`}>
+                    <Card className="hover:shadow-2xl hover:shadow-green-500/50 transition-all duration-500 border-2 border-green-500/30 hover:border-green-400 bg-gradient-to-br from-black via-gray-900 to-black text-green-400 overflow-hidden group relative hover:scale-[1.03]">
                       {/* Animated grid background */}
                       <div className="absolute inset-0 opacity-10 pointer-events-none" style={{
                         backgroundImage: 'linear-gradient(0deg, transparent 24%, rgba(34, 197, 94, .05) 25%, rgba(34, 197, 94, .05) 26%, transparent 27%, transparent 74%, rgba(34, 197, 94, .05) 75%, rgba(34, 197, 94, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(34, 197, 94, .05) 25%, rgba(34, 197, 94, .05) 26%, transparent 27%, transparent 74%, rgba(34, 197, 94, .05) 75%, rgba(34, 197, 94, .05) 76%, transparent 77%, transparent)',
@@ -304,7 +304,7 @@ const TeamPage = () => {
                       
                       {/* Neon glow pulse */}
                       <motion.div 
-                        className={`absolute inset-0 bg-gradient-to-r ${member.color} opacity-0 group-hover:opacity-10 blur-xl`}
+                        className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 opacity-0 group-hover:opacity-10 blur-xl"
                         animate={{ 
                           opacity: [0, 0.15, 0],
                           scale: [0.95, 1.05, 0.95]
@@ -345,7 +345,7 @@ const TeamPage = () => {
                       <CardContent className="p-0 relative z-10">
                         {/* ASCII Art Header */}
                         <motion.div 
-                          className={`bg-gradient-to-r ${member.color} px-4 py-3 flex items-center justify-between border-b-2 border-green-500/50`}
+                          className="bg-gradient-to-r from-green-600 to-emerald-600 px-4 py-3 flex items-center justify-between border-b-2 border-green-500/50"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: index * 0.1 + 0.3 }}
@@ -397,7 +397,7 @@ const TeamPage = () => {
                         </div>
                         
                         {/* System Metrics Bar */}
-                        <div className={`bg-gradient-to-r ${member.color} px-4 py-2 flex items-center justify-between text-xs font-mono text-white border-b border-green-500/20`}>
+                        <div className="bg-gradient-to-r from-gray-900 to-gray-800 px-4 py-2 flex items-center justify-between text-xs font-mono text-green-400 border-b border-green-500/20">
                           <div className="flex gap-4">
                             <div className="flex items-center gap-1">
                               <span className="opacity-70">CPU:</span>
@@ -410,7 +410,7 @@ const TeamPage = () => {
                               </motion.span>
                               <div className="w-12 h-1 bg-black/30 rounded-full overflow-hidden">
                                 <motion.div 
-                                  className="h-full bg-white"
+                                  className="h-full bg-green-400"
                                   initial={{ width: 0 }}
                                   animate={{ width: `${member.stats.cpu}%` }}
                                   transition={{ duration: 1.5, delay: index * 0.1 }}
@@ -561,10 +561,10 @@ const TeamPage = () => {
                         
                         {/* Bottom status bar with data visualization */}
                         <motion.div 
-                          className={`bg-gradient-to-r ${member.color} px-4 py-2 border-t-2 border-green-500/30 text-xs font-mono`}
+                          className="bg-gradient-to-r from-green-900/20 via-green-800/20 to-green-900/20 px-4 py-2 border-t-2 border-green-500/30 text-xs font-mono"
                           whileHover={{ borderTopColor: 'rgba(34, 197, 94, 0.6)' }}
                         >
-                          <div className="flex items-center justify-between text-white">
+                          <div className="flex items-center justify-between text-green-400">
                             <div className="flex items-center gap-2">
                               <motion.span
                                 animate={{ scale: [1, 1.3, 1] }}
