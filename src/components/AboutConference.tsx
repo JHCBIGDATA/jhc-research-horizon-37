@@ -160,7 +160,7 @@ const AboutConference = () => {
               whileHover={{ y: -8, scale: 1.02 }}
               className="group"
             >
-              <Card className={`text-center bg-gradient-to-br ${stat.bgGradient} border-0 shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden group-hover:shadow-xl`}>
+              <Card className={`text-center bg-gradient-to-br ${stat.bgGradient} border-2 border-gray-200 hover:border-gray-300 shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden group-hover:shadow-xl`}>
                 <div className={`absolute inset-0 bg-gradient-to-r ${stat.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
                 <CardContent className="p-3 sm:p-4 md:p-6 relative z-10">
                   <div

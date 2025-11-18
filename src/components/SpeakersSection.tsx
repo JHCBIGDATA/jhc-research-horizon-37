@@ -10,7 +10,7 @@ const SpeakersSection = () => {
       name: "Dr. Rajeev Rastogi",
       title: "Vice President of Machine Learning",
       company: "Amazon",
-      image: "/lovable-uploads/1d3f69d9-45ec-45a7-a1fd-2b2c47667a56.png",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=faces",
       expertise: ["Machine Learning", "AI Systems", "Data Science"],
       session: "Future of Generative AI in Industry",
       bio: "Leading expert in machine learning with 20+ years of experience in developing AI systems at scale."
@@ -19,7 +19,7 @@ const SpeakersSection = () => {
       name: "Prof. Sunita Sarawagi",
       title: "Professor & Research Scientist",
       company: "IIT Bombay",
-      image: "/lovable-uploads/49ef0f2c-2f2a-4f3a-bc3f-3dc7fcb42a61.png",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=faces",
       expertise: ["Natural Language Processing", "Information Extraction", "Deep Learning"],
       session: "Advances in NLP for Indian Languages",
       bio: "Renowned researcher in NLP and machine learning with numerous publications in top-tier conferences."
@@ -28,7 +28,7 @@ const SpeakersSection = () => {
       name: "Dr. Amit Kumar",
       title: "Chief Data Scientist",
       company: "Microsoft Research India",
-      image: "/lovable-uploads/55c0f04d-04fc-434a-8d75-12316a82aab8.png",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=faces",
       expertise: ["Computer Vision", "AI Ethics", "Responsible AI"],
       session: "Ethical AI and Responsible Innovation",
       bio: "Leading voice in responsible AI development with focus on ethical implications of emerging technologies."
@@ -140,13 +140,12 @@ const SpeakersSection = () => {
               <Card className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 bg-gradient-to-br from-white via-gray-50/50 to-primary/5 h-full flex flex-col border-0 shadow-lg relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <CardHeader className="text-center relative z-10 p-4 sm:p-6">
-                  <motion.div className="relative">
+                  <motion.div className="relative group/image">
                     <motion.img 
                       src={speaker.image} 
                       alt={speaker.name}
-                      className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-3 sm:mb-4 object-cover border-4 border-primary/20 shadow-lg"
-                      whileHover={{ scale: 1.05, rotateY: 10 }}
-                      transition={{ duration: 0.3 }}
+                      className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-3 sm:mb-4 object-cover border-4 border-primary/20 shadow-lg cursor-pointer transition-transform duration-300 md:hover:scale-150 md:hover:z-50"
+                      onClick={() => window.open(speaker.image, '_blank')}
                     />
                     <motion.div
                       className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-accent to-primary rounded-full"

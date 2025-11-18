@@ -177,21 +177,23 @@ const InteractiveSchedule = () => {
       case 'Poster': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
       case 'Opening': return 'bg-indigo-100 text-indigo-800 border-indigo-200';
       case 'Closing': return 'bg-pink-100 text-pink-800 border-pink-200';
+      case 'Break': return 'bg-green-100 text-green-800 border-green-200';
       default: return 'bg-gray-100 text-gray-800 border-gray-200';
     }
   };
 
   const getEventBg = (type: string) => {
     switch (type) {
-      case 'Keynote': return 'from-purple-50 to-purple-100';
-      case 'Technical': return 'from-blue-50 to-blue-100';
-      case 'Workshop': return 'from-green-50 to-green-100';
-      case 'Panel': return 'from-orange-50 to-orange-100';
-      case 'Research': return 'from-red-50 to-red-100';
-      case 'Poster': return 'from-yellow-50 to-yellow-100';
-      case 'Opening': return 'from-indigo-50 to-indigo-100';
-      case 'Closing': return 'from-pink-50 to-pink-100';
-      default: return 'from-gray-50 to-gray-100';
+      case 'Keynote': return 'from-purple-100 to-purple-150';
+      case 'Technical': return 'from-blue-100 to-blue-150';
+      case 'Workshop': return 'from-green-100 to-green-150';
+      case 'Panel': return 'from-orange-100 to-orange-150';
+      case 'Research': return 'from-red-100 to-red-150';
+      case 'Poster': return 'from-yellow-100 to-yellow-150';
+      case 'Opening': return 'from-indigo-100 to-indigo-150';
+      case 'Closing': return 'from-pink-100 to-pink-150';
+      case 'Break': return 'from-green-100 to-green-150';
+      default: return 'from-gray-100 to-gray-150';
     }
   };
 
@@ -205,6 +207,7 @@ const InteractiveSchedule = () => {
       case 'Poster': return 'from-yellow-500 to-yellow-600';
       case 'Opening': return 'from-indigo-500 to-indigo-600';
       case 'Closing': return 'from-pink-500 to-pink-600';
+      case 'Break': return 'from-green-500 to-green-600';
       default: return 'from-gray-500 to-gray-600';
     }
   };
