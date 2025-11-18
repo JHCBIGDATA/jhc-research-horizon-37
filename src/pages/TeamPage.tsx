@@ -80,55 +80,82 @@ const TeamPage = () => {
       name: "Prasad",
       role: "Overall Coordinator",
       department: "Event Management",
-      command: "sudo run event.coordinator --mode=overall"
+      command: "sudo run event.coordinator --mode=overall",
+      ascii: "█▓▒░ EVENT",
+      stats: { cpu: 98, ram: 87, network: 95 },
+      color: "from-blue-500 to-cyan-500"
     },
     {
       name: "Pooja",
       role: "Overall Coordinator",
       department: "Event Management",
-      command: "sudo run event.coordinator --mode=overall"
+      command: "sudo run event.coordinator --mode=overall",
+      ascii: "█▓▒░ COORD",
+      stats: { cpu: 96, ram: 91, network: 89 },
+      color: "from-pink-500 to-purple-500"
     },
     {
       name: "Musab",
       role: "Overall Coordinator",
       department: "Event Management",
-      command: "sudo run event.coordinator --mode=overall"
+      command: "sudo run event.coordinator --mode=overall",
+      ascii: "█▓▒░ LEAD",
+      stats: { cpu: 94, ram: 88, network: 92 },
+      color: "from-yellow-500 to-orange-500"
     },
     {
       name: "Vishesh",
       role: "Website Manager",
       department: "Technical Team",
-      command: "npm run dev:website --port=3000"
+      command: "npm run dev:website --port=3000 --turbo",
+      ascii: "⚡ WEB DEV",
+      stats: { cpu: 99, ram: 95, network: 100 },
+      color: "from-green-500 to-emerald-500"
     },
     {
       name: "Sonakshi",
       role: "Social Media Manager",
       department: "Marketing Team",
-      command: "sh run-social-media.sh --platform=all"
+      command: "python social_ai.py --auto-post --analytics",
+      ascii: "🔥 SOCIAL",
+      stats: { cpu: 85, ram: 78, network: 97 },
+      color: "from-red-500 to-pink-500"
     },
     {
       name: "Pranay",
       role: "PR Manager",
       department: "Public Relations",
-      command: "python pr_manager.py --mode=outreach"
+      command: "node pr_outreach.js --target=all --priority=high",
+      ascii: "📢 PR OPS",
+      stats: { cpu: 88, ram: 82, network: 94 },
+      color: "from-indigo-500 to-blue-500"
     },
     {
       name: "Priyanshu",
       role: "PR Manager",
       department: "Public Relations",
-      command: "python pr_manager.py --mode=outreach"
+      command: "python media_reach.py --boost --engagement=max",
+      ascii: "📡 REACH",
+      stats: { cpu: 90, ram: 85, network: 96 },
+      color: "from-violet-500 to-purple-500"
     },
     {
       name: "Pranav",
       role: "Publishing Head",
       department: "Publications Team",
-      command: "git push publications main --force"
+      command: "git push origin papers --force && deploy --prod",
+      ascii: "📚 PUBLISH",
+      stats: { cpu: 92, ram: 89, network: 91 },
+      color: "from-teal-500 to-cyan-500"
     },
     {
       name: "Rudra",
       role: "Publishing Manager",
       department: "Publications Team",
-      command: "latex compile paper.tex && pdf generate"
+      command: "pdflatex main.tex && bibtex refs && compile --optimize",
+      ascii: "✍️ WRITER",
+      stats: { cpu: 87, ram: 84, network: 88 },
+      color: "from-amber-500 to-yellow-500"
     }
   ];
 
@@ -268,23 +295,87 @@ const TeamPage = () => {
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.02, y: -5 }}
                   >
-                    <Card className="hover:shadow-2xl hover:shadow-green-500/50 transition-all duration-300 border-2 border-green-500/30 bg-gradient-to-br from-black via-gray-900 to-black text-green-400 overflow-hidden group relative">
-                      {/* Scanline effect */}
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-green-500/5 to-transparent pointer-events-none animate-pulse"></div>
+                    <Card className={`hover:shadow-2xl hover:shadow-${member.color.split(' ')[0].split('-')[1]}-500/50 transition-all duration-500 border-2 border-green-500/30 hover:border-green-400 bg-gradient-to-br from-black via-gray-900 to-black text-green-400 overflow-hidden group relative hover:scale-[1.03] hover:rotate-1`}>
+                      {/* Animated grid background */}
+                      <div className="absolute inset-0 opacity-10 pointer-events-none" style={{
+                        backgroundImage: 'linear-gradient(0deg, transparent 24%, rgba(34, 197, 94, .05) 25%, rgba(34, 197, 94, .05) 26%, transparent 27%, transparent 74%, rgba(34, 197, 94, .05) 75%, rgba(34, 197, 94, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(34, 197, 94, .05) 25%, rgba(34, 197, 94, .05) 26%, transparent 27%, transparent 74%, rgba(34, 197, 94, .05) 75%, rgba(34, 197, 94, .05) 76%, transparent 77%, transparent)',
+                        backgroundSize: '50px 50px'
+                      }}></div>
                       
-                      {/* Matrix rain effect on hover */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none">
-                        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-green-400 to-transparent animate-pulse"></div>
-                        <div className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-green-400 to-transparent animate-pulse" style={{ animationDelay: '0.3s' }}></div>
-                        <div className="absolute top-0 left-3/4 w-px h-full bg-gradient-to-b from-transparent via-green-400 to-transparent animate-pulse" style={{ animationDelay: '0.6s' }}></div>
+                      {/* Neon glow pulse */}
+                      <motion.div 
+                        className={`absolute inset-0 bg-gradient-to-r ${member.color} opacity-0 group-hover:opacity-10 blur-xl`}
+                        animate={{ 
+                          opacity: [0, 0.15, 0],
+                          scale: [0.95, 1.05, 0.95]
+                        }}
+                        transition={{ duration: 3, repeat: Infinity }}
+                      ></motion.div>
+                      
+                      {/* Scanline effect */}
+                      <motion.div 
+                        className="absolute inset-0 bg-gradient-to-b from-transparent via-green-500/10 to-transparent pointer-events-none"
+                        animate={{ y: ['-100%', '100%'] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                      ></motion.div>
+                      
+                      {/* Binary rain effect */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none overflow-hidden">
+                        {[...Array(5)].map((_, i) => (
+                          <motion.div
+                            key={i}
+                            className="absolute text-xs font-mono text-green-400"
+                            style={{ left: `${20 * i}%` }}
+                            animate={{ 
+                              y: ['-100%', '100%'],
+                              opacity: [0, 1, 0]
+                            }}
+                            transition={{ 
+                              duration: 2,
+                              repeat: Infinity,
+                              delay: i * 0.3,
+                              ease: "linear"
+                            }}
+                          >
+                            {Array(20).fill(0).map(() => Math.random() > 0.5 ? '1' : '0').join('')}
+                          </motion.div>
+                        ))}
                       </div>
                       
                       <CardContent className="p-0 relative z-10">
+                        {/* ASCII Art Header */}
+                        <motion.div 
+                          className={`bg-gradient-to-r ${member.color} px-4 py-3 flex items-center justify-between border-b-2 border-green-500/50`}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: index * 0.1 + 0.3 }}
+                        >
+                          <span className="text-2xl font-bold text-white">{member.ascii}</span>
+                          <div className="flex gap-1">
+                            {[...Array(3)].map((_, i) => (
+                              <motion.div
+                                key={i}
+                                className="w-2 h-2 rounded-full bg-white"
+                                animate={{ 
+                                  scale: [0.8, 1.2, 0.8],
+                                  opacity: [0.5, 1, 0.5]
+                                }}
+                                transition={{ 
+                                  duration: 1.5,
+                                  repeat: Infinity,
+                                  delay: i * 0.2
+                                }}
+                              />
+                            ))}
+                          </div>
+                        </motion.div>
+                        
                         {/* Terminal Header */}
                         <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 px-4 py-2 flex items-center space-x-2 border-b border-green-500/30">
                           <div className="flex space-x-2">
                             <motion.div 
-                              className="w-3 h-3 rounded-full bg-red-500 group-hover:animate-ping"
+                              className="w-3 h-3 rounded-full bg-red-500"
+                              whileHover={{ scale: 1.3, boxShadow: '0 0 10px rgba(239, 68, 68, 0.8)' }}
                               animate={{ opacity: [0.5, 1, 0.5] }}
                               transition={{ duration: 2, repeat: Infinity }}
                             ></motion.div>
@@ -305,9 +396,53 @@ const TeamPage = () => {
                           <span className="text-xs text-green-500 animate-pulse">●</span>
                         </div>
                         
+                        {/* System Metrics Bar */}
+                        <div className={`bg-gradient-to-r ${member.color} px-4 py-2 flex items-center justify-between text-xs font-mono text-white border-b border-green-500/20`}>
+                          <div className="flex gap-4">
+                            <div className="flex items-center gap-1">
+                              <span className="opacity-70">CPU:</span>
+                              <motion.span 
+                                className="font-bold"
+                                animate={{ opacity: [0.7, 1, 0.7] }}
+                                transition={{ duration: 2, repeat: Infinity }}
+                              >
+                                {member.stats.cpu}%
+                              </motion.span>
+                              <div className="w-12 h-1 bg-black/30 rounded-full overflow-hidden">
+                                <motion.div 
+                                  className="h-full bg-white"
+                                  initial={{ width: 0 }}
+                                  animate={{ width: `${member.stats.cpu}%` }}
+                                  transition={{ duration: 1.5, delay: index * 0.1 }}
+                                />
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <span className="opacity-70">RAM:</span>
+                              <span className="font-bold">{member.stats.ram}%</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <span className="opacity-70">NET:</span>
+                              <motion.span 
+                                className="font-bold"
+                                animate={{ opacity: [0.5, 1, 0.5] }}
+                                transition={{ duration: 1, repeat: Infinity }}
+                              >
+                                {member.stats.network}%
+                              </motion.span>
+                            </div>
+                          </div>
+                          <motion.span
+                            animate={{ opacity: [0.3, 1, 0.3] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                          >
+                            ⚡ LIVE
+                          </motion.span>
+                        </div>
+                        
                         {/* Terminal Content */}
                         <div className="p-5 font-mono text-sm space-y-3 bg-gradient-to-br from-black via-gray-950 to-black">
-                          {/* Whoami command */}
+                          {/* Whoami command with typing effect */}
                           <motion.div 
                             className="flex items-start space-x-2"
                             initial={{ opacity: 0, x: -20 }}
@@ -318,16 +453,27 @@ const TeamPage = () => {
                             <div className="flex-1">
                               <p className="text-green-400 group-hover:text-green-300 transition-colors">
                                 <span className="text-purple-400">whoami</span>
+                                <motion.span
+                                  animate={{ opacity: [0, 1, 0] }}
+                                  transition={{ duration: 0.8, repeat: Infinity }}
+                                  className="text-green-400"
+                                >
+                                  _
+                                </motion.span>
                               </p>
-                              <p className="text-white font-bold text-lg mt-1 tracking-wider group-hover:text-green-300 transition-colors">
+                              <motion.p 
+                                className="text-white font-bold text-lg mt-1 tracking-wider group-hover:text-green-300 transition-colors"
+                                initial={{ scale: 0.95 }}
+                                whileHover={{ scale: 1.05 }}
+                              >
                                 {member.name}
-                              </p>
+                              </motion.p>
                             </div>
                           </motion.div>
                           
-                          {/* Cat role command */}
+                          {/* Cat role command with glitch effect */}
                           <motion.div 
-                            className="flex items-start space-x-2 pt-2"
+                            className="flex items-start space-x-2 pt-2 border-t border-green-500/10 pt-3"
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.1 + 0.2 }}
@@ -335,56 +481,131 @@ const TeamPage = () => {
                             <span className="text-cyan-400 animate-pulse">❯</span>
                             <div className="flex-1">
                               <p className="text-green-400 group-hover:text-green-300 transition-colors">
-                                <span className="text-purple-400">cat</span> role.txt
+                                <span className="text-purple-400">cat</span>{" "}
+                                <span className="text-blue-400">role.txt</span>
+                                <motion.span
+                                  animate={{ opacity: [0, 1, 0] }}
+                                  transition={{ duration: 0.8, repeat: Infinity, delay: 0.3 }}
+                                  className="text-green-400"
+                                >
+                                  _
+                                </motion.span>
                               </p>
-                              <p className="text-yellow-400 font-semibold mt-1 group-hover:text-yellow-300 transition-colors">
-                                » {member.role}
-                              </p>
-                              <p className="text-gray-500 text-xs mt-1 italic">
-                                // {member.department}
-                              </p>
+                              <div className="mt-2 p-2 bg-green-500/5 border-l-2 border-yellow-400 rounded">
+                                <motion.p 
+                                  className="text-yellow-400 font-semibold group-hover:text-yellow-300 transition-colors"
+                                  whileHover={{ x: 5 }}
+                                >
+                                  » {member.role}
+                                </motion.p>
+                                <p className="text-gray-500 text-xs mt-1 italic flex items-center gap-1">
+                                  <span className="text-blue-400">📁</span> {member.department}
+                                </p>
+                              </div>
                             </div>
                           </motion.div>
                           
-                          {/* Execute command */}
+                          {/* Execute command with compilation log */}
                           <motion.div 
-                            className="flex items-start space-x-2 pt-2 border-t border-green-500/20"
+                            className="flex items-start space-x-2 pt-3 border-t border-green-500/20"
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.1 + 0.4 }}
                           >
                             <span className="text-cyan-400 animate-pulse">❯</span>
                             <div className="flex-1">
-                              <p className="text-green-400 group-hover:text-green-300 transition-colors break-all text-xs leading-relaxed">
-                                {member.command}
-                              </p>
                               <motion.p 
-                                className="text-green-500 text-xs mt-2 flex items-center space-x-2"
-                                animate={{ opacity: [0.5, 1, 0.5] }}
-                                transition={{ duration: 1.5, repeat: Infinity }}
+                                className="text-green-400 group-hover:text-green-300 transition-colors break-all text-xs leading-relaxed"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 2, delay: index * 0.1 + 0.6 }}
                               >
-                                <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-ping"></span>
-                                <span>Process Running...</span>
-                                <span className="text-green-400">[✓ OK]</span>
+                                {member.command}
                               </motion.p>
+                              
+                              {/* Compilation output */}
+                              <div className="mt-2 space-y-1 text-xs">
+                                <motion.p 
+                                  className="text-blue-400"
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: index * 0.1 + 0.8 }}
+                                >
+                                  <span className="text-gray-600">[INFO]</span> Initializing environment...
+                                </motion.p>
+                                <motion.p 
+                                  className="text-purple-400"
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: index * 0.1 + 1.0 }}
+                                >
+                                  <span className="text-gray-600">[COMPILE]</span> Building modules... ████████ 100%
+                                </motion.p>
+                                <motion.div 
+                                  className="flex items-center gap-2 text-green-500"
+                                  animate={{ opacity: [0.5, 1, 0.5] }}
+                                  transition={{ duration: 1.5, repeat: Infinity }}
+                                >
+                                  <motion.span 
+                                    className="inline-block w-2 h-2 bg-green-500 rounded-full"
+                                    animate={{ scale: [1, 1.5, 1] }}
+                                    transition={{ duration: 1, repeat: Infinity }}
+                                  ></motion.span>
+                                  <span><span className="text-gray-600">[SUCCESS]</span> Process executing...</span>
+                                  <span className="text-green-400 font-bold">[✓ OK]</span>
+                                </motion.div>
+                              </div>
                             </div>
                           </motion.div>
                         </div>
                         
-                        {/* Bottom status bar */}
-                        <div className="bg-gradient-to-r from-green-900/20 via-green-800/20 to-green-900/20 px-4 py-1 border-t border-green-500/30 flex items-center justify-between text-xs font-mono">
-                          <span className="text-green-400">ONLINE</span>
-                          <span className="text-gray-500">|</span>
-                          <span className="text-cyan-400">JHC2026</span>
-                          <span className="text-gray-500">|</span>
-                          <motion.span 
-                            className="text-green-400"
-                            animate={{ opacity: [0.3, 1, 0.3] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                          >
-                            {index % 3 === 0 ? '⚡ 99% CPU' : index % 3 === 1 ? '🔥 ACTIVE' : '💻 EXECUTING'}
-                          </motion.span>
-                        </div>
+                        {/* Bottom status bar with data visualization */}
+                        <motion.div 
+                          className={`bg-gradient-to-r ${member.color} px-4 py-2 border-t-2 border-green-500/30 text-xs font-mono`}
+                          whileHover={{ borderTopColor: 'rgba(34, 197, 94, 0.6)' }}
+                        >
+                          <div className="flex items-center justify-between text-white">
+                            <div className="flex items-center gap-2">
+                              <motion.span
+                                animate={{ scale: [1, 1.3, 1] }}
+                                transition={{ duration: 1.5, repeat: Infinity }}
+                              >
+                                ●
+                              </motion.span>
+                              <span className="font-bold">ONLINE</span>
+                            </div>
+                            <span className="opacity-50">|</span>
+                            <span className="font-semibold">JHC2026</span>
+                            <span className="opacity-50">|</span>
+                            <motion.div 
+                              className="flex items-center gap-1"
+                              animate={{ opacity: [0.7, 1, 0.7] }}
+                              transition={{ duration: 2, repeat: Infinity }}
+                            >
+                              <span>⚡</span>
+                              <span>{member.stats.cpu}%</span>
+                            </motion.div>
+                            <span className="opacity-50">|</span>
+                            <motion.div
+                              animate={{ opacity: [0.5, 1, 0.5] }}
+                              transition={{ duration: 1, repeat: Infinity }}
+                              className="flex items-center gap-1"
+                            >
+                              <span>🔥</span>
+                              <span className="font-bold">ACTIVE</span>
+                            </motion.div>
+                            <span className="opacity-50">|</span>
+                            <div className="flex items-center gap-1">
+                              <span>💻</span>
+                              <motion.span
+                                animate={{ opacity: [0.3, 1, 0.3] }}
+                                transition={{ duration: 1.5, repeat: Infinity }}
+                              >
+                                EXECUTING
+                              </motion.span>
+                            </div>
+                          </div>
+                        </motion.div>
                       </CardContent>
                     </Card>
                   </motion.div>
