@@ -32,24 +32,24 @@ const Index = () => {
           <div className="rounded-xl border border-gradient-to-r from-accent/40 to-primary/40 bg-gradient-to-r from-accent/15 via-primary/10 to-accent/15 p-4 sm:p-6 text-center backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-xs sm:text-sm md:text-base">
               <div className="flex items-center gap-1.5 sm:gap-2 w-full sm:w-auto justify-center">
-                <span className="inline-flex items-center bg-primary/20 text-primary px-2 sm:px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap">
+                <span className="inline-flex items-center bg-primary text-white px-2 sm:px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap shadow-md">
                   📝 Registration
                 </span>
-                <a className="underline font-medium hover:text-primary transition-colors text-xs sm:text-sm truncate" href="https://tinyurl.com/3p4s4zhj" target="_blank" rel="noopener noreferrer">Open form</a>
+                <a className="underline font-bold hover:text-primary transition-colors text-xs sm:text-sm truncate text-gray-800" href="https://tinyurl.com/3p4s4zhj" target="_blank" rel="noopener noreferrer">Open form</a>
               </div>
               <div className="hidden sm:block w-px h-6 bg-gradient-to-b from-transparent via-accent/50 to-transparent"></div>
               <div className="flex items-center gap-1.5 sm:gap-2 w-full sm:w-auto justify-center">
-                <span className="inline-flex items-center bg-accent/20 text-accent px-2 sm:px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap">
+                <span className="inline-flex items-center bg-accent text-white px-2 sm:px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap shadow-md">
                   📄 Brochure
                 </span>
-                <a className="underline font-medium hover:text-accent transition-colors text-xs sm:text-sm truncate" href="/Nationalconference_JHC_MSc_BDA.pdf" target="_blank" rel="noopener noreferrer">View details</a>
+                <a className="underline font-bold hover:text-accent transition-colors text-xs sm:text-sm truncate text-gray-800" href="/Nationalconference_JHC_MSc_BDA.pdf" target="_blank" rel="noopener noreferrer">View details</a>
               </div>
               <div className="hidden sm:block w-px h-6 bg-gradient-to-b from-transparent via-primary/50 to-transparent"></div>
               <div className="flex items-center gap-1.5 sm:gap-2 w-full sm:w-auto justify-center">
-                <span className="inline-flex items-center bg-green-500/20 text-green-600 px-2 sm:px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap">
+                <span className="inline-flex items-center bg-green-600 text-white px-2 sm:px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap shadow-md">
                   💳 Payment
                 </span>
-                <a className="underline font-medium hover:text-green-600 transition-colors text-xs sm:text-sm truncate" href="#participation-payment" onClick={(e) => { e.preventDefault(); document.getElementById('participation-payment')?.scrollIntoView({ behavior: 'smooth' }); }}>Jump to details</a>
+                <a className="underline font-bold hover:text-green-600 transition-colors text-xs sm:text-sm truncate text-gray-800" href="#participation-payment" onClick={(e) => { e.preventDefault(); document.getElementById('participation-payment')?.scrollIntoView({ behavior: 'smooth' }); }}>Jump to details</a>
               </div>
             </div>
           </div>
