@@ -319,58 +319,49 @@ const TeamPage = () => {
                         transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                       ></motion.div>
                       
-                      {/* Binary rain effect */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none overflow-hidden">
-                        {[...Array(5)].map((_, i) => (
+                      {/* Matrix Digital Rain Effect */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none overflow-hidden">
+                        {[...Array(8)].map((_, i) => (
                           <motion.div
                             key={i}
-                            className="absolute text-xs font-mono text-green-400"
-                            style={{ left: `${20 * i}%` }}
+                            className="absolute top-0 text-[10px] font-mono text-green-400 leading-tight whitespace-pre"
+                            style={{ 
+                              left: `${i * 12.5}%`,
+                              textShadow: '0 0 5px rgba(34, 197, 94, 0.8)'
+                            }}
                             animate={{ 
                               y: ['-100%', '100%'],
-                              opacity: [0, 1, 0]
+                              opacity: [0, 1, 0.5, 0]
                             }}
                             transition={{ 
-                              duration: 2,
+                              duration: Math.random() * 2 + 3,
                               repeat: Infinity,
-                              delay: i * 0.3,
+                              delay: i * 0.4,
                               ease: "linear"
                             }}
                           >
-                            {Array(20).fill(0).map(() => Math.random() > 0.5 ? '1' : '0').join('')}
+                            {'ハッカー\nデータ\n解析中\n実行中\n処理中\n'.split('\n').map((char, idx) => (
+                              <div key={idx} style={{ opacity: Math.max(0, 1 - idx * 0.15) }}>{char}</div>
+                            ))}
                           </motion.div>
                         ))}
                       </div>
                       
+                      {/* Glitch Overlay */}
+                      <motion.div
+                        className="absolute inset-0 bg-green-500 opacity-0 pointer-events-none mix-blend-screen"
+                        animate={{
+                          opacity: [0, 0.03, 0, 0.05, 0]
+                        }}
+                        transition={{
+                          duration: 0.3,
+                          repeat: Infinity,
+                          repeatDelay: 3
+                        }}
+                      />
+                      
                       <CardContent className="p-0 relative z-10">
-                        {/* ASCII Art Header */}
-                        <motion.div 
-                          className="bg-gradient-to-r from-green-600 to-emerald-600 px-4 py-3 flex items-center justify-between border-b-2 border-green-500/50"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ delay: index * 0.1 + 0.3 }}
-                        >
-                          <span className="text-2xl font-bold text-white">{member.ascii}</span>
-                          <div className="flex gap-1">
-                            {[...Array(3)].map((_, i) => (
-                              <motion.div
-                                key={i}
-                                className="w-2 h-2 rounded-full bg-white"
-                                animate={{ 
-                                  scale: [0.8, 1.2, 0.8],
-                                  opacity: [0.5, 1, 0.5]
-                                }}
-                                transition={{ 
-                                  duration: 1.5,
-                                  repeat: Infinity,
-                                  delay: i * 0.2
-                                }}
-                              />
-                            ))}
-                          </div>
-                        </motion.div>
-                        
-                        {/* Terminal Header */}
+                        {/* Terminal Header */
                         <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 px-4 py-2 flex items-center space-x-2 border-b border-green-500/30">
                           <div className="flex space-x-2">
                             <motion.div 
@@ -442,14 +433,26 @@ const TeamPage = () => {
                         
                         {/* Terminal Content */}
                         <div className="p-5 font-mono text-sm space-y-3 bg-gradient-to-br from-black via-gray-950 to-black">
-                          {/* Whoami command with typing effect */}
+                          {/* Whoami command with typewriter effect */}
                           <motion.div 
-                            className="flex items-start space-x-2"
+                            className="flex items-start space-x-2 relative"
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.1 }}
                           >
-                            <span className="text-cyan-400 animate-pulse">❯</span>
+                            <motion.span 
+                              className="text-cyan-400"
+                              animate={{ 
+                                textShadow: [
+                                  '0 0 5px rgba(34, 211, 238, 0.5)',
+                                  '0 0 10px rgba(34, 211, 238, 0.8)',
+                                  '0 0 5px rgba(34, 211, 238, 0.5)'
+                                ]
+                              }}
+                              transition={{ duration: 2, repeat: Infinity }}
+                            >
+                              ❯
+                            </motion.span>
                             <div className="flex-1">
                               <p className="text-green-400 group-hover:text-green-300 transition-colors">
                                 <span className="text-purple-400">whoami</span>
@@ -462,9 +465,15 @@ const TeamPage = () => {
                                 </motion.span>
                               </p>
                               <motion.p 
-                                className="text-white font-bold text-lg mt-1 tracking-wider group-hover:text-green-300 transition-colors"
+                                className="text-white font-bold text-lg mt-1 tracking-wider relative"
                                 initial={{ scale: 0.95 }}
-                                whileHover={{ scale: 1.05 }}
+                                whileHover={{ 
+                                  scale: 1.05,
+                                  textShadow: '0 0 20px rgba(34, 197, 94, 0.6)'
+                                }}
+                                style={{
+                                  textShadow: '0 0 10px rgba(34, 197, 94, 0.3)'
+                                }}
                               >
                                 {member.name}
                               </motion.p>
@@ -523,20 +532,42 @@ const TeamPage = () => {
                                 {member.command}
                               </motion.p>
                               
-                              {/* Compilation output */}
-                              <div className="mt-2 space-y-1 text-xs">
+                              {/* Data Stream Visualization */}
+                              <div className="mt-2 space-y-1 text-xs relative">
+                                {/* Animated data packets */}
+                                <div className="flex gap-1 mb-2">
+                                  {[...Array(12)].map((_, i) => (
+                                    <motion.div
+                                      key={i}
+                                      className="h-3 w-1 bg-green-500/30 rounded-full"
+                                      animate={{
+                                        height: [12, Math.random() * 20 + 10, 12],
+                                        backgroundColor: [
+                                          'rgba(34, 197, 94, 0.3)',
+                                          'rgba(34, 197, 94, 0.8)',
+                                          'rgba(34, 197, 94, 0.3)'
+                                        ]
+                                      }}
+                                      transition={{
+                                        duration: 1.5,
+                                        repeat: Infinity,
+                                        delay: i * 0.1
+                                      }}
+                                    />
+                                  ))}
+                                </div>
                                 <motion.p 
                                   className="text-blue-400"
-                                  initial={{ opacity: 0 }}
-                                  animate={{ opacity: 1 }}
+                                  initial={{ opacity: 0, x: -10 }}
+                                  animate={{ opacity: 1, x: 0 }}
                                   transition={{ delay: index * 0.1 + 0.8 }}
                                 >
                                   <span className="text-gray-600">[INFO]</span> Initializing environment...
                                 </motion.p>
                                 <motion.p 
                                   className="text-purple-400"
-                                  initial={{ opacity: 0 }}
-                                  animate={{ opacity: 1 }}
+                                  initial={{ opacity: 0, x: -10 }}
+                                  animate={{ opacity: 1, x: 0 }}
                                   transition={{ delay: index * 0.1 + 1.0 }}
                                 >
                                   <span className="text-gray-600">[COMPILE]</span> Building modules... ████████ 100%
@@ -548,8 +579,15 @@ const TeamPage = () => {
                                 >
                                   <motion.span 
                                     className="inline-block w-2 h-2 bg-green-500 rounded-full"
-                                    animate={{ scale: [1, 1.5, 1] }}
-                                    transition={{ duration: 1, repeat: Infinity }}
+                                    animate={{ 
+                                      scale: [1, 1.5, 1],
+                                      boxShadow: [
+                                        '0 0 0 0 rgba(34, 197, 94, 0.7)',
+                                        '0 0 0 6px rgba(34, 197, 94, 0)',
+                                        '0 0 0 0 rgba(34, 197, 94, 0)'
+                                      ]
+                                    }}
+                                    transition={{ duration: 1.5, repeat: Infinity }}
                                   ></motion.span>
                                   <span><span className="text-gray-600">[SUCCESS]</span> Process executing...</span>
                                   <span className="text-green-400 font-bold">[✓ OK]</span>
