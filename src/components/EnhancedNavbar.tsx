@@ -1,9 +1,10 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, CalendarCheck, Phone, MapPin as Map, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 
 const EnhancedNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,6 +25,7 @@ const EnhancedNavbar = () => {
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Gallery', href: '/gallery' },
+    { name: 'AI & Games', href: '/ai-games' },
     { name: 'Contact', href: '/contact' },
     { name: 'Team', href: '/team' },
     { name: 'FAQ', href: '/faq' },
@@ -105,56 +107,101 @@ const EnhancedNavbar = () => {
             </motion.div>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden"
-          >
-            <motion.div
-              animate={{ rotate: isMenuOpen ? 180 : 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </motion.div>
-          </Button>
-        </div>
-
-        {/* Mobile Navigation */}
-        <motion.div
-          className={`lg:hidden overflow-hidden ${isMenuOpen ? 'max-h-96' : 'max-h-0'}`}
-          initial={false}
-          animate={{ 
-            maxHeight: isMenuOpen ? 400 : 0,
-            opacity: isMenuOpen ? 1 : 0 
-          }}
-          transition={{ duration: 0.3 }}
-        >
-          <nav className="py-4 space-y-2">
-            {menuItems.map((item, index) => (
-              <motion.button
-                key={item.name}
-                onClick={() => handleNavigation(item.href)}
-                className="block w-full text-left px-4 py-3 text-base font-medium text-foreground hover:text-primary hover:bg-muted/50 rounded-md transition-colors duration-200"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -20 }}
-                transition={{ delay: index * 0.05 }}
+          {/* Mobile Navigation Sheet */}
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+            <SheetTrigger asChild>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="lg:hidden"
               >
-                {item.name}
-              </motion.button>
-            ))}
-            <motion.button
-              onClick={() => window.open('https://tinyurl.com/3p4s4zhj', '_blank', 'noopener,noreferrer')}
-              className="block w-full text-left px-4 py-3 mt-4 text-base font-medium bg-accent text-black hover:bg-accent/90 rounded-md transition-colors duration-200"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -20 }}
-              transition={{ delay: menuItems.length * 0.05 }}
+                <motion.div
+                  animate={{ rotate: isMenuOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                </motion.div>
+              </Button>
+            </SheetTrigger>
+            <SheetContent
+              side="right"
+              className="border-l border-white/10 bg-gradient-to-b from-background via-background/95 to-muted/60 px-0 text-foreground"
             >
-              Register Now
-            </motion.button>
-          </nav>
-        </motion.div>
+              <div className="flex h-full flex-col">
+                <SheetHeader className="px-6 pt-4 pb-2 text-left">
+                  <SheetTitle className="text-lg font-semibold">Navigate JHC 2026</SheetTitle>
+                  <SheetDescription className="text-sm">
+                    Quick access to event details, resources, and registrations.
+                  </SheetDescription>
+                </SheetHeader>
+
+                <div className="px-2">
+                  <nav className="flex flex-col gap-2 py-2">
+                    {menuItems.map((item, index) => (
+                      <SheetClose asChild key={item.name}>
+                        <motion.button
+                          onClick={() => handleNavigation(item.href)}
+                          className={`flex w-full items-center justify-between rounded-lg px-4 py-3 text-base font-medium transition-all duration-200 ${
+                            location.pathname === item.href
+                              ? 'bg-primary text-primary-foreground shadow'
+                              : 'text-foreground hover:bg-muted/60'
+                          }`}
+                          initial={{ opacity: 0, x: 10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.05 }}
+                        >
+                          <span>{item.name}</span>
+                          <ArrowRight className="h-4 w-4 opacity-60" />
+                        </motion.button>
+                      </SheetClose>
+                    ))}
+                  </nav>
+                </div>
+
+                <div className="px-6 pt-4 pb-6 space-y-4 border-t border-white/10 mt-auto">
+                  <div className="grid gap-3 text-sm">
+                    <div className="flex items-center gap-3 rounded-lg border border-primary/20 bg-primary/5 px-3 py-2">
+                      <CalendarCheck className="h-4 w-4 text-primary" />
+                      <span>Conference: January 7, 2026</span>
+                    </div>
+                    <div className="flex items-center gap-3 rounded-lg border border-accent/20 bg-accent/10 px-3 py-2">
+                      <Map className="h-4 w-4 text-accent" />
+                      <span>Jai Hind College, Mumbai</span>
+                    </div>
+                    <a
+                      href="tel:+912228763333"
+                      className="flex items-center gap-3 rounded-lg border border-secondary/30 bg-secondary/10 px-3 py-2 text-secondary-foreground transition-colors hover:bg-secondary/20"
+                    >
+                      <Phone className="h-4 w-4" />
+                      <span>Need help? +91 22 2876 3333</span>
+                    </a>
+                  </div>
+
+                  <div className="flex flex-col gap-3">
+                    <SheetClose asChild>
+                      <Button
+                        onClick={() => window.open('https://tinyurl.com/3p4s4zhj', '_blank', 'noopener,noreferrer')}
+                        className="w-full bg-accent text-black hover:bg-accent/90"
+                      >
+                        Register Now
+                      </Button>
+                    </SheetClose>
+                    <Button
+                      variant="outline"
+                      className="w-full"
+                      onClick={() => {
+                        window.open('/Nationalconference_JHC_MSc_BDA.pdf', '_blank', 'noopener,noreferrer');
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      View Brochure
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </motion.header>
   );

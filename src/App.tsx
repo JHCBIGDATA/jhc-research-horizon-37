@@ -14,6 +14,8 @@ import RegistrationPage from "./pages/RegistrationPage";
 import SponsorsPage from "./pages/SponsorsPage";
 import TeamPage from "./pages/TeamPage";
 import GalleryPage from "./pages/GalleryPage";
+import AIGamesPage from "./pages/AIGamesPage";
+import ResearchPaperQuizPage from "./pages/ResearchPaperQuizPage";
 import NotFound from "./pages/NotFound";
 import FAQPage from "./pages/FAQPage";
 
@@ -53,6 +55,8 @@ const App = () => (
             <Route path="/sponsors" element={<SponsorsPage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/ai-games" element={<AIGamesPage />} />
+            <Route path="/ai-games/research-quiz" element={<ResearchPaperQuizPage />} />
             <Route path="/faq" element={<FAQPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

@@ -25,6 +25,7 @@ const Header = () => {
     { name: 'Sponsors', href: '/sponsors' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'Team', href: '/team' },
+    { name: 'AI & Games', href: '/ai-games' },
     { name: 'FAQ', href: '/faq' },
   ];
 
