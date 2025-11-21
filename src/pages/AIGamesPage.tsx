@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Gamepad2, Sparkles, Trophy, Zap } from 'lucide-react';
+import { Gamepad2, Sparkles, Trophy, Zap, Atom, Music } from 'lucide-react';
 
 const AIGamesPage = () => {
   return (
@@ -72,7 +72,7 @@ const AIGamesPage = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <h2 className="text-3xl font-bold mb-8 text-center">Available Games</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {/* Research Paper Quiz Game */}
               <motion.div
                 whileHover={{ scale: 1.05, y: -5 }}
@@ -96,27 +96,160 @@ const AIGamesPage = () => {
                 </div>
               </motion.div>
 
-              {/* More games placeholder cards */}
+              {/* Tic-Tac-Toe AI Game */}
               <motion.div
+                whileHover={{ scale: 1.05, y: -5 }}
+                whileTap={{ scale: 0.98 }}
+                className="cursor-pointer"
+                onClick={() => window.location.href = '/#/ai-games/tic-tac-toe'}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="bg-gradient-to-br from-muted/20 to-muted/10 border-2 border-dashed border-muted rounded-2xl p-6 h-full flex flex-col items-center justify-center text-center"
               >
-                <Sparkles className="w-12 h-12 text-muted-foreground/50 mb-4" />
-                <h3 className="text-lg font-semibold text-muted-foreground mb-2">More Games Coming Soon</h3>
-                <p className="text-sm text-muted-foreground/70">Stay tuned for more AI-powered challenges</p>
+                <div className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-2 border-blue-500/20 rounded-2xl p-6 h-full hover:border-blue-500/40 transition-all duration-300 shadow-lg hover:shadow-xl">
+                  <div className="bg-blue-500/10 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
+                    <Zap className="w-8 h-8 text-blue-500" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">Tic-Tac-Toe vs AI</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Challenge an unbeatable AI using the Minimax algorithm. Can you force a draw?
+                  </p>
+                  <div className="flex items-center gap-2 text-sm text-blue-500 font-medium">
+                    <span>AI Powered</span>
+                    <span>•</span>
+                    <span>Strategy Game</span>
+                  </div>
+                </div>
               </motion.div>
 
+              {/* Memory Card Game */}
               <motion.div
+                whileHover={{ scale: 1.05, y: -5 }}
+                whileTap={{ scale: 0.98 }}
+                className="cursor-pointer"
+                onClick={() => window.location.href = '/#/ai-games/memory-card'}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="bg-gradient-to-br from-muted/20 to-muted/10 border-2 border-dashed border-muted rounded-2xl p-6 h-full flex flex-col items-center justify-center text-center"
               >
-                <Trophy className="w-12 h-12 text-muted-foreground/50 mb-4" />
-                <h3 className="text-lg font-semibold text-muted-foreground mb-2">More Games Coming Soon</h3>
-                <p className="text-sm text-muted-foreground/70">New challenges will be added regularly</p>
+                <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-2 border-purple-500/20 rounded-2xl p-6 h-full hover:border-purple-500/40 transition-all duration-300 shadow-lg hover:shadow-xl">
+                  <div className="bg-purple-500/10 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
+                    <Sparkles className="w-8 h-8 text-purple-500" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">Memory Card Game</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Test your memory! Match all the pairs with minimum moves and beat your best score.
+                  </p>
+                  <div className="flex items-center gap-2 text-sm text-purple-500 font-medium">
+                    <span>16 Cards</span>
+                    <span>•</span>
+                    <span>Memory Challenge</span>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Snake Game with AI */}
+              <motion.div
+                whileHover={{ scale: 1.05, y: -5 }}
+                whileTap={{ scale: 0.98 }}
+                className="cursor-pointer"
+                onClick={() => window.location.href = '/#/ai-games/snake-ai'}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+              >
+                <div className="bg-gradient-to-br from-green-500/10 to-cyan-500/10 border-2 border-green-500/20 rounded-2xl p-6 h-full hover:border-green-500/40 transition-all duration-300 shadow-lg hover:shadow-xl">
+                  <div className="bg-green-500/10 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
+                    <Zap className="w-8 h-8 text-green-500" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">Snake AI</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Classic snake game with AI autopilot mode! Watch AI play or take control yourself.
+                  </p>
+                  <div className="flex items-center gap-2 text-sm text-green-500 font-medium">
+                    <span>AI Pathfinding</span>
+                    <span>•</span>
+                    <span>Power-ups</span>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* 2048 Game */}
+              <motion.div
+                whileHover={{ scale: 1.05, y: -5 }}
+                whileTap={{ scale: 0.98 }}
+                className="cursor-pointer"
+                onClick={() => window.location.href = '/#/ai-games/2048'}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >
+                <div className="bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border-2 border-yellow-500/20 rounded-2xl p-6 h-full hover:border-yellow-500/40 transition-all duration-300 shadow-lg hover:shadow-xl">
+                  <div className="bg-yellow-500/10 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
+                    <Trophy className="w-8 h-8 text-yellow-500" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">2048 Extreme</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Merge tiles to reach 2048 with insane particle effects and animations!
+                  </p>
+                  <div className="flex items-center gap-2 text-sm text-yellow-500 font-medium">
+                    <span>Puzzle</span>
+                    <span>•</span>
+                    <span>Crazy Effects</span>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Particle Physics Game */}
+              <motion.div
+                whileHover={{ scale: 1.05, y: -5 }}
+                whileTap={{ scale: 0.98 }}
+                className="cursor-pointer"
+                onClick={() => window.location.href = '/#/ai-games/particle-physics'}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.9 }}
+              >
+                <div className="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border-2 border-cyan-500/20 rounded-2xl p-6 h-full hover:border-cyan-500/40 transition-all duration-300 shadow-lg hover:shadow-xl">
+                  <div className="bg-cyan-500/10 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
+                    <Atom className="w-8 h-8 text-cyan-500" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">Particle Physics</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Real-time collision detection with custom physics engine and WebGL rendering!
+                  </p>
+                  <div className="flex items-center gap-2 text-sm text-cyan-500 font-medium">
+                    <span>Physics</span>
+                    <span>•</span>
+                    <span>WebGL</span>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Rhythm Beat Game */}
+              <motion.div
+                whileHover={{ scale: 1.05, y: -5 }}
+                whileTap={{ scale: 0.98 }}
+                className="cursor-pointer"
+                onClick={() => window.location.href = '/#/ai-games/rhythm-beat'}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.0 }}
+              >
+                <div className="bg-gradient-to-br from-pink-500/10 to-purple-500/10 border-2 border-pink-500/20 rounded-2xl p-6 h-full hover:border-pink-500/40 transition-all duration-300 shadow-lg hover:shadow-xl">
+                  <div className="bg-pink-500/10 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
+                    <Music className="w-8 h-8 text-pink-500" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">Rhythm Beat Master</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Hit notes with perfect timing! Features Web Audio API and real-time sound synthesis!
+                  </p>
+                  <div className="flex items-center gap-2 text-sm text-pink-500 font-medium">
+                    <span>Web Audio</span>
+                    <span>•</span>
+                    <span>Music</span>
+                  </div>
+                </div>
               </motion.div>
             </div>
           </motion.div>

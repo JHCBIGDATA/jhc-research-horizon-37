@@ -177,14 +177,23 @@ const TeamPage = () => {
     }
   ], []);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const particles = useMemo(() => 
-    Array.from({ length: 50 }, (_, i) => ({
+    Array.from({ length: isMobile ? 15 : 30 }, (_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
       duration: Math.random() * 5 + 5,
       delay: Math.random() * 5
-    })), []
+    })), [isMobile]
   );
 
   const prefersReducedMotion = useMemo(() => 
@@ -218,29 +227,31 @@ const TeamPage = () => {
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
       </section>
 
-      <section className="py-24 relative overflow-hidden">
-        {/* Particle Background */}
-        <div className="absolute inset-0 pointer-events-none">
-          {particles.map((particle) => (
-            <motion.div
-              key={particle.id}
-              className="absolute w-1 h-1 bg-green-500/20 rounded-full"
-              style={{
-                left: particle.left,
-                top: particle.top,
-              }}
-              animate={{
-                y: [0, -100, 0],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: particle.duration,
-                repeat: Infinity,
-                delay: particle.delay,
-              }}
-            />
-          ))}
-        </div>
+      <section className="py-12 md:py-24 relative overflow-hidden">
+        {/* Particle Background - Disabled on mobile for performance */}
+        {!isMobile && (
+          <div className="absolute inset-0 pointer-events-none">
+            {particles.map((particle) => (
+              <motion.div
+                key={particle.id}
+                className="absolute w-1 h-1 bg-green-500/20 rounded-full"
+                style={{
+                  left: particle.left,
+                  top: particle.top,
+                }}
+                animate={{
+                  y: [0, -100, 0],
+                  opacity: [0, 1, 0],
+                }}
+                transition={{
+                  duration: particle.duration,
+                  repeat: Infinity,
+                  delay: particle.delay,
+                }}
+              />
+            ))}
+          </div>
+        )}
         <div className="container mx-auto px-4 relative z-10">
 
           <motion.div
@@ -261,7 +272,7 @@ const TeamPage = () => {
                 {leadership.map((leader, index) => (
                   <motion.div
                     key={index}
-                    whileHover={{ scale: 1.02, y: -5 }}
+                    whileHover={isMobile ? {} : { scale: 1.02, y: -5 }}
                     transition={{ duration: 0.3 }}
                   >
                     <Card className="text-center hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/20">
@@ -306,8 +317,8 @@ const TeamPage = () => {
                 {coreCommittee.map((member, index) => (
                   <motion.div
                     key={index}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={isMobile ? {} : { scale: 1.05 }}
+                    whileTap={isMobile ? {} : { scale: 0.95 }}
                     transition={{ duration: 0.2 }}
                   >
                     <Card className="hover:shadow-lg transition-all duration-300 text-center">
@@ -345,85 +356,70 @@ const TeamPage = () => {
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ delay: isMobile ? 0 : index * 0.1 }}
                     viewport={{ once: true }}
-                    whileHover={{ 
+                    whileHover={isMobile ? {} : { 
                       scale: 1.02, 
-                      y: -5,
-                      rotateX: 5,
-                      rotateY: 5,
-                      transformPerspective: 1000
+                      y: -5
                     }}
-                    style={{ transformStyle: 'preserve-3d' }}
                   >
-                    <Card className="hover:shadow-2xl hover:shadow-green-500/50 transition-all duration-500 border-2 border-green-500/30 hover:border-green-400 bg-gradient-to-br from-black via-gray-900 to-black text-green-400 overflow-hidden group relative hover:scale-[1.03]">
+                    <Card className="hover:shadow-2xl hover:shadow-green-500/50 transition-shadow duration-300 border-2 border-green-500/30 hover:border-green-400 bg-gradient-to-br from-black via-gray-900 to-black text-green-400 overflow-hidden group relative">
                       {/* Animated grid background */}
                       <div className="absolute inset-0 opacity-10 pointer-events-none" style={{
                         backgroundImage: 'linear-gradient(0deg, transparent 24%, rgba(34, 197, 94, .05) 25%, rgba(34, 197, 94, .05) 26%, transparent 27%, transparent 74%, rgba(34, 197, 94, .05) 75%, rgba(34, 197, 94, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(34, 197, 94, .05) 25%, rgba(34, 197, 94, .05) 26%, transparent 27%, transparent 74%, rgba(34, 197, 94, .05) 75%, rgba(34, 197, 94, .05) 76%, transparent 77%, transparent)',
                         backgroundSize: '50px 50px'
                       }}></div>
                       
-                      {/* Neon glow pulse */}
-                      <motion.div 
-                        className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 opacity-0 group-hover:opacity-10 blur-xl"
-                        animate={{ 
-                          opacity: [0, 0.15, 0],
-                          scale: [0.95, 1.05, 0.95]
-                        }}
-                        transition={{ duration: 3, repeat: Infinity }}
-                      ></motion.div>
+                      {/* Neon glow pulse - disabled on mobile */}
+                      {!isMobile && (
+                        <motion.div 
+                          className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 opacity-0 group-hover:opacity-10 blur-xl"
+                          animate={{ 
+                            opacity: [0, 0.15, 0],
+                            scale: [0.95, 1.05, 0.95]
+                          }}
+                          transition={{ duration: 3, repeat: Infinity }}
+                        ></motion.div>
+                      )}
                       
-                      {/* Scanline effect */}
-                      <motion.div 
-                        className="absolute inset-0 bg-gradient-to-b from-transparent via-green-500/10 to-transparent pointer-events-none"
-                        animate={{ y: ['-100%', '100%'] }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                      ></motion.div>
-                      
-                      {/* Matrix Digital Rain Effect */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none overflow-hidden">
-                        {[...Array(5)].map((_, i) => (
-                          <motion.div
-                            key={i}
-                            className="absolute text-xs font-mono text-green-400"
-                            style={{ left: `${20 * i}%` }}
-                            animate={{ 
-                              y: ['-100%', '100%'],
-                              opacity: [0, 1, 0]
-                            }}
-                            transition={{ 
-                              duration: 2,
-                              repeat: Infinity,
-                              delay: i * 0.3,
-                              ease: "linear"
-                            }}
-                          >
-                            {Array(20).fill(0).map((_, idx) => (
-                              <div key={idx}>{Math.random() > 0.5 ? '1' : '0'}</div>
-                            ))}
-                          </motion.div>
-                        ))}
-                      </div>
+                      {/* Scanline effect - disabled on mobile */}
+                      {!isMobile && (
+                        <motion.div 
+                          className="absolute inset-0 bg-gradient-to-b from-transparent via-green-500/10 to-transparent pointer-events-none"
+                          animate={{ y: ['-100%', '100%'] }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                        ></motion.div>
+                      )}
                       
                       <CardContent className="p-0 relative z-10">
                         { /* Terminal Header */ }
                         <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 px-4 py-2 flex items-center space-x-2 border-b border-green-500/30">
                           <div className="flex space-x-2">
-                            <motion.div 
-                              className="w-3 h-3 rounded-full bg-red-500"
-                              animate={{ opacity: [0.5, 1, 0.5] }}
-                              transition={{ duration: 2, repeat: Infinity }}
-                            />
-                            <motion.div 
-                              className="w-3 h-3 rounded-full bg-yellow-500"
-                              animate={{ opacity: [0.5, 1, 0.5] }}
-                              transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
-                            />
-                            <motion.div 
-                              className="w-3 h-3 rounded-full bg-green-500"
-                              animate={{ opacity: [0.5, 1, 0.5] }}
-                              transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}
-                            />
+                            {isMobile ? (
+                              <>
+                                <div className="w-3 h-3 rounded-full bg-red-500" />
+                                <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                                <div className="w-3 h-3 rounded-full bg-green-500" />
+                              </>
+                            ) : (
+                              <>
+                                <motion.div 
+                                  className="w-3 h-3 rounded-full bg-red-500"
+                                  animate={{ opacity: [0.5, 1, 0.5] }}
+                                  transition={{ duration: 2, repeat: Infinity }}
+                                />
+                                <motion.div 
+                                  className="w-3 h-3 rounded-full bg-yellow-500"
+                                  animate={{ opacity: [0.5, 1, 0.5] }}
+                                  transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
+                                />
+                                <motion.div 
+                                  className="w-3 h-3 rounded-full bg-green-500"
+                                  animate={{ opacity: [0.5, 1, 0.5] }}
+                                  transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}
+                                />
+                              </>
+                            )}
                           </div>
                           <span className="text-xs text-green-400 font-mono flex-1 text-center group-hover:text-green-300 transition-colors">
                             {member.name.toLowerCase()}@jhc2026:~
@@ -431,23 +427,15 @@ const TeamPage = () => {
                           <span className="text-xs text-green-500 animate-pulse">●</span>
                         </div>
                         
-                        <div className="bg-gradient-to-r from-gray-900 to-gray-800 px-4 py-2 flex items-center justify-between text-xs font-mono text-green-400 border-b border-green-500/20">
-                          <div className="flex gap-4">
+                        <div className="bg-gradient-to-r from-gray-900 to-gray-800 px-2 md:px-4 py-2 flex items-center justify-between text-xs font-mono text-green-400 border-b border-green-500/20 flex-wrap md:flex-nowrap gap-2">
+                          <div className="flex gap-2 md:gap-4 flex-wrap">
                             <div className="flex items-center gap-1">
                               <span className="opacity-70">CPU:</span>
-                              <motion.span 
-                                className="font-bold"
-                                animate={{ opacity: [0.7, 1, 0.7] }}
-                                transition={{ duration: 2, repeat: Infinity }}
-                              >
-                                {member.stats.cpu}%
-                              </motion.span>
-                              <div className="w-12 h-1 bg-black/30 rounded-full overflow-hidden">
-                                <motion.div 
-                                  className="h-full bg-green-400"
-                                  initial={{ width: '0%' }}
-                                  animate={{ width: member.stats.cpu + '%' }}
-                                  transition={{ duration: 1.5, delay: index * 0.1 }}
+                              <span className="font-bold">{member.stats.cpu}%</span>
+                              <div className="w-8 md:w-12 h-1 bg-black/30 rounded-full overflow-hidden">
+                                <div 
+                                  className="h-full bg-green-400 transition-all duration-1000"
+                                  style={{ width: member.stats.cpu + '%' }}
                                 />
                               </div>
                             </div>
@@ -457,51 +445,38 @@ const TeamPage = () => {
                             </div>
                             <div className="flex items-center gap-1">
                               <span className="opacity-70">NET:</span>
-                              <motion.span 
-                                className="font-bold"
-                                animate={{ opacity: [0.5, 1, 0.5] }}
-                                transition={{ duration: 1, repeat: Infinity }}
-                              >
-                                {member.stats.network}%
-                              </motion.span>
+                              <span className="font-bold">{member.stats.network}%</span>
                             </div>
                           </div>
-                          <motion.span
-                            animate={{ opacity: [0.3, 1, 0.3] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
-                          >
-                            ⚡ LIVE
-                          </motion.span>
+                          <span className={isMobile ? '' : 'animate-pulse'}>⚡ LIVE</span>
                         </div>
                         
                         {/* Terminal Content */}
-                        <div className="p-5 font-mono text-sm space-y-3 bg-gradient-to-br from-black via-gray-950 to-black">
+                        <div className="p-3 md:p-5 font-mono text-xs md:text-sm space-y-3 bg-gradient-to-br from-black via-gray-950 to-black">
                           {/* Whoami command with typewriter effect */}
                           <motion.div 
                             className="flex items-start space-x-2 relative"
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.1 }}
+                            transition={{ delay: isMobile ? 0 : index * 0.1 }}
                           >
-                            <span className="text-cyan-400 animate-pulse">❯</span>
+                            <span className={`text-cyan-400 ${isMobile ? '' : 'animate-pulse'}`}>❯</span>
                             <div className="flex-1">
                               <p className="text-green-400 group-hover:text-green-300 transition-colors">
                                 <span className="text-purple-400">whoami</span>
-                                <motion.span
-                                  animate={{ opacity: [0, 1, 0] }}
-                                  transition={{ duration: 0.8, repeat: Infinity }}
-                                  className="text-green-400"
-                                >
-                                  _
-                                </motion.span>
+                                {!isMobile && (
+                                  <motion.span
+                                    animate={{ opacity: [0, 1, 0] }}
+                                    transition={{ duration: 0.8, repeat: Infinity }}
+                                    className="text-green-400"
+                                  >
+                                    _
+                                  </motion.span>
+                                )}
                               </p>
-                              <motion.p 
-                                className="text-white font-bold text-lg mt-1 tracking-wider group-hover:text-green-300 transition-colors"
-                                initial={{ scale: 0.95 }}
-                                whileHover={{ scale: 1.05 }}
-                              >
+                              <p className="text-white font-bold text-base md:text-lg mt-1 tracking-wider group-hover:text-green-300 transition-colors">
                                 {member.name}
-                              </motion.p>
+                              </p>
                             </div>
                           </motion.div>
                           
@@ -510,28 +485,18 @@ const TeamPage = () => {
                             className="flex items-start space-x-2 pt-2 border-t border-green-500/10 pt-3"
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.1 + 0.2 }}
+                            transition={{ delay: isMobile ? 0 : index * 0.1 + 0.2 }}
                           >
-                            <span className="text-cyan-400 animate-pulse">❯</span>
+                            <span className={`text-cyan-400 ${isMobile ? '' : 'animate-pulse'}`}>❯</span>
                             <div className="flex-1">
                               <p className="text-green-400 group-hover:text-green-300 transition-colors">
                                 <span className="text-purple-400">cat</span>{" "}
                                 <span className="text-blue-400">role.txt</span>
-                                <motion.span
-                                  animate={{ opacity: [0, 1, 0] }}
-                                  transition={{ duration: 0.8, repeat: Infinity, delay: 0.3 }}
-                                  className="text-green-400"
-                                >
-                                  _
-                                </motion.span>
                               </p>
                               <div className="mt-2 p-2 bg-green-500/5 border-l-2 border-yellow-400 rounded">
-                                <motion.p 
-                                  className="text-yellow-400 font-semibold group-hover:text-yellow-300 transition-colors"
-                                  whileHover={{ x: 5 }}
-                                >
+                                <p className="text-yellow-400 font-semibold group-hover:text-yellow-300 transition-colors text-xs md:text-sm">
                                   » {member.role}
-                                </motion.p>
+                                </p>
                                 <p className="text-gray-500 text-xs mt-1 italic flex items-center gap-1">
                                   <span className="text-blue-400">📁</span> {member.department}
                                 </p>
@@ -544,98 +509,58 @@ const TeamPage = () => {
                             className="flex items-start space-x-2 pt-3 border-t border-green-500/20"
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.1 + 0.4 }}
+                            transition={{ delay: isMobile ? 0 : index * 0.1 + 0.4 }}
                           >
-                            <span className="text-cyan-400 animate-pulse">❯</span>
+                            <span className={`text-cyan-400 ${isMobile ? '' : 'animate-pulse'}`}>❯</span>
                             <div className="flex-1">
-                              <motion.p 
-                                className="text-green-400 group-hover:text-green-300 transition-colors break-all text-xs leading-relaxed"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 2, delay: index * 0.1 + 0.6 }}
-                              >
-                                <TypingText text={member.command} speed={30} />
-                              </motion.p>
+                              <p className="text-green-400 group-hover:text-green-300 transition-colors break-all text-xs leading-relaxed">
+                                {isMobile ? member.command : <TypingText text={member.command} speed={30} />}
+                              </p>
                               
                               {/* Compilation output */}
                               <div className="mt-2 space-y-1 text-xs">
-                                <motion.p 
-                                  className="text-blue-400"
-                                  initial={{ opacity: 0 }}
-                                  animate={{ opacity: 1 }}
-                                  transition={{ delay: index * 0.1 + 0.8 }}
-                                >
+                                <p className="text-blue-400">
                                   <span className="text-gray-600">[INFO]</span> Initializing environment...
-                                </motion.p>
-                                <motion.p 
-                                  className="text-purple-400"
-                                  initial={{ opacity: 0 }}
-                                  animate={{ opacity: 1 }}
-                                  transition={{ delay: index * 0.1 + 1.0 }}
-                                >
+                                </p>
+                                <p className="text-purple-400">
                                   <span className="text-gray-600">[COMPILE]</span> Building modules... ████████ 100%
-                                </motion.p>
-                                <motion.div 
-                                  className="flex items-center gap-2 text-green-500"
-                                  animate={{ opacity: [0.5, 1, 0.5] }}
-                                  transition={{ duration: 1.5, repeat: Infinity }}
-                                >
-                                  <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-ping"></span>
+                                </p>
+                                <div className="flex items-center gap-2 text-green-500">
+                                  <span className={`inline-block w-2 h-2 bg-green-500 rounded-full ${isMobile ? '' : 'animate-ping'}`}></span>
                                   <span><span className="text-gray-600">[SUCCESS]</span> Process executing...</span>
                                   <span className="text-green-400 font-bold">[✓ OK]</span>
-                                </motion.div>
+                                </div>
                               </div>
                             </div>
                           </motion.div>
                         </div>
                         
                         {/* Bottom status bar with data visualization */}
-                        <motion.div 
-                          className="bg-gradient-to-r from-green-900/20 via-green-800/20 to-green-900/20 px-4 py-2 border-t-2 border-green-500/30 text-xs font-mono"
-                          whileHover={{ borderTopColor: 'rgba(34, 197, 94, 0.6)' }}
-                        >
-                          <div className="flex items-center justify-between text-green-400">
-                            <div className="flex items-center gap-2">
-                              <motion.span
-                                animate={{ scale: [1, 1.3, 1] }}
-                                transition={{ duration: 1.5, repeat: Infinity }}
-                              >
-                                ●
-                              </motion.span>
-                              <span className="font-bold">ONLINE</span>
+                        <div className="bg-gradient-to-r from-green-900/20 via-green-800/20 to-green-900/20 px-2 md:px-4 py-2 border-t-2 border-green-500/30 text-xs font-mono">
+                          <div className="flex items-center justify-between text-green-400 flex-wrap gap-1">
+                            <div className="flex items-center gap-1 md:gap-2">
+                              <span className={isMobile ? '' : 'animate-pulse'}>●</span>
+                              <span className="font-bold text-[10px] md:text-xs">ONLINE</span>
                             </div>
-                            <span className="opacity-50">|</span>
-                            <span className="font-semibold">JHC2026</span>
-                            <span className="opacity-50">|</span>
-                            <motion.div 
-                              className="flex items-center gap-1"
-                              animate={{ opacity: [0.7, 1, 0.7] }}
-                              transition={{ duration: 2, repeat: Infinity }}
-                            >
-                              <span>⚡</span>
-                              <span>{member.stats.cpu}%</span>
-                            </motion.div>
-                            <span className="opacity-50">|</span>
-                            <motion.div
-                              animate={{ opacity: [0.5, 1, 0.5] }}
-                              transition={{ duration: 1, repeat: Infinity }}
-                              className="flex items-center gap-1"
-                            >
-                              <span>🔥</span>
-                              <span className="font-bold">ACTIVE</span>
-                            </motion.div>
-                            <span className="opacity-50">|</span>
+                            <span className="opacity-50 hidden md:inline">|</span>
+                            <span className="font-semibold text-[10px] md:text-xs">JHC2026</span>
+                            <span className="opacity-50 hidden md:inline">|</span>
                             <div className="flex items-center gap-1">
+                              <span>⚡</span>
+                              <span className="text-[10px] md:text-xs">{member.stats.cpu}%</span>
+                            </div>
+                            <span className="opacity-50 hidden lg:inline">|</span>
+                            <div className="hidden lg:flex items-center gap-1">
+                              <span>🔥</span>
+                              <span className="font-bold text-xs">ACTIVE</span>
+                            </div>
+                            <span className="opacity-50 hidden lg:inline">|</span>
+                            <div className="hidden lg:flex items-center gap-1">
                               <span>💻</span>
-                              <motion.span
-                                animate={{ opacity: [0.3, 1, 0.3] }}
-                                transition={{ duration: 1.5, repeat: Infinity }}
-                              >
-                                EXECUTING
-                              </motion.span>
+                              <span className="text-xs">EXECUTING</span>
                             </div>
                           </div>
-                        </motion.div>
+                        </div>
                       </CardContent>
                     </Card>
                   </motion.div>
@@ -653,17 +578,14 @@ const TeamPage = () => {
                 The successful organizing team from our 2024 conference. For JHC 2026, we maintain our proven leadership structure 
                 along with an energetic student coordination team to deliver an even more exceptional conference experience.
               </p>
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              >
+              <div className={isMobile ? '' : 'hover:scale-[1.02] transition-transform duration-300'}>
                 <img 
                   src="/lovable-uploads/1d3f69d9-45ec-45a7-a1fd-2b2c47667a56.png" 
                   alt="JHC 2024 Organizing Team" 
                   className="rounded-xl shadow-2xl mx-auto max-w-5xl w-full"
                   loading="lazy"
                 />
-              </motion.div>
+              </div>
             </motion.div>
 
             {/* Spotlight Inspiration */}
@@ -672,21 +594,14 @@ const TeamPage = () => {
               className="mt-20"
             >
               <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
-                <motion.div
-                  className="relative order-2 lg:order-1"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/10 blur-2xl opacity-60" aria-hidden="true"></div>
+                <div className="relative order-2 lg:order-1">
+                  {!isMobile && <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/10 blur-2xl opacity-60" aria-hidden="true"></div>}
                   <figure className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                    <motion.img
+                    <img
                       src="https://images.pexels.com/photos/9242844/pexels-photo-9242844.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1200"
                       alt="Students collaborating around a table with holographic charts"
-                      className="w-full h-full object-cover"
+                      className={`w-full h-full object-cover ${isMobile ? '' : 'hover:scale-110 transition-transform duration-500'}`}
                       loading="lazy"
-                      initial={{ scale: 1.05 }}
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" aria-hidden="true"></div>
                     <div className="absolute bottom-4 left-4 right-4 text-left text-white">
@@ -694,7 +609,7 @@ const TeamPage = () => {
                       <p className="text-xs mt-1 text-white/80">Capturing the momentum we channel into every strategic sprint and research design session.</p>
                     </div>
                   </figure>
-                </motion.div>
+                </div>
 
                 <div className="space-y-5 order-1 lg:order-2 text-center lg:text-left">
                   <motion.span

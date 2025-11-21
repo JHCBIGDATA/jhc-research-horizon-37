@@ -16,6 +16,12 @@ import TeamPage from "./pages/TeamPage";
 import GalleryPage from "./pages/GalleryPage";
 import AIGamesPage from "./pages/AIGamesPage";
 import ResearchPaperQuizPage from "./pages/ResearchPaperQuizPage";
+import TicTacToeGame from "./pages/TicTacToeGame";
+import MemoryCardGame from "./pages/MemoryCardGame";
+import SnakeGameAI from "./pages/SnakeGameAI";
+import Game2048 from "./pages/Game2048";
+import ParticlePhysicsGame from "./pages/ParticlePhysicsGame";
+import RhythmBeatGame from "./pages/RhythmBeatGame";
 import NotFound from "./pages/NotFound";
 import FAQPage from "./pages/FAQPage";
 
@@ -57,6 +63,12 @@ const App = () => (
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/ai-games" element={<AIGamesPage />} />
             <Route path="/ai-games/research-quiz" element={<ResearchPaperQuizPage />} />
+            <Route path="/ai-games/tic-tac-toe" element={<TicTacToeGame />} />
+            <Route path="/ai-games/memory-card" element={<MemoryCardGame />} />
+            <Route path="/ai-games/snake-ai" element={<SnakeGameAI />} />
+            <Route path="/ai-games/2048" element={<Game2048 />} />
+            <Route path="/ai-games/particle-physics" element={<ParticlePhysicsGame />} />
+            <Route path="/ai-games/rhythm-beat" element={<RhythmBeatGame />} />
             <Route path="/faq" element={<FAQPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
