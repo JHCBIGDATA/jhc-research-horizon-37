@@ -162,7 +162,7 @@ const EnhancedNavbar = () => {
                   <div className="grid gap-3 text-sm">
                     <div className="flex items-center gap-3 rounded-lg border border-primary/20 bg-primary/5 px-3 py-2">
                       <CalendarCheck className="h-4 w-4 text-primary" />
-                      <span>Conference: January 7, 2026</span>
+                      <span>Conference: February 7, 2026</span>
                     </div>
                     <div className="flex items-center gap-3 rounded-lg border border-accent/20 bg-accent/10 px-3 py-2">
                       <Map className="h-4 w-4 text-accent" />
