@@ -69,7 +69,7 @@ const Schedule = () => {
 
         <div className="grid lg:grid-cols-1 gap-8">
           <div>
-            <h3 className="text-2xl font-bold text-primary mb-8 text-center">Conference Day - January 7, 2026</h3>
+            <h3 className="text-2xl font-bold text-primary mb-8 text-center">Conference Day - February 7, 2026</h3>
             <div className="space-y-4">
               {day1Schedule.map((item, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
